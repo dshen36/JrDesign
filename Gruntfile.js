@@ -132,6 +132,7 @@ module.exports = function(grunt) {
         'useminPrepare',
         'concat:generated',
         'ngAnnotate',
+        'cssmin:generated',
         'uglify:generated',
         'usemin',
         'copy:toDist',

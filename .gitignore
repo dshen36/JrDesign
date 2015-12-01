@@ -46,5 +46,6 @@ Temporary Items
 node_modules
 
 # Project files
+build
 src/vendor
 src/index.html
