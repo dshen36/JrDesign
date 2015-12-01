@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<head>
+    <title>Graduation Guide</title>
+</head>
+<body>
+    <!-- build:css(src) /assets/css/build.css -->
+    <link rel="stylesheet" href="/core/styles/main.css" />
+    <!-- endbuild -->
+
+    <div ui-view></div>
+
+    <!-- build:js(src) /assets/js/build.js -->
+
+    <script src="/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="/vendor/angular/angular.js"></script>
+    <script src="/vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="/vendor/underscore/underscore.js"></script>
+
+    <!-- @if ENV == 'mock' -->
+    <script src="/vendor/angular-mocks/angular-mocks.js"></script>
+    <script src="/app/mock.js"></script>
+    <!-- @endif -->
+
+    <!-- @if ENV == 'prod' -->
+    <script src="/app/bootstrap.js"></script>
+    <!-- @endif -->
+
+    <!-- endbuild -->
+</body>

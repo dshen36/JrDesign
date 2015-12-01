@@ -47,3 +47,4 @@ node_modules
 
 # Project files
 src/vendor
+src/index.html
