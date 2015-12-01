@@ -11,20 +11,26 @@
 
     <!-- build:js(src) /assets/js/build.js -->
 
+    <!-- vendor -->
     <script src="/vendor/jquery/dist/jquery.min.js"></script>
     <script src="/vendor/angular/angular.js"></script>
     <script src="/vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="/vendor/underscore/underscore.js"></script>
 
+    <!-- app -->
+    <script src="/app/app.js"></script>
+    <script src="/app/app.controllers.js"></script>
+    <script src="/app/app.config.js"></script>
+
     <!-- @if ENV == 'mock' -->
     <script src="/vendor/angular-mocks/angular-mocks.js"></script>
-    <script src="/app/mock.js"></script>
     <script src="/environment/env.mock.js"></script>
+    <script src="/app/mock.js"></script>
     <!-- @endif -->
 
     <!-- @if ENV == 'prod' -->
-    <script src="/app/bootstrap.js"></script>
     <script src="/environment/env.prod.js"></script>
+    <script src="/app/bootstrap.js"></script>
     <!-- @endif -->
 
     <!-- endbuild -->

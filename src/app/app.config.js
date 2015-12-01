@@ -1,5 +1,3 @@
-'use strict'
-
 angular.module('gg.app')
     .config(function($locationProvider, $stateProvider, $urlRouterProvider) {
         $locationProvider.html5Mode({

@@ -28,7 +28,7 @@ module.exports = function(grunt) {
         },
         clean: {
             options: { dot: true },
-            dist: { files: [{ src: ['<%= config.dist %>'] }] }
+            dist: { files: [{ src: ['<%= config.dist %>'] }] },
             stage: { files: [{ src: ['<%= config.stage %>'] }] }
         },
         copy: {

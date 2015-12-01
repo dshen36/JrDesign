@@ -1,5 +1,3 @@
-'use strict'
-
 angular.module('gg.app')
     .controller('AppCtrl', function($scope, Environment) {
         $scope.hello = 'Hello World!';
