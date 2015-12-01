@@ -19,10 +19,12 @@
     <!-- @if ENV == 'mock' -->
     <script src="/vendor/angular-mocks/angular-mocks.js"></script>
     <script src="/app/mock.js"></script>
+    <script src="/environment/env.mock.js"></script>
     <!-- @endif -->
 
     <!-- @if ENV == 'prod' -->
     <script src="/app/bootstrap.js"></script>
+    <script src="/environment/env.prod.js"></script>
     <!-- @endif -->
 
     <!-- endbuild -->
