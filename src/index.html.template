@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <head>
     <title>Graduation Guide</title>
+    <base href="/">
 </head>
 <body>
     <!-- build:css(src) /assets/css/build.css -->
@@ -21,6 +22,10 @@
     <script src="/app/app.js"></script>
     <script src="/app/app.controllers.js"></script>
     <script src="/app/app.config.js"></script>
+
+    <!-- criteria -->
+    <script src="/app/criteria/criteria.config.js"></script>
+    <script src="/app/criteria/criteria.controllers.js"></script>
 
     <!-- core services -->
     <script src="/core/services/services.js"></script>
