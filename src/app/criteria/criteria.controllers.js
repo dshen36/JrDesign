@@ -1,30 +1,63 @@
 angular.module('gg.app')
     .controller('CriteriaCtrl', function($scope, Majors, Minors) {
-        var selectedMajor, selectedMinor;
-
         $scope.majors = [];
         $scope.minors = [];
+        $scope.selectedMajor = null;
+        $scope.selectedMinor = null;
+        $scope.selectedTracks = {};
 
-        Majors.forEach(function(major) { $scope.majors.push({ major: major, selected: false }); });
-        Minors.forEach(function(minor) { $scope.minors.push({ minor: minor, selected: false }); });
+        Majors.forEach(
+            function(major) {
+                $scope.majors.push({
+                    major: major,
+                    selected: false,
+                    tracks: []
+                });
+
+                major.tracks.forEach(
+                    function(track) {
+                        $scope.majors[$scope.majors.length - 1].tracks.push({
+                            track: track,
+                            selected: false
+                        });
+                    });
+            });
+
+        Minors.forEach(
+            function(minor) {
+                $scope.minors.push({
+                    minor: minor,
+                    selected: false
+                });
+            });
 
         $scope.selectMajor = function(major) {
             major.selected = true;
             
-            if (selectedMajor) {
-                selectedMajor.selected = false;
+            if ($scope.selectedMajor) {
+                $scope.selectedMajor.selected = false;
             }
 
-            selectedMajor = major.selected ? major : null;
+            $scope.selectedMajor = major.selected ? major : null;
         }
 
         $scope.selectMinor = function(minor) {
             minor.selected = true;
             
-            if (selectedMinor) {
-                selectedMinor.selected = false;
+            if ($scope.selectedMinor) {
+                $scope.selectedMinor.selected = false;
             }
 
-            selectedMinor = minor.selected ? minor : null;
+            $scope.selectedMinor = minor.selected ? minor : null;
+        }
+
+        $scope.selectTrack = function(track) {
+            track.selected = true;
+            $scope.selectedTracks[track.id] = track;
+        }
+
+        $scope.deselectTrack = function(track) {
+            track.selected = false;
+            delete $scope.selectedTracks[track.id];
         }
     });

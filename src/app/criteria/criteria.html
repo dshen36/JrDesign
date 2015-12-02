@@ -6,6 +6,16 @@
         <span ng-if="major.selected">(Selected)</span>
     </div>
 </div>
+<h2 ng-if="selectedMajor">Select your Tracks</h2>
+<div ng-repeat="track in selectedMajor.tracks">
+    <div ng-if="!track.selected" ng-click="selectTrack(track)">
+        <span>{{track.track.name}}</span>
+    </div>
+    <div ng-if="track.selected" ng-click="deselectTrack(track)">
+        <span>{{track.track.name}}</span>
+        <span>(Selected)</span>
+    </div>
+</div>
 <h2>Select a Minor</h2>
 <div ng-repeat="minor in minors">
     <div ng-click="selectMinor(minor)">
