@@ -1,2 +1,9 @@
 <h1>Criteria</h1>
-<div>{{majors}}</div>
+<h2>Select a Major</h2>
+<div ng-repeat="major in majors">
+    <div>{{major.name}}</div>
+</div>
+<h2>Select a Minor</h2>
+<div ng-repeat="minor in minors">
+    <div>{{minor.name}}</div>
+</div>

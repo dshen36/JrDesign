@@ -8,6 +8,9 @@ angular.module('gg.app')
                 resolve: {
                     'Majors': function(Major) {
                         return Major.getAll();
+                    },
+                    'Minors': function(Minor) {
+                        return Minor.getAll();
                     }
                 }
             });

@@ -23,6 +23,10 @@
     <script src="/app/app.controllers.js"></script>
     <script src="/app/app.config.js"></script>
 
+    <!-- error -->
+    <script src="/app/error/error.config.js"></script>
+    <script src="/app/error/error.controllers.js"></script>
+
     <!-- criteria -->
     <script src="/app/criteria/criteria.config.js"></script>
     <script src="/app/criteria/criteria.controllers.js"></script>
