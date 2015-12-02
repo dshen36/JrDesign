@@ -3,12 +3,56 @@
 <head>
 	<title>Enroute</title>
 	<link type="text/css" rel="stylesheet" href="style.css" media="screen">
+    <link type="text/css" rel="stylesheet" href="searchbar.css" media="screen">
+    <link type="text/css" rel="stylesheet" href="css/example.css" media="screen">
+    <script src="js/jQuery.js"></script> 
+    <link rel="stylesheet"  href="css/bootstrap.min.css">
 	<!-- <link rel="stylesheet"  href="css/bootstrap.min.css"> -->
-
+    <!-- http://codepen.io/soberdash/pen/EaxGeL -->
 </head>
 <body>
-
-
-	
+    <div class="container" id="search" >
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Course Search</h2>
+                <div id="custom-search-input">
+                    <div class="input-group" id="the-basics">
+                        <!-- <input type="text" class="form-control input-lg" placeholder="Search a class" /> -->
+                        <input class="typeahead form-control input-lg"  type="text" placeholder="Enter a class!">
+                        <span class="input-group-btn">
+                            <button class="btn btn-info btn-lg" type="button" >
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+                <div id="results">
+     
+                </div> 
+            </div>
+        </div>
+    </div>
+      
+<!-- <form id="form-country_v1" name="form-country_v1">
+    <div class="typeahead-container">
+        <div class="typeahead-field">
+            <span class="typeahead-query">
+                <input id="country_v1-query" name="country_v1[query]" type="search" placeholder="Search" autocomplete="off">
+            </span>
+            <span class="typeahead-button">
+                <button type="submit">
+                    <i class="typeahead-search-icon"></i>
+                </button>
+            </span>
+ 
+        </div>
+    </div>
+</form> -->
+<!--     <div id="the-basics">
+        <input class="typeahead" type="text" placeholder="States of USA">
+    </div> -->
+    <script src="js/bootstrapJS/bootstrap.min.js"></script>
+    <script src="js/typeahead.bundle.js"></script>	
+    <script src="js/autofill.js"></script>
 </body>
 </html>
