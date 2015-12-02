@@ -22,7 +22,7 @@ var substringMatcher = function(strs) {
 
 var classes = ['CS 1100','CS 1301','CS 1331','CS 1332', 'CS 1371', 'CS 2110', 
   'CS 2200', 'CS 2340', 'CS 3510', 'CS 3600', 'CS 4400', 'CS 4460', 'MATH 2605',
-  'MATH 3012'
+  'MATH 3012', 'CS 4641'
 ];
 
 $('#the-basics .typeahead').typeahead({
@@ -37,21 +37,30 @@ $('#the-basics .typeahead').typeahead({
 $('.typeahead').typeahead('open');
 
 function addRow() {
-    var div = document.createElement('div');
+    // var div = document.createElement('div');
 
-    div.className = 'entry';
+    // div.className = 'entry';
     var temp = document.getElementById('typing').value;
-    var para = document.createElement("p");
-    var node = document.createTextNode(temp);
-    para.appendChild(node);
-    console.log(temp);
-    // div.innerHTML = '<input type="button" value="X" onclick="removeRow(this)">';
-    div.appendChild(para);
-    document.getElementById('results').appendChild(div);
+    // var para = document.createElement("h3");
+    // var node = document.createTextNode(temp);
+    // para.appendChild(node);
+    // div.appendChild(para); 
 
-     //results.innerHTML = temp;
+    // var remove = document.createElement("button");
+    // var removeLabel = document.createTextNode("X");
+    // remove.className = 'toRemove';
+    // remove.appendChild(removeLabel);
+    // div.appendChild(remove);
+    // // div.innerHTML = '<input type="button" value="X" onclick="removeRow(this)">';
+    // document.getElementById('results').appendChild(div);
+    $("#results").append(
+      $('<div/>', { 
+          'text':  temp,
+          'class': 'entry',
+
+      }).on({
+          'click': function() { $(this).remove(); }
+      })
+  );
 }
 
-function removeRow(input) {
-    document.getElementById('results').removeChild( input.parentNode );
-}
