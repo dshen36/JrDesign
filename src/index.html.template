@@ -22,6 +22,14 @@
     <script src="/app/app.controllers.js"></script>
     <script src="/app/app.config.js"></script>
 
+    <!-- core services -->
+    <script src="/core/services/services.js"></script>
+    <script src="/core/services/major.js"></script>
+    <script src="/core/services/minor.js"></script>
+    <script src="/core/services/track.js"></script>
+    <script src="/core/services/course.js"></script>
+    <script src="/core/services/professor.js"></script>
+
     <!-- @if ENV == 'mock' -->
     <script src="/vendor/angular-mocks/angular-mocks.js"></script>
     <script src="/environment/env.mock.js"></script>

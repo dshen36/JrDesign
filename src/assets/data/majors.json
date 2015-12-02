@@ -1,0 +1,60 @@
+[
+    {
+        "id": 1,
+        "name": "Electrical Engineering",
+        "tracks": []
+    },
+    {
+        "id": 2,
+        "name": "Computer Science",
+        "tracks": [
+            {
+                "id": 1,
+                "name": "Devices"
+            },
+            {
+                "id": 2,
+                "name": "Info Internetworks"
+            },
+            {
+                "id": 3,
+                "name": "Intelligence"
+            },
+            {
+                "id": 4,
+                "name": "Media"
+            },
+            {
+                "id": 5,
+                "name": "Modeling and Simulation"
+            },
+            {
+                "id": 6,
+                "name": "People"
+            },
+            {
+                "id": 7,
+                "name": "Systems and Architecture"
+            },
+            {
+                "id": 8,
+                "name": "Theory"
+            },
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Industrial Engineering",
+        "tracks": []
+    },
+    {
+        "id": 4,
+        "name": "Business Administration",
+        "tracks": []
+    },
+    {
+        "id": 5,
+        "name": "Literature, Media, and Communication",
+        "tracks": []
+    }
+]

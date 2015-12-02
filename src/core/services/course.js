@@ -1,14 +1,17 @@
 angular.module('gg.services')
-    .factory('Course', function(Professor) {
+    .factory('Course', function(Section, Prereq) {
         function Course(data) {
             this.id = data.id;
-            this.crn = data.crn;
             this.name = data.name;
-            this.time = new Date(data.time);
-            this.length = data.length;
+            this.subject = data.subject;
+            this.courseNum = data.courseNum;
             this.credits = data.credits;
-            this.prereqs = data.prereqs;
-            this.professor = new Professor(data.professor);
+            this.prereqs = new Prereq(data.prereqs);
+            this.sections = [];
+
+            for (var i = 0; i < data.sections.length; i ++) {
+                this.sections.push(new Section(data.sections[i]));
+            }
         }
 
         return Course;
