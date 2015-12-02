@@ -1,5 +1,5 @@
 angular.module('gg.services')
-    .factory('Minor', function() {
+    .factory('Minor', function($http) {
         function Minor(data) {
             this.id = data.id;
             this.name = data.name;

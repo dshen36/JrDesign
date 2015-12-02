@@ -1,9 +1,15 @@
 <h1>Criteria</h1>
 <h2>Select a Major</h2>
 <div ng-repeat="major in majors">
-    <div>{{major.name}}</div>
+    <div ng-click="selectMajor(major)">
+        <span>{{major.major.name}}</span>
+        <span ng-if="major.selected">(Selected)</span>
+    </div>
 </div>
 <h2>Select a Minor</h2>
 <div ng-repeat="minor in minors">
-    <div>{{minor.name}}</div>
+    <div ng-click="selectMinor(minor)">
+        <span>{{minor.minor.name}}</span>
+        <span ng-if="minor.selected">(Selected)</span>
+    </div>
 </div>
