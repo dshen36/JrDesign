@@ -13,7 +13,14 @@ angular.module('gg.services')
         Major.getAll = function() {
             return $http.get('/assets/data/majors.json').then(
                 function(response) {
-                    return response.data;
+                    var majors = [];
+
+                    response.data.forEach(
+                        function(data) {
+                            majors.push(new Major(data));
+                        });
+                    
+                    return majors;
                 });
         }
 

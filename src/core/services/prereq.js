@@ -6,6 +6,7 @@ angular.module('gg.services')
             this.courseIdLeft = data.courseIdLeft;
             this.courseIdRight = data.courseIdRight;
             this.childPrereq = data.childPrereq;
+            this.satisfied = false;
 
             /* recursively build prereqs */
             if (data.childPrereq) {

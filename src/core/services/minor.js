@@ -8,7 +8,14 @@ angular.module('gg.services')
         Minor.getAll = function() {
             return $http.get('/assets/data/minors.json').then(
                 function(response) {
-                    return response.data;
+                    var minors = [];
+
+                    response.data.forEach(
+                        function(data) {
+                            minors.push(new Minor(data));
+                        });
+
+                    return minors;
                 });
         }
 

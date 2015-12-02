@@ -7,5 +7,5 @@ angular.module('gg.services')
             this.duration = data.duration;
         }
 
-        return Course;
+        return ClassTime;
     });

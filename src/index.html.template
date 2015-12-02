@@ -31,12 +31,20 @@
     <script src="/app/criteria/criteria.config.js"></script>
     <script src="/app/criteria/criteria.controllers.js"></script>
 
+    <!-- selection  -->
+    <script src="/app/selection/selection.config.js"></script>
+    <script src="/app/selection/selection.controllers.js"></script>
+
     <!-- core services -->
     <script src="/core/services/services.js"></script>
+    <script src="/core/services/user.js"></script>
     <script src="/core/services/major.js"></script>
     <script src="/core/services/minor.js"></script>
     <script src="/core/services/track.js"></script>
     <script src="/core/services/course.js"></script>
+    <script src="/core/services/prereq.js"></script>
+    <script src="/core/services/section.js"></script>
+    <script src="/core/services/class-time.js"></script>
     <script src="/core/services/professor.js"></script>
 
     <!-- @if ENV == 'mock' -->

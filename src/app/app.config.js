@@ -17,7 +17,12 @@ angular.module('gg.app')
                 url: '/app',
                 controller: 'AppCtrl',
                 templateUrl: '/app/app.html',
-                abstract: true
+                abstract: true,
+                resolve: {
+                    'Me': function(User) {
+                        return User.getMe();
+                    }
+                }
             });
     })
     .run(function($rootScope, $log, $state) {
