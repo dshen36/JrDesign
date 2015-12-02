@@ -1,6 +1,17 @@
 <h1>Selection</h1>
+<h2>Available Sections</h2>
 <div ng-repeat="course in availableCourses">
-    <div>
-        <span>{{course.name}}</span>
+    <div>{{course.course.name}}</div>
+    <ul ng-if="section.available" ng-repeat="section in course.sections">
+        <li ng-if="!section.selected" ng-click="selectSection(section)">
+            {{section.section.crn}}
+        </li>
+    </ul>
+</div>
+<h2>Selected Sections</h2>
+<div ng-repeat="course in availableCourses">
+    <div ng-if="section.selected" ng-repeat="section in course.sections">
+        <span>{{section.section.crn}}</span>
+        <span ng-click="deselectSection(section)"> x</span>
     </div>
 </div>
