@@ -17,6 +17,10 @@ html, body {
     background: #333 !important;
 }
 
+.entry {
+    background: white;
+}
+
 #custom-search-input input{
     border: 0;
     box-shadow: none;

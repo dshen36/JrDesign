@@ -23,8 +23,6 @@ var substringMatcher = function(strs) {
 var classes = ['CS 1100','CS 1301','CS 1331','CS 1332', 'CS 1371', 'CS 2110', 
   'CS 2200', 'CS 2340', 'CS 3510', 'CS 3600', 'CS 4400', 'CS 4460', 'MATH 2605',
   'MATH 3012'
-
-
 ];
 
 $('#the-basics .typeahead').typeahead({
@@ -38,3 +36,22 @@ $('#the-basics .typeahead').typeahead({
 });
 $('.typeahead').typeahead('open');
 
+function addRow() {
+    var div = document.createElement('div');
+
+    div.className = 'entry';
+    var temp = document.getElementById('typing').value;
+    var para = document.createElement("p");
+    var node = document.createTextNode(temp);
+    para.appendChild(node);
+    console.log(temp);
+    // div.innerHTML = '<input type="button" value="X" onclick="removeRow(this)">';
+    div.appendChild(para);
+    document.getElementById('results').appendChild(div);
+
+     //results.innerHTML = temp;
+}
+
+function removeRow(input) {
+    document.getElementById('results').removeChild( input.parentNode );
+}

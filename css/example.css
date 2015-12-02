@@ -22,9 +22,12 @@ html {
 
 html {
   font: normal normal normal 18px/1.2 "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
-  color: ;
+  color: #18ae67;
 }
 
+#typing {
+  color: #18ae67 !important;
+}
 
 a {
   color: #03739c;
