@@ -1,2 +1,15 @@
 <h1>Completed</h1>
+<h2>Courses</h2>
+<ul>
+    <li ng-repeat="course in courses" ng-click="toggleCourse(course)">
+        <div>
+            <span>{{course.course.name}}</span>
+            <span ng-if="course.selected">(Selected)</span>
+        </div>
+        <div>
+            <span>{{course.course.subject}}</span>
+            <span>{{course.course.courseNum}}</span>
+        </div>
+    </li>
+</ul>
 <button ui-sref="app.selection">Save Criteria</button>

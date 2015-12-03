@@ -21,6 +21,9 @@ angular.module('gg.app')
                 resolve: {
                     'Me': function(User) {
                         return User.getMe();
+                    },
+                    'Courses': function(Me, Course) {
+                        return Course.getAll(Me);
                     }
                 }
             });

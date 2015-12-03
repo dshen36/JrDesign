@@ -6,9 +6,6 @@ angular.module('gg.app')
                 controller: 'SelectionCtrl',
                 templateUrl: '/app/selection/selection.html',
                 resolve: {
-                    'Courses': function(Me, Course) {
-                        return Course.getAll(Me);
-                    },
                     'CompletedCourses': function(Me) {
                         return Me.getCompletedCourses();
                     },
