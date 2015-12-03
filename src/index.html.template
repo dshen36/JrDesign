@@ -31,6 +31,10 @@
     <script src="/app/criteria/criteria.config.js"></script>
     <script src="/app/criteria/criteria.controllers.js"></script>
 
+    <!-- completed -->
+    <script src="/app/completed/completed.config.js"></script>
+    <script src="/app/completed/completed.controllers.js"></script>
+
     <!-- selection  -->
     <script src="/app/selection/selection.config.js"></script>
     <script src="/app/selection/selection.controllers.js"></script>
