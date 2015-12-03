@@ -12,10 +12,9 @@
         </div>
         <div class="component">
             <ul class="list">
-                <li ng-repeat="major in majors">
+                <li ng-repeat="major in majors"> 
                     <div ng-click="selectMajor(major)">
-                        <span>{{major.major.name}}</span>
-                        <span ng-if="major.selected">(Selected)</span>
+                        <span ng-class="{active: major.selected}">{{major.major.name}}</span>
                     </div>
                 </li>
             </ul>
@@ -30,8 +29,7 @@
                         <span>{{track.track.name}}</span>
                     </div>
                     <div ng-if="track.selected" ng-click="deselectTrack(track)">
-                        <span>{{track.track.name}}</span>
-                        <span>(Selected)</span>
+                        <span class="active">{{track.track.name}}</span>
                     </div>
                 </li>
             </ul>
@@ -45,8 +43,7 @@
             <ul class="list">
                 <li ng-repeat="minor in minors">
                     <div ng-click="selectMinor(minor)">
-                        <span>{{minor.minor.name}}</span>
-                        <span ng-if="minor.selected">(Selected)</span>
+                        <span ng-class="{active: minor.selected}">{{minor.minor.name}}</span>
                     </div>
                 </li>
             </ul>

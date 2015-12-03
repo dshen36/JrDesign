@@ -12,12 +12,13 @@ $thick-border-width: 4px;
 
 /* base */
 $base-font-size: 15px;
-$h1-font-size: 30px;
-$h2-font-size: 25px;
+$h1-font-size: 40px;
+$h2-font-size: 30px;
+$h3-font-size: 25px;
 $button-font-size: 20px;
 
 /* containers */
-$header-bar-height: $component-margin * 2 + $h1-font-size;
+$header-bar-height: $component-margin * 2 + $h3-font-size;
 $side-bar-width: 100px;
 
 /* components */

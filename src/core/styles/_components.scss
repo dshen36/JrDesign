@@ -20,5 +20,9 @@
         line-height: 2 * $component-margin + $base-font-size;
         padding-left: $component-margin;
         @include clickable($light-mono, $dark-mono);
+
+        .active {
+            font-weight: bold;
+        }
     }
 }
