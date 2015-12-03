@@ -3,6 +3,7 @@ angular.module('gg.services')
         function Track(data) {
             this.id = data.id;
             this.name = data.name;
+            this.description = data.description;
         }
 
         return Track;

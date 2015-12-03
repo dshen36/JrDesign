@@ -1,14 +1,17 @@
 [
     {
         "id": 1,
-        "name": "Biology"
+        "name": "Biology",
+        "description": "description"
     },
     {
         "id": 2,
-        "name": "Economics"
+        "name": "Economics",
+        "description": "description"
     },
     {
         "id": 3,
-        "name": "Music"
+        "name": "Music",
+        "description": "description"
     }
 ]

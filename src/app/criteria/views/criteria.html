@@ -1,6 +1,6 @@
 <div class="paper-box">
     <div class="row">
-        <div class="col-11">
+        <div class="col-11 circle-button-sibling">
             <div class="row wizard-nav">
                 <div class="wizard-tab col-{{12 / wizardSteps.length}}" ng-repeat="wizardStep in wizardSteps" ui-sref="{{wizardStep.state}}">
                     {{wizardStep.name}}
@@ -8,8 +8,8 @@
             </div>
         </div>
         <div class="col-1">
-            <div class="circle-button"></div>
+            <div class="circle-button" ui-sref="app.completed"></div>
         </div>
     </div>
-    <div class="scrollable" ui-view></div>
+    <div ui-view></div>
 </div>

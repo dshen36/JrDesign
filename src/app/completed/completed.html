@@ -1,39 +1,21 @@
-<div class="row">
-    <div class="column-full">
-        <div class="component">
-            <h1>Completed</h1>
+<div class="paper-box">
+    <div class="row">
+        <div class="col-11 circle-button-sibling">
+            <h1>Choose the Courses You Have Already Completed</h1>
+        </div>
+        <div class="col-1">
+            <div class="circle-button" ui-sref="app.selection"></div>
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="column-quarter">
-        <div class="component">
-            <h2>Courses</h2>
-        </div>
-    </div>
-    <div class="column-half">
-        <div class="component">
-            <input />
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="column-full">
-        <div class="component">
+    <div class="row">
+        <div class="col-12">
             <ul class="list">
-                <li ng-repeat="course in courses" ng-click="toggleCourse(course)">
-                    <div>
-                        <span ng-class="{active: course.selected}">{{course.course.name}} - {{course.course.subject}} {{course.course.courseNum}}</span>
-                    </div>
+                <li ng-repeat="course in courses" ng-click="selectCourse(course)">
+                    <span>{{ course.course.name }}</span>
+                    <div class="selection-indicator" ng-class="{selected: course.selected}"></div>
                 </li>
             </ul>
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="column-full">
-        <div class="component">
-            <button ui-sref="app.selection">Save Criteria</button>
-        </div>
-    </div>
+    <div ui-view></div>
 </div>

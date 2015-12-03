@@ -3,6 +3,7 @@ angular.module('gg.services')
         function Minor(data) {
             this.id = data.id;
             this.name = data.name;
+            this.description = data.description;
         }
 
         Minor.getAll = function() {

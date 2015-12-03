@@ -1,1 +1,16 @@
-<h1>Select a Minor</h1>
+<div class="row">
+    <div class="col-12">
+        <h1>Select a Minor</h1>
+    </div>
+</div>
+<div class="row" ng-repeat="minorSection in minorSections">
+    <div class="col-{{12 / minorColumns}}" ng-repeat="minor in minorSection">
+        <div class="card" ng-click="selectMinor(minor)">
+            <header>
+                {{minor.minor.name}}
+                <div class="selection-indicator" ng-class="{selected: minor.selected}"></div>
+            </header>
+            <p>{{minor.minor.description}}</p>
+        </div>
+    </div>
+</div>

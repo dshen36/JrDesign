@@ -38,29 +38,30 @@ angular.module('gg.app')
             $scope.selectedMajor = major.selected ? major : null;
         }
 
-        function getSections(items, size) {
-            var sections = [];
-            var section;
-
-            for (var i = 0; i < items.length; i ++) {
-                if (i % size == 0) {
-                    section = [];
-                    sections.push(section);
-                }
-
-                section.push(items[i]);
-            }
-
-            return sections;
-        }
-
-        $scope.majorSections = getSections($scope.majors, $scope.majorColumns);
+        $scope.majorSections = $scope.getSections($scope.majors, $scope.majorColumns);
     })
     .controller('CriteriaTracksCtrl', function($scope, ActiveMajor) {
+        $scope.tracks = [];
+        $scope.trackColumns = 3;
+
+        ActiveMajor.tracks.forEach(
+            function(track) {
+                $scope.tracks.push({
+                    track: track,
+                    selected: false
+                });
+            });
+        
+        $scope.selectTrack = function(track) {
+            track.selected = !track.selected;
+        }
+
+        $scope.trackSections = $scope.getSections($scope.tracks, $scope.trackColumns);
     })
     .controller('CriteriaMinorCtrl', function($scope, Minors) {
         $scope.minors = [];
         $scope.selectedMinor = null;
+        $scope.minorColumns = 3;
 
         Minors.forEach(
             function(minor) {
@@ -79,4 +80,6 @@ angular.module('gg.app')
 
             $scope.selectedMinor = minor.selected ? minor : null;
         }
+
+        $scope.minorSections = $scope.getSections($scope.minors, $scope.minorColumns);
     });

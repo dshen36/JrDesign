@@ -33,4 +33,20 @@ angular.module('gg.app')
             $log.warn('There has been an error changing states', error);
             $state.go('app.error', { error: error.stack });
         });
+
+        $rootScope.getSections = function(items, size) {
+            var sections = [];
+            var section;
+
+            for (var i = 0; i < items.length; i ++) {
+                if (i % size == 0) {
+                    section = [];
+                    sections.push(section);
+                }
+
+                section.push(items[i]);
+            }
+
+            return sections;
+        }
     });

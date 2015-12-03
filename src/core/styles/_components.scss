@@ -1,6 +1,5 @@
 .wizard-nav {
     width: 100%;
-    padding-top: ($header-height * 0.75) - ($small-font-size / 2) - $gutter;
     @include thick-border-lr($dark-mono);
 }
 
@@ -26,20 +25,25 @@
     @include clickable($medium-mono, $dark-mono);
 }
 
+.circle-button-sibling {
+    padding-top: ($header-height * 0.75) - ($medium-font-size / 2)
+}
+
 .list {
     border-top: $thin-border-width $dark-mono solid;
 
     li {
         box-sizing: border-box;
         border-bottom: $thin-border-width $dark-mono solid;
+        font-size: $small-font-size;
         color: $dark-mono;
-        line-height: 2 * $gutter + $small-font-size;
         background: $light-mono;
-        padding-left: $gutter;
+        padding: $gutter;
         @include clickable($light-mono, $dark-mono);
 
-        .active {
-            font-weight: bold;
+        .selection-indicator {
+            width: $small-font-size;
+            height: $small-font-size;
         }
     }
 }
@@ -56,18 +60,21 @@
         .selection-indicator {
             width: $medium-font-size;
             height: $medium-font-size;
-            background: $light-mono;
-            float: right;
-            @include thin-border($dark-mono);
-            @include border-radius(50%);
-        }
-
-        .selected {
-            background: $accent;
         }
     }
 
     p {
         padding: $gutter;
     }
+}
+
+.selection-indicator {
+    background: $light-mono;
+    float: right;
+    @include thin-border($dark-mono);
+    @include border-radius(50%);
+}
+
+.selected {
+    background: $accent;
 }

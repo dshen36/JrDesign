@@ -12,35 +12,43 @@
         "tracks": [
             {
                 "id": 1,
-                "name": "Devices"
+                "name": "Devices",
+            "description": "description"
             },
             {
                 "id": 2,
-                "name": "Info Internetworks"
+                "name": "Info Internetworks",
+                "description": "description"
             },
             {
                 "id": 3,
-                "name": "Intelligence"
+                "name": "Intelligence",
+                "description": "description"
             },
             {
                 "id": 4,
-                "name": "Media"
+                "name": "Media",
+                "description": "description"
             },
             {
                 "id": 5,
-                "name": "Modeling and Simulation"
+                "name": "Modeling and Simulation",
+                "description": "description"
             },
             {
                 "id": 6,
-                "name": "People"
+                "name": "People",
+                "description": "description"
             },
             {
                 "id": 7,
-                "name": "Systems and Architecture"
+                "name": "Systems and Architecture",
+                "description": "description"
             },
             {
                 "id": 8,
-                "name": "Theory"
+                "name": "Theory",
+                "description": "description"
             }
         ]
     },

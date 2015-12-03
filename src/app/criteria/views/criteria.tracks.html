@@ -1,1 +1,16 @@
-<h1>Select Your Tracks</h1>
+<div class="row">
+    <div class="col-12">
+        <h1>Select Your Tracks</h1>
+    </div>
+</div>
+<div class="row" ng-repeat="trackSection in trackSections">
+    <div class="col-{{12 / trackColumns}}" ng-repeat="track in trackSection">
+        <div class="card" ng-click="selectTrack(track)">
+            <header>
+                {{track.track.name}}
+                <div class="selection-indicator" ng-class="{selected: track.selected}"></div>
+            </header>
+            <p>{{track.track.description}}</p>
+        </div>
+    </div>
+</div>

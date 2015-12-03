@@ -8,7 +8,7 @@ angular.module('gg.app')
             }
         }
 
-        $scope.toggleCourse = function(course) {
+        $scope.selectCourse = function(course) {
             course.selected = !course.selected;
         }
     });

@@ -39,8 +39,8 @@ angular.module('gg.app')
                 controller: 'CriteriaMinorCtrl',
                 templateUrl: '/app/criteria/views/criteria.minor.html',
                 resolve: {
-                    'Minors': function(Major) {
-                        return Major.getAll();
+                    'Minors': function(Minor) {
+                        return Minor.getAll();
                     }
                 }
 
