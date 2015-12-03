@@ -47,6 +47,9 @@
     <script src="/core/services/class-time.js"></script>
     <script src="/core/services/professor.js"></script>
 
+    <!-- core filters -->
+    <script src="/core/filters/filters.js"></script>
+
     <!-- @if ENV == 'mock' -->
     <script src="/vendor/angular-mocks/angular-mocks.js"></script>
     <script src="/environment/env.mock.js"></script>

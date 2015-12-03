@@ -1,6 +1,5 @@
 angular.module('gg.app')
-    .controller('SelectionCtrl', function($scope, Courses, CompletedCourses, AvailableCourses) {
-        $scope.courses = Courses;
+    .controller('SelectionCtrl', function($scope, CompletedCourses, AvailableCourses) {
         $scope.availableCourses = [];
         $scope.selectedSections = [];
 
@@ -8,6 +7,7 @@ angular.module('gg.app')
             function(course) {
                 var available = {
                     course: course,
+                    selected: false,
                     sections: []
                 };
 
@@ -16,19 +16,41 @@ angular.module('gg.app')
                         available.sections.push({
                             section: section,
                             selected: false,
-                            available: true
+                            available: true,
+                            course: available
                         });
                     });
 
                 $scope.availableCourses.push(available);
             });
 
+        function evaluateSectionAvailability() {
+            $scope.availableCourses.forEach(
+                function(course) {
+                    course.sections.forEach(
+                        function(section) {
+                            section.available = true;
+
+                            if (course.selected) {
+                                section.available = false;
+                            } else {
+                                $scope.selectedSections.forEach(
+                                    function(selected) {
+                                        if (section.section.hasTimeConflict(selected.section)) {
+                                            section.available = false;
+                                        }
+                                    });
+                            }
+                        });
+                    });
+        }
+
         $scope.selectSection = function(section) {
             $scope.selectedSections.push(section);
             section.selected = true;
-            section.available = false;
+            section.course.selected = true;
 
-            /* TODO filter available list */
+            evaluateSectionAvailability();
         }
 
         $scope.deselectSection = function(section) {
@@ -40,6 +62,8 @@ angular.module('gg.app')
 
             $scope.selectedSections.splice(sectionIdx, 1);
             section.selected = false;
-            section.available = true;
+            section.course.selected = false;
+
+            evaluateSectionAvailability();
         }
     });

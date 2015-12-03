@@ -3,15 +3,34 @@
 <div ng-repeat="course in availableCourses">
     <div>{{course.course.name}}</div>
     <ul ng-if="section.available" ng-repeat="section in course.sections">
-        <li ng-if="!section.selected" ng-click="selectSection(section)">
-            {{section.section.crn}}
+        <li ng-click="selectSection(section)">
+            <div>CRN: {{section.section.crn}}</div>
+            <div>Professor: {{section.section.professor.name}}</div>
+            <div>Average GPA: {{section.section.professor.avgGpa}}</div>
+            <ul ng-repeat="classTime in section.section.classTimes">
+                <li>
+                    <div>Day: {{classTime.begin | weekday}}</div>
+                    <div>Begin: {{classTime.begin | time}}</div>
+                    <div>End: {{classTime.end | time}}</div>
+                </li>
+            </ul>
         </li>
     </ul>
 </div>
 <h2>Selected Sections</h2>
 <div ng-repeat="course in availableCourses">
-    <div ng-if="section.selected" ng-repeat="section in course.sections">
-        <span>{{section.section.crn}}</span>
-        <span ng-click="deselectSection(section)"> x</span>
-    </div>
+    <ul ng-if="section.selected" ng-repeat="section in course.sections">
+        <li ng-click="deselectSection(section)">
+            <div>CRN: {{section.section.crn}}</div>
+            <div>Professor: {{section.section.professor.name}}</div>
+            <div>Average GPA: {{section.section.professor.avgGpa}}</div>
+            <ul ng-repeat="classTime in section.section.classTimes">
+                <li>
+                    <div>Day: {{classTime.begin | weekday}}</div>
+                    <div>Begin: {{classTime.begin | time}}</div>
+                    <div>End: {{classTime.end | time}}</div>
+                </li>
+            </ul>
+        </li>
+    </ul>
 </div>

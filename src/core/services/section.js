@@ -11,5 +11,21 @@ angular.module('gg.services')
             }
         }
 
+        Section.prototype.hasTimeConflict = function(section) {
+            var conflict = false;
+
+            this.classTimes.forEach(
+                function(myClassTime) {
+                    section.classTimes.forEach(
+                        function(sectionClassTime) {
+                            if (myClassTime.hasTimeConflict(sectionClassTime)) {
+                                conflict = true;
+                            }
+                        });
+                });
+
+            return conflict;
+        }
+
         return Section;
     });
