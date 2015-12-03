@@ -1,0 +1,50 @@
+.header-bar {
+    background: $dark-mono;
+    color: $light-mono;
+    height: $header-bar-height;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+
+.side-bar {
+    background: $light-mono;
+    width: $side-bar-width;
+    position: absolute;
+    top: $header-bar-height;
+    bottom: 0;
+    left: 0;
+}
+
+.main-view {
+    overflow-y: scroll;
+    background: $medium-mono;
+    position: absolute;
+    left: $side-bar-width;
+    top: $header-bar-height;
+    bottom: 0;
+    right: 0;
+}
+
+.row {
+    @include clearfix;
+}
+
+.column-full {
+    width: 100%
+}
+
+.column-half {
+    width: 50%;
+    float: left;
+}
+
+.column-quarter {
+    width: 25%;
+    float: left;
+}
+
+.component {
+    margin: $component-margin;
+}

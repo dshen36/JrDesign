@@ -1,0 +1,24 @@
+.side-bar-nav {
+    width: $side-bar-nav-size;
+    height: $side-bar-nav-size;
+    border-radius: 50%;
+    background: $medium-mono;
+    color: $dark-mono;
+    @include thick-border($dark-mono);
+    @include clickable($medium-mono, $dark-mono);
+}
+
+.list {
+    list-style: none;
+    border-top: $thin-border-width $dark-mono solid;
+
+    li {
+        box-sizing: border-box;
+        border-bottom: $thin-border-width $dark-mono solid;
+        background: $light-mono;
+        color: $dark-mono;
+        line-height: 2 * $component-margin + $base-font-size;
+        padding-left: $component-margin;
+        @include clickable($light-mono, $dark-mono);
+    }
+}

@@ -24,6 +24,27 @@ module.exports = function(grunt) {
             index: {
                 files: ['<%= config.src %>/index.html.template'],
                 tasks: ['preprocess']
+            },
+            scss: {
+                files: ['<%= config.src %>/core/**/*.{scss,sass}'],
+                tasks: ['compass:all']
+            }
+        },
+        concurrent: {
+            options: {
+                logConcurrentOutput: true
+            },
+            watch: {
+                tasks: ['watch:index', 'watch:scss']
+            }
+        },
+        compass: {
+            all: {
+                options: {
+                    debugInfo: false,
+                    outputStyle: 'compressed',
+                    config: 'config.rb'
+                }
             }
         },
         clean: {
@@ -121,13 +142,15 @@ module.exports = function(grunt) {
 
     grunt.registerTask('server', [
         'preprocess',
+        'compass:all',
         'express',
-        'watch:index'
+        'concurrent:watch'
     ]);
 
     grunt.registerTask('build', [
         'preprocess',
         'clean:dist',
+        'compass:all',
         'ngtemplates:build',
         'useminPrepare',
         'concat:generated',

@@ -1,6 +1,5 @@
 angular.module('gg.app')
     .controller('CompletedCtrl', function($scope, Courses) {
-        debugger;
         $scope.courses = [];
 
         for (courseId in Courses) {

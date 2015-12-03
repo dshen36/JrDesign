@@ -49,3 +49,4 @@ node_modules
 build
 src/vendor
 src/index.html
+*.css
