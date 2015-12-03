@@ -1,36 +1,53 @@
-<h1>Selection</h1>
-<h2>Available Sections</h2>
-<div ng-repeat="course in availableCourses">
-    <div>{{course.course.name}}</div>
-    <ul ng-if="isAvailable(section)" ng-repeat="section in course.sections">
-        <li ng-click="selectSection(section)">
-            <div>CRN: {{section.section.crn}}</div>
-            <div>Professor: {{section.section.professor.name}}</div>
-            <div>Average GPA: {{section.section.professor.avgGpa}}</div>
-            <ul ng-repeat="classTime in section.section.classTimes">
-                <li>
-                    <div>Day: {{classTime.begin | weekday}}</div>
-                    <div>Begin: {{classTime.begin | time}}</div>
-                    <div>End: {{classTime.end | time}}</div>
-                </li>
-            </ul>
-        </li>
-    </ul>
-</div>
-<h2>Selected Sections</h2>
-<div ng-repeat="course in availableCourses">
-    <ul ng-if="section.selected" ng-repeat="section in course.sections">
-        <li ng-click="deselectSection(section)">
-            <div>CRN: {{section.section.crn}}</div>
-            <div>Professor: {{section.section.professor.name}}</div>
-            <div>Average GPA: {{section.section.professor.avgGpa}}</div>
-            <ul ng-repeat="classTime in section.section.classTimes">
-                <li>
-                    <div>Day: {{classTime.begin | weekday}}</div>
-                    <div>Begin: {{classTime.begin | time}}</div>
-                    <div>End: {{classTime.end | time}}</div>
-                </li>
-            </ul>
-        </li>
-    </ul>
+<div class="row">
+    <div class="column-full">
+        <div class="component">
+            <h1>Selection</h1>
+        </div>
+    </div>
+<div class="row">
+    <div class="column-half">
+        <div class="component">
+            <h2>Available Sections</h2>
+        </div>
+        <div class="component">
+            <div ng-repeat="course in availableCourses">
+                <div class="component">
+                    <h3>{{course.course.name}}</h3>
+                </div>
+                <ul class="list">
+                    <li ng-repeat="section in course.sections" ng-if="isAvailable(section)" ng-click="selectSection(section)">
+                        <ul class="list">
+                            <li>CRN: {{section.section.crn}}</li>
+                            <li>Professor: {{section.section.professor.name}}</li>
+                            <li>Average GPA: {{section.section.professor.avgGpa}}</li>
+                            <ul class="list">
+                                <li ng-repeat="classTime in section.section.classTimes">{{classTime.begin | weekday}}, {{classTime.begin | time}} - {{classTime.end | time}}</li>
+                            </ul>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="column-half">
+        <div class="component">
+            <h2>Selected Sections</h2>
+        </div>
+        <div class="component">
+            <div ng-repeat="course in availableCourses">
+                <ul class="list"> 
+                    <li ng-if="section.selected" ng-repeat="section in course.sections" ng-click="deselectSection(section)">
+                        <div>CRN: {{section.section.crn}}</div>
+                        <div>Professor: {{section.section.professor.name}}</div>
+                        <div>Average GPA: {{section.section.professor.avgGpa}}</div>
+                        <div ng-repeat="classTime in section.section.classTimes">
+                            <div>Day: {{classTime.begin | weekday}}</div>
+                            <div>Begin: {{classTime.begin | time}}</div>
+                            <div>End: {{classTime.end | time}}</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>

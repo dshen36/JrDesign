@@ -1,14 +1,15 @@
 /* colors */
-$light-mono: #D3D3D3;
-$medium-mono: darken($light-mono, 20%);
-$dark-mono: darken($light-mono, 60%);
-$dark-accent: #000059;
-$light-accent: #CFB53B;
+$light-mono: #FFFFFF;
+$medium-mono: darken($light-mono, 40%);
+$dark-mono: darken($light-mono, 80%);
+$accent: #CFB53B;
 
 /* spacing */
-$component-margin: 15px;
-$thin-border-width: 2px;
-$thick-border-width: 4px;
+$gutter: 15px;
+$full-width: 100%;
+$thin-border-width: 1px;
+$thick-border-width: 2px;
+$header-height: 55px;
 
 /* base */
 $base-font-size: 15px;
@@ -16,10 +17,3 @@ $h1-font-size: 40px;
 $h2-font-size: 30px;
 $h3-font-size: 25px;
 $button-font-size: 20px;
-
-/* containers */
-$header-bar-height: $component-margin * 2 + $h3-font-size;
-$side-bar-width: 100px;
-
-/* components */
-$side-bar-nav-size: $side-bar-width - $component-margin * 2;

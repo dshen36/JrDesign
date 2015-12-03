@@ -1,24 +1,40 @@
-.side-bar-nav {
-    width: $side-bar-nav-size;
-    height: $side-bar-nav-size;
-    border-radius: 50%;
+.wizard-nav {
+    width: 100%;
+    padding-top: ($header-height * 0.75) - ($base-font-size / 2) - $gutter;
+}
+
+.wizard-tab {
+    font-size: $base-font-size;
     background: $medium-mono;
-    color: $dark-mono;
+    padding: $gutter;
+    box-sizing: border-box;
     @include thick-border($dark-mono);
     @include clickable($medium-mono, $dark-mono);
 }
 
+.circle-button {
+    font-size: $base-font-size;
+    text-align: center;
+    padding-top: ($header-height * 0.75) - $base-font-size;
+    background: $medium-mono;
+    color: $dark-mono;
+    width: $header-height * 1.5;
+    height: $header-height * 1.5;
+    @include thick-border($dark-mono);
+    @include border-radius(50%);
+    @include clickable($medium-mono, $dark-mono);
+}
+
 .list {
-    list-style: none;
     border-top: $thin-border-width $dark-mono solid;
 
     li {
         box-sizing: border-box;
         border-bottom: $thin-border-width $dark-mono solid;
-        background: $light-mono;
         color: $dark-mono;
-        line-height: 2 * $component-margin + $base-font-size;
-        padding-left: $component-margin;
+        line-height: 2 * $gutter + $base-font-size;
+        background: $light-mono;
+        padding-left: $gutter;
         @include clickable($light-mono, $dark-mono);
 
         .active {

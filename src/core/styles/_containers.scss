@@ -1,50 +1,43 @@
+/* abstract containers */
+.row {
+    @include clearfix;
+}
+
+@for $i from 1 through 12 {
+    .col-#{$i} {
+        width: ($full-width / 12) * $i;
+        float: left;
+        padding: $gutter;
+        box-sizing: border-box;
+    }
+}
+
+/* custom containers */
 .header-bar {
     background: $dark-mono;
     color: $light-mono;
-    height: $header-bar-height;
+    height: $header-height;
     position: absolute;
     left: 0;
     right: 0;
     top: 0;
 }
 
-.side-bar {
-    background: $light-mono;
-    width: $side-bar-width;
-    position: absolute;
-    top: $header-bar-height;
-    bottom: 0;
-    left: 0;
-}
-
 .main-view {
-    overflow-y: scroll;
     background: $medium-mono;
     position: absolute;
-    left: $side-bar-width;
-    top: $header-bar-height;
+    top: $header-height;
     bottom: 0;
+    left: 0;
     right: 0;
 }
 
-.row {
-    @include clearfix;
-}
-
-.column-full {
-    width: 100%
-}
-
-.column-half {
-    width: 50%;
-    float: left;
-}
-
-.column-quarter {
-    width: 25%;
-    float: left;
-}
-
-.component {
-    margin: $component-margin;
+.paper-box {
+    background: $light-mono;
+    position: absolute;
+    top: $gutter;
+    left: $gutter;
+    right: $gutter;
+    bottom: $gutter;
+    @include box-shadow($dark-mono 5px 5px 5px);
 }

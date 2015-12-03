@@ -1,32 +1,28 @@
 angular.module('gg.app')
-    .controller('CriteriaCtrl', function($scope, Majors, Minors) {
+    .controller('CriteriaCtrl', function($scope) {
+        $scope.wizardSteps = [
+            {
+                name: 'Major',
+                state: 'app.criteria.major'
+            },
+            {
+                name: 'Tracks',
+                state: 'app.criteria.tracks'
+            },
+            {
+                name: 'Minor',
+                state: 'app.criteria.minor'
+            }
+        ];
+    })
+    .controller('CriteriaMajorCtrl', function(Majors) {
         $scope.majors = [];
-        $scope.minors = [];
         $scope.selectedMajor = null;
-        $scope.selectedMinor = null;
-        $scope.selectedTracks = {};
 
         Majors.forEach(
             function(major) {
                 $scope.majors.push({
                     major: major,
-                    selected: false,
-                    tracks: []
-                });
-
-                major.tracks.forEach(
-                    function(track) {
-                        $scope.majors[$scope.majors.length - 1].tracks.push({
-                            track: track,
-                            selected: false
-                        });
-                    });
-            });
-
-        Minors.forEach(
-            function(minor) {
-                $scope.minors.push({
-                    minor: minor,
                     selected: false
                 });
             });
@@ -40,6 +36,20 @@ angular.module('gg.app')
 
             $scope.selectedMajor = major.selected ? major : null;
         }
+    })
+    .controller('CriteriaTrackCtrl', function(ActiveMajor) {
+    })
+    .controller('CriteriaMinorCtrl', function(Minors) {
+        $scope.minors = [];
+        $scope.selectedMinor = null;
+
+        Minors.forEach(
+            function(minor) {
+                $scope.minors.push({
+                    minor: minor,
+                    selected: false
+                });
+            });
 
         $scope.selectMinor = function(minor) {
             minor.selected = true;
@@ -49,15 +59,5 @@ angular.module('gg.app')
             }
 
             $scope.selectedMinor = minor.selected ? minor : null;
-        }
-
-        $scope.selectTrack = function(track) {
-            track.selected = true;
-            $scope.selectedTracks[track.id] = track;
-        }
-
-        $scope.deselectTrack = function(track) {
-            track.selected = false;
-            delete $scope.selectedTracks[track.id];
         }
     });
