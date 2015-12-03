@@ -22,7 +22,8 @@ var substringMatcher = function(strs) {
 
 var classes = ['CS 1100','CS 1301','CS 1331','CS 1332', 'CS 1371', 'CS 2110', 
   'CS 2200', 'CS 2340', 'CS 3510', 'CS 3600', 'CS 4400', 'CS 4460', 'MATH 2605',
-  'MATH 3012', 'CS 4641'
+  'MATH 3012', 'CS 4641', 'CS 4440', 'CS 4420', 'CS 4365', 'CS4675', 'CS 4235',
+  'CS 3251', 'CS 4261'
 ];
 
 $('#the-basics .typeahead').typeahead({
