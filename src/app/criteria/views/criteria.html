@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-11">
             <div class="row wizard-nav">
-                <div class="wizard-tab col-4" ng-repeat="wizardStep in wizardSteps" ui-sref="{{wizardStep.state}}">
+                <div class="wizard-tab col-{{12 / wizardSteps.length}}" ng-repeat="wizardStep in wizardSteps" ui-sref="{{wizardStep.state}}">
                     {{wizardStep.name}}
                 </div>
             </div>
@@ -11,4 +11,5 @@
             <div class="circle-button"></div>
         </div>
     </div>
+    <div class="scrollable" ui-view></div>
 </div>

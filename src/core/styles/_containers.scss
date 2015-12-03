@@ -34,6 +34,7 @@
 
 .paper-box {
     background: $light-mono;
+    overflow: hidden;
     position: absolute;
     top: $gutter;
     left: $gutter;

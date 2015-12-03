@@ -2,11 +2,13 @@
     {
         "id": 1,
         "name": "Electrical Engineering",
+        "description": "description",
         "tracks": []
     },
     {
         "id": 2,
         "name": "Computer Science",
+        "description": "description",
         "tracks": [
             {
                 "id": 1,
@@ -45,16 +47,19 @@
     {
         "id": 3,
         "name": "Industrial Engineering",
+        "description": "description",
         "tracks": []
     },
     {
         "id": 4,
         "name": "Business Administration",
+        "description": "description",
         "tracks": []
     },
     {
         "id": 5,
         "name": "Literature, Media, and Communication",
+        "description": "description",
         "tracks": []
     }
 ]

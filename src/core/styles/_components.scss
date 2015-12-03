@@ -1,21 +1,22 @@
 .wizard-nav {
     width: 100%;
-    padding-top: ($header-height * 0.75) - ($base-font-size / 2) - $gutter;
+    padding-top: ($header-height * 0.75) - ($small-font-size / 2) - $gutter;
+    @include thick-border-lr($dark-mono);
 }
 
 .wizard-tab {
-    font-size: $base-font-size;
+    font-size: $small-font-size;
+    text-align: center;
     background: $medium-mono;
     padding: $gutter;
     box-sizing: border-box;
-    @include thick-border($dark-mono);
     @include clickable($medium-mono, $dark-mono);
 }
 
 .circle-button {
-    font-size: $base-font-size;
+    font-size: $small-font-size;
     text-align: center;
-    padding-top: ($header-height * 0.75) - $base-font-size;
+    padding-top: ($header-height * 0.75) - $small-font-size;
     background: $medium-mono;
     color: $dark-mono;
     width: $header-height * 1.5;
@@ -32,7 +33,7 @@
         box-sizing: border-box;
         border-bottom: $thin-border-width $dark-mono solid;
         color: $dark-mono;
-        line-height: 2 * $gutter + $base-font-size;
+        line-height: 2 * $gutter + $small-font-size;
         background: $light-mono;
         padding-left: $gutter;
         @include clickable($light-mono, $dark-mono);
@@ -40,5 +41,33 @@
         .active {
             font-weight: bold;
         }
+    }
+}
+
+.card {
+    @include thick-border-tb($dark-mono);
+
+    header {
+        font-size: $medium-font-size;
+        background: $medium-mono;
+        padding: $gutter;
+        @include thick-border($dark-mono);
+
+        .selection-indicator {
+            width: $medium-font-size;
+            height: $medium-font-size;
+            background: $light-mono;
+            float: right;
+            @include thin-border($dark-mono);
+            @include border-radius(50%);
+        }
+
+        .selected {
+            background: $accent;
+        }
+    }
+
+    p {
+        padding: $gutter;
     }
 }

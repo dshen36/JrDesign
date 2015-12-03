@@ -11,3 +11,7 @@
 .clearfix {
     @include clearfix;
 }
+
+.scrollable {
+    overflow-y: scroll;
+}

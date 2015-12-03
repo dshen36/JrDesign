@@ -3,6 +3,7 @@ angular.module('gg.services')
         function Major(data) {
             this.id = data.id;
             this.name = data.name;
+            this.description = data.description;
             this.tracks = [];
 
             for (var i = 0; i < data.tracks.length; i ++) {

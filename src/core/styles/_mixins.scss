@@ -3,9 +3,61 @@
     box-sizing: border-box;
 }
 
+@mixin thin-border-lr($border-color) {
+    >* {
+        border-right: $thin-border-width $border-color solid;
+        border-top: $thin-border-width $border-color solid;
+        border-bottom: $thin-border-width $border-color solid;
+        box-sizing: border-box;
+
+        &:first-child {
+            border-left: $thin-border-width $border-color solid;
+        }
+    }
+}
+
+@mixin thin-border-tb($border-color) {
+    >* {
+        border-bottom: $thin-border-width $border-color solid;
+        border-left: $thin-border-width $border-color solid;
+        border-right: $thin-border-width $border-color solid;
+        box-sizing: border-box;
+
+        &:first-child {
+            border-top: $thin-border-width $border-color solid;
+        }
+    }
+}
+
 @mixin thick-border($border-color) {
     border: $thick-border-width $border-color solid;
     box-sizing: border-box;
+}
+
+@mixin thick-border-lr($border-color) {
+    >* {
+        border-right: $thick-border-width $border-color solid;
+        border-top: $thick-border-width $border-color solid;
+        border-bottom: $thick-border-width $border-color solid;
+        box-sizing: border-box;
+
+        &:first-child {
+            border-left: $thick-border-width $border-color solid;
+        }
+    }
+}
+
+@mixin thick-border-tb($border-color) {
+    >* {
+        border-bottom: $thick-border-width $border-color solid;
+        border-left: $thick-border-width $border-color solid;
+        border-right: $thick-border-width $border-color solid;
+        box-sizing: border-box;
+
+        &:first-child {
+            border-top: $thick-border-width $border-color solid;
+        }
+    }
 }
 
 @mixin clickable($bg-color, $fg-color) {
