@@ -2,7 +2,7 @@
 <h2>Available Sections</h2>
 <div ng-repeat="course in availableCourses">
     <div>{{course.course.name}}</div>
-    <ul ng-if="section.available" ng-repeat="section in course.sections">
+    <ul ng-if="isAvailable(section)" ng-repeat="section in course.sections">
         <li ng-click="selectSection(section)">
             <div>CRN: {{section.section.crn}}</div>
             <div>Professor: {{section.section.professor.name}}</div>

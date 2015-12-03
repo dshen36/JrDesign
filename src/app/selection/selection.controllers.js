@@ -16,28 +16,32 @@ angular.module('gg.app')
                         available.sections.push({
                             section: section,
                             selected: false,
-                            available: true,
-                            course: available
+                            course: available,
+                            conflicts: {
+                                alreadySelected: false,
+                                timeConflict: false
+                            }
                         });
                     });
 
                 $scope.availableCourses.push(available);
             });
 
-        function evaluateSectionAvailability() {
+        function flagSectionConflicts() {
             $scope.availableCourses.forEach(
                 function(course) {
                     course.sections.forEach(
                         function(section) {
-                            section.available = true;
+                            section.conflicts.alreadySelected = false;
+                            section.conflicts.timeConflict = false;
 
                             if (course.selected) {
-                                section.available = false;
+                                section.conflicts.alreadySelected = true;
                             } else {
                                 $scope.selectedSections.forEach(
                                     function(selected) {
                                         if (section.section.hasTimeConflict(selected.section)) {
-                                            section.available = false;
+                                            section.conflicts = true;
                                         }
                                     });
                             }
@@ -50,7 +54,7 @@ angular.module('gg.app')
             section.selected = true;
             section.course.selected = true;
 
-            evaluateSectionAvailability();
+            flagSectionConflicts();
         }
 
         $scope.deselectSection = function(section) {
@@ -64,6 +68,18 @@ angular.module('gg.app')
             section.selected = false;
             section.course.selected = false;
 
-            evaluateSectionAvailability();
+            flagSectionConflicts();
+        }
+
+        $scope.isAvailable = function(section) {
+            for (var key in section.conflicts) {
+                if (section.conflicts.hasOwnProperty(key)) {
+                    if (section.conflicts[key]) {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
         }
     });
