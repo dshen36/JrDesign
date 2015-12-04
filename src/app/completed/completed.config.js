@@ -4,6 +4,11 @@ angular.module('gg.app')
             .state('app.completed', {
                 url: '/completed',
                 controller: 'CompletedCtrl',
-                templateUrl: '/app/completed/completed.html'
+                templateUrl: '/app/completed/completed.html',
+                resolve: {
+                    'CompletedCourses': function(Me) {
+                        return Me.getCompletedCourses();
+                    }
+                }
             });
     });

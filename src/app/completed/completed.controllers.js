@@ -1,14 +1,15 @@
 angular.module('gg.app')
-    .controller('CompletedCtrl', function($scope, Courses) {
-        $scope.courses = [];
-
-        for (courseId in Courses) {
-            if (Courses.hasOwnProperty(courseId)) {
-                $scope.courses.push({ course: Courses[courseId], selected: false });
-            }
-        }
+    .controller('CompletedCtrl', function($scope, Courses, CompletedCourses) {
+        $scope.courses = Courses;
+        $scope.completedCourses = CompletedCourses;
+        $scope.courseColumns = 3;
+        $scope.courseSections = $scope.getSections(_.values(Courses), $scope.courseColumns);
 
         $scope.selectCourse = function(course) {
-            course.selected = !course.selected;
+            if (CompletedCourses[course.id]) {
+                delete CompletedCourses[course.id];
+            } else {
+                CompletedCourses[course.id] = course;
+            }
         }
     });

@@ -56,6 +56,7 @@ angular.module('gg.app')
     })
     .controller('CriteriaMajorCtrl', function($scope, $state, Majors) {
         $scope.majorColumns = 3;
+        $scope.majorSections = $scope.getSections($scope.majors, $scope.majorColumns);
 
         $scope.selectMajor = function(major) {
             if ($scope.selectedMajor && $scope.selectedMajor.id == major.id) {
@@ -64,8 +65,6 @@ angular.module('gg.app')
                 $scope.setSelectedMajor(major);
             }
         }
-
-        $scope.majorSections = $scope.getSections($scope.majors, $scope.majorColumns);
     })
     .controller('CriteriaTracksCtrl', function($scope, SelectedTracks) {
         $scope.trackColumns = 3;

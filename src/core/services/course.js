@@ -69,6 +69,18 @@ angular.module('gg.services')
             return available;
         }
 
+        Course.prototype.getFlattenedPrereqs = function() {
+            var current = this.prereqs;
+            var flattened = [];
+
+            while (current != null) {
+                flattened.push(current);
+                current = current.childPrereq;
+            }
+
+            return flattened;
+        }
+
         Course.prototype.prereqsSatisfied = function(completedCourses) {
             if (!this.prereqs) {
                 return true;
@@ -78,18 +90,11 @@ angular.module('gg.services')
                 return !!completedCourses[this.prereqs.courseIdLeft];
             }
 
-            var current = this.prereqs;
-            var prereqStack = [];
-
-            /* traverse prereq tree and push onto stack */
-            while (current != null) {
-                prereqStack.push(current);
-                current = current.childPrereq;
-            }
+            var prereqStack = this.getFlattenedPrereqs();
 
             /* process leaf level prereq */
             var satisfied;
-            current = prereqStack.pop();
+            var current = prereqStack.pop();
 
             if (current.op == 'and') {
                 current.satisfied = completedCourses[current.courseIdLeft] && completedCourses[current.courseIdRight];
