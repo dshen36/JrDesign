@@ -84,12 +84,12 @@ html, body {
     /*font-style: italic;*/
     text-align: center;
 }
-img.center {
+/*img.center {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 img.resize{
-    width:75%; /* you can use % */
+    width:75%; 
     height: auto;
-}
+}*/
