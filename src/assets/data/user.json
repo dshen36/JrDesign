@@ -1,6 +1,6 @@
 {
     "id": 1,
-    "majorId": 2,
+    "majorId": null,
     "minorId": null,
-    "trackIds": [2, 7]
+    "trackIds": []
 }
