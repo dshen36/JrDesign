@@ -8,7 +8,7 @@
         <div class="card" ng-click="selectTrack(track)">
             <header>
                 {{track.name}}
-                <div class="selection-indicator" ng-class="{selected: !!selectedTracks[track.id]}"></div>
+                <div class="selection-indicator" ng-class="{accent: !!selectedTracks[track.id]}"></div>
             </header>
             <p>{{track.description}}</p>
         </div>

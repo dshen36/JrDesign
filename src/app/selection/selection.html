@@ -1,53 +1,45 @@
-<div class="row">
-    <div class="column-full">
-        <div class="component">
-            <h1>Selection</h1>
+<div class="paper-box">
+    <div class="row">
+        <div class="col-12">
+            <h1>Select Classes For The Upcoming Semester</h1>
         </div>
-    </div>
-<div class="row">
-    <div class="column-half">
-        <div class="component">
+    <div class="row">
+        <div class="col-8">
             <h2>Available Sections</h2>
-        </div>
-        <div class="component">
-            <div ng-repeat="course in availableCourses">
-                <div class="component">
-                    <h3>{{course.course.name}}</h3>
+            <div class="row" ng-repeat="availableSection in availableSections">
+                <div class="card col-{{12 / availableColumns}}" ng-repeat="course in availableSection" ng-click="selectCourse(course)">
+                    <header>{{course.subject}} {{course.courseNum}}</header>
+                    <p>{{course.name}}</p>
                 </div>
-                <ul class="list">
-                    <li ng-repeat="section in course.sections" ng-if="isAvailable(section)" ng-click="selectSection(section)">
-                        <ul class="list">
-                            <li>CRN: {{section.section.crn}}</li>
-                            <li>Professor: {{section.section.professor.name}}</li>
-                            <li>Average GPA: {{section.section.professor.avgGpa}}</li>
-                            <ul class="list">
-                                <li ng-repeat="classTime in section.section.classTimes">{{classTime.begin | weekday}}, {{classTime.begin | time}} - {{classTime.end | time}}</li>
-                            </ul>
-                        </ul>
-                    </li>
-                </ul>
             </div>
+        </div>
+        <div class="col-4">
+            <h2>Selected Sections</h2>
+            <div class="row" ng-repeat="section in selectedSections">
+                <div class="card col-12" ng-click="selectSection(section)">
+                    <header>{{section.professor.name}}</header>
+                    <p>{{section.professor.avgGpa}}</p>
+                </div>
+            </div>
+            <h2>Average GPA: {{getAverageGpa() | number:3}}</h2>
+            <h2>Credit Hours: {{getTotalCreditHours()}}</h2>
         </div>
     </div>
-    <div class="column-half">
-        <div class="component">
-            <h2>Selected Sections</h2>
-        </div>
-        <div class="component">
-            <div ng-repeat="course in availableCourses">
-                <ul class="list"> 
-                    <li ng-if="section.selected" ng-repeat="section in course.sections" ng-click="deselectSection(section)">
-                        <div>CRN: {{section.section.crn}}</div>
-                        <div>Professor: {{section.section.professor.name}}</div>
-                        <div>Average GPA: {{section.section.professor.avgGpa}}</div>
-                        <div ng-repeat="classTime in section.section.classTimes">
-                            <div>Day: {{classTime.begin | weekday}}</div>
-                            <div>Begin: {{classTime.begin | time}}</div>
-                            <div>End: {{classTime.end | time}}</div>
-                        </div>
-                    </li>
-                </ul>
+    <div ng-if="!!selectedCourse" class="row">
+        <div class="col-12">
+            <h2>Sections</h2 >
+            <div class="row" ng-repeat="sectionSection in sectionSections">
+                <div class="card col-{{12 / sectionColumns}}" ng-repeat="section in sectionSection" ng-click="selectSection(section)">
+                    <header>
+                        {{section.professor.name}}
+                        <div class="selection-indicator" ng-class="{accent: !!selectedSections[section.id]}"></div>
+                        <div class="selection-indicator" ng-class="{danger: conflicts[section.id].courseSelected}"></div>
+                        <div class="selection-indicator" ng-class="{dark: conflicts[section.id].timeConflict}"></div>
+                    </header>
+                    <p>{{section.professor.avgGpa}}</p>
+                </div>
             </div>
+
         </div>
     </div>
 </div>

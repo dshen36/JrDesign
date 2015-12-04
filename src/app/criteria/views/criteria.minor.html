@@ -8,7 +8,7 @@
         <div class="card" ng-click="selectMinor(minor)">
             <header>
                 {{minor.name}}
-                <div class="selection-indicator" ng-class="{selected: minor.id == selectedMinor.id}"></div>
+                <div class="selection-indicator" ng-class="{accent: minor.id == selectedMinor.id}"></div>
             </header>
             <p>{{minor.description}}</p>
         </div>

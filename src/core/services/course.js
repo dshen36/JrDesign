@@ -12,7 +12,7 @@ angular.module('gg.services')
             this.sections = [];
 
             for (var i = 0; i < data.sections.length; i ++) {
-                this.sections.push(new Section(data.sections[i]));
+                this.sections.push(new Section(data.sections[i], this));
             }
         }
 

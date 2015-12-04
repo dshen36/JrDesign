@@ -37,12 +37,17 @@ angular.module('gg.app')
         $scope.wizardConfig.numSteps = _.keys($scope.wizardConfig.steps).length;
 
         $scope.wizardCompleted = function() {
-            for (var key in _.keys($scope.wizardConfig.steps)) {
-                if (!$scope.wizardConfig.steps[key].completed()) {
+            var steps = _.keys($scope.wizardConfig.steps);
+
+            debugger;
+            for (var i = 0; i < steps.length; i ++) {
+                if (!$scope.wizardConfig.steps[steps[i]].completed()) {
+            debugger;
                     return false;
                 }
             }
 
+            debugger;
             return true;
         }
         
@@ -66,7 +71,12 @@ angular.module('gg.app')
             }
         }
     })
-    .controller('CriteriaTracksCtrl', function($scope, SelectedTracks) {
+    .controller('CriteriaTracksCtrl', function($scope, $state, SelectedTracks) {
+        if (!$scope.wizardConfig.steps.major.completed()) {
+            $state.go('app.criteria.major');
+            return;
+        }
+
         $scope.trackColumns = 3;
         $scope.trackSections = $scope.getSections($scope.selectedMajor.tracks, $scope.trackColumns);
         $scope.selectedTracks = SelectedTracks;
@@ -79,7 +89,12 @@ angular.module('gg.app')
             }
         }
     })
-    .controller('CriteriaMinorCtrl', function($scope, Minors) {
+    .controller('CriteriaMinorCtrl', function($scope, $state, Minors) {
+        if (!$scope.wizardConfig.steps.tracks.completed()) {
+            $state.go('app.criteria.tracks');
+            return;
+        }
+
         $scope.minorColumns = 3;
         $scope.minorSections = $scope.getSections($scope.minors, $scope.minorColumns);
 
@@ -90,5 +105,4 @@ angular.module('gg.app')
                 $scope.setSelectedMinor(minor);
             }
         }
-
     });
