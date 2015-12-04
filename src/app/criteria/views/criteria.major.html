@@ -7,10 +7,10 @@
     <div class="col-{{12 / majorColumns}}" ng-repeat="major in majorSection">
         <div class="card" ng-click="selectMajor(major)">
             <header>
-                {{major.major.name}}
-                <div class="selection-indicator" ng-class="{selected: major.selected}"></div>
+                {{major.name}}
+                <div class="selection-indicator" ng-class="{selected: major.id == selectedMajor.id}"></div>
             </header>
-            <p>{{major.major.description}}</p>
+            <p>{{major.description}}</p>
         </div>
     </div>
 </div>

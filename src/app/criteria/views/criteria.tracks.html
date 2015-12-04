@@ -7,10 +7,10 @@
     <div class="col-{{12 / trackColumns}}" ng-repeat="track in trackSection">
         <div class="card" ng-click="selectTrack(track)">
             <header>
-                {{track.track.name}}
-                <div class="selection-indicator" ng-class="{selected: track.selected}"></div>
+                {{track.name}}
+                <div class="selection-indicator" ng-class="{selected: !!selectedTracks[track.id]}"></div>
             </header>
-            <p>{{track.track.description}}</p>
+            <p>{{track.description}}</p>
         </div>
     </div>
 </div>

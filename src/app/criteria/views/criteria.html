@@ -2,13 +2,16 @@
     <div class="row">
         <div class="col-11 circle-button-sibling">
             <div class="row wizard-nav">
-                <div class="wizard-tab col-{{12 / wizardSteps.length}}" ng-repeat="wizardStep in wizardSteps" ui-sref="{{wizardStep.state}}">
-                    {{wizardStep.name}}
-                </div>
+                <button ng-repeat="step in wizardConfig.steps"
+                    ng-disabled="step.previous == null ? false : !wizardConfig.steps[step.previous].completed()"
+                    class="col-{{12 / wizardConfig.numSteps}}"
+                    ui-sref="{{step.state}}">
+                    {{step.name}}
+                </button>
             </div>
         </div>
         <div class="col-1">
-            <div class="circle-button" ui-sref="app.completed"></div>
+            <button class="circle-button" ng-disabled="!wizardCompleted" ui-sref="app.completed"></button>
         </div>
     </div>
     <div ui-view></div>

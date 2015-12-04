@@ -49,4 +49,8 @@ angular.module('gg.app')
 
             return sections;
         }
+
+        $rootScope.goToState = function(state) {
+            $state.go(state);
+        }
     });
