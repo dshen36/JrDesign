@@ -14,5 +14,9 @@
             <button class="circle-button" ng-disabled="!wizardCompleted()" ui-sref="app.completed">></button>
         </div>
     </div>
-    <div ui-view></div>
+    <div class="paper-body">
+        <div class="scroll-container">
+            <div class="scrollable" ui-view></div>
+        </div>
+    </div>
 </div>

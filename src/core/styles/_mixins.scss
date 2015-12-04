@@ -8,6 +8,7 @@
         border-right: $thin-border-width $border-color solid;
         border-top: $thin-border-width $border-color solid;
         border-bottom: $thin-border-width $border-color solid;
+        border-left: none;
         box-sizing: border-box;
 
         &:first-child {
@@ -17,10 +18,11 @@
 }
 
 @mixin thin-border-tb($border-color) {
-    & > * {
+    & > :not(.list) {
         border-bottom: $thin-border-width $border-color solid;
         border-left: $thin-border-width $border-color solid;
         border-right: $thin-border-width $border-color solid;
+        border-top: none;
         box-sizing: border-box;
 
         &:first-child {
@@ -39,6 +41,7 @@
         border-right: $thick-border-width $border-color solid;
         border-top: $thick-border-width $border-color solid;
         border-bottom: $thick-border-width $border-color solid;
+        border-left: none;
         box-sizing: border-box;
 
         &:first-child {
@@ -48,10 +51,11 @@
 }
 
 @mixin thick-border-tb($border-color) {
-    & > * {
+    & > :not(.list) {
         border-bottom: $thick-border-width $border-color solid;
         border-left: $thick-border-width $border-color solid;
         border-right: $thick-border-width $border-color solid;
+        border-top: none;
         box-sizing: border-box;
 
         &:first-child {
@@ -62,15 +66,26 @@
 
 @mixin clickable($bg-color, $fg-color) {
     &:hover {
-        background: lighten($bg-color, 20%);
-        color: darken($fg-color, 20%);
-        border-color: darken($fg-color, 20%);
+        &:not(:disabled) {
+            color: darken($fg-color, 5%);
+            border-color: darken($fg-color, 5%);
+        }
     }
 
     &:active {
-        background: darken($bg-color, 20%);
-        color: darken($fg-color, 20%);
-        border-color: darken($fg-color, 20%);
+        background: darken($bg-color, 5%);
+        color: darken($fg-color, 10%);
+        border-color: darken($fg-color, 5%);
+
+        &:not(:last-of-type) {
+            &:after {
+                border-left-color: darken($bg-color, 5%);
+            }
+        }
+    }
+
+    &:disabled {
+        color: lighten($fg-color, 40%);
     }
 }
 

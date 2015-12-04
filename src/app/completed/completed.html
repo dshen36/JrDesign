@@ -7,16 +7,20 @@
             <button class="circle-button" ui-sref="app.selection">></button>
         </div>
     </div>
-    <div class="row" ng-repeat="courseSection in courseSections">
-        <div class="col-{{12 / courseColumns}}" ng-repeat="course in courseSection">
-            <div class="card" ng-click="selectCourse(course)">
-                <header>
-                    {{course.subject}} {{course.courseNum}}
-                    <div class="selection-indicator" ng-class="{accent: completedCourses[course.id]}"></div>
-                </header>
-                <p>
-                    {{course.name}}
-                </p>
+    <div class="paper-body">
+        <div class="scroll-container">
+            <div class="scrollable">
+                <div class="row" ng-repeat="courseSection in courseSections">
+                    <div class="col-{{12 / courseColumns}}" ng-repeat="course in courseSection">
+                        <div class="card" ng-click="selectCourse(course)">
+                            <header>
+                                {{course.subject}} {{course.courseNum}}
+                                <div class="selection-indicator" ng-class="{accent: completedCourses[course.id]}"></div>
+                            </header>
+                            <div>{{course.name}}</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

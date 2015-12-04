@@ -12,6 +12,17 @@
     @include clearfix;
 }
 
-.scrollable {
-    overflow-y: scroll;
+.scroll-container {
+    position: relative;
+    width: auto;
+    height: 100%;
+
+    & > .scrollable {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        overflow-y: scroll;
+    }
 }

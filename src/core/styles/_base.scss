@@ -17,7 +17,6 @@ time, mark, audio, video {
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
-    font-family: Helvetica;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -49,10 +48,21 @@ table {
     border-spacing: 0;
 }
 
+body {
+    font-family: Helvetica;
+    color: $dark-mono;
+}
+
 h1 {
     font-size: $large-font-size;
 }
 
 h2 {
     font-size: $medium-font-size;
+}
+
+h3 {
+    font-size: $medium-small-font-size;
+    color: $medium-dark-mono;
+    font-style: italic;
 }

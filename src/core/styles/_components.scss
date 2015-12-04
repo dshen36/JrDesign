@@ -2,38 +2,96 @@
     width: 100%;
     @include thick-border-lr($dark-mono);
 
-    button{
+    button {
         font-size: $small-font-size;
+        font-weight: bold;
         text-align: center;
-        background: $medium-mono;
+        position: relative;
+        color: $medium-dark-mono;
+        background: $medium-light-mono;
         padding: $gutter;
         box-sizing: border-box;
         @include clickable($medium-mono, $dark-mono);
+
+        &:not(:last-of-type) {
+            &:after {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 100%;
+                content: '';
+                width: 0;
+                height: 0;
+                border-right: 0;
+                border-top-width: ($header-height / 2);
+                border-bottom-width: ($header-height / 2);
+                border-left-width: ($header-height / 2);
+                border-top-color: transparent;
+                border-bottom-color: transparent;
+                border-left-color: $medium-light-mono;
+                border-style: solid;
+                z-index: 2;
+            }
+        }
+
+        &:not(:first-of-type) {
+            &:before {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                content: '';
+                width: 0;
+                height: 0;
+                border-right: 0;
+                border-top-width: ($header-height / 2);
+                border-bottom-width: ($header-height / 2);
+                border-left-width: ($header-height / 2);
+                border-top-color: transparent;
+                border-bottom-color: transparent;
+                border-left-color: $dark-mono;
+                border-style: solid;
+                z-index: 1;
+            }
+        }
     }
 }
 
 .circle-button {
     font-size: $medium-font-size;
     text-align: center;
-    background: $accent;
-    color: $dark-mono;
+    background: $medium-light-mono;
+    color: $medium-dark-mono;
     width: $header-height * 1.5;
     height: $header-height * 1.5;
     @include thick-border($dark-mono);
     @include border-radius(50%);
-    @include clickable($accent, $dark-mono);
+    @include clickable($medium-light-mono, $dark-mono);
 }
 
 .circle-button-sibling {
-    padding-top: ($header-height * 0.75) - ($medium-font-size / 2)
+    & > h1 {
+        padding-top: ($header-height * 0.75) - ($large-font-size / 2)
+    }
+
+    & > h2 {
+        padding-top: ($header-height * 0.75) - ($medium-font-size / 2)
+    }
+
+    & > .wizard-nav {
+        padding-top: ($header-height * 0.75) - ($header-height / 2)
+    }
 }
 
 .list {
-    border-top: $thin-border-width $dark-mono solid;
+    @include thin-border-tb($dark-mono);
 
-    li {
+    & > p {
+        padding-bottom: $gutter;
+    }
+
+    & > li {
         box-sizing: border-box;
-        border-bottom: $thin-border-width $dark-mono solid;
         font-size: $small-font-size;
         color: $dark-mono;
         background: $light-mono;
@@ -49,11 +107,13 @@
 
 .card {
     @include thick-border-tb($dark-mono);
+    @include box-shadow($medium-mono 5px 5px 5px);
 
-    header {
+    & > header {
         font-size: $medium-font-size;
-        background: $medium-mono;
+        background: $medium-light-mono;
         padding: $gutter;
+        color: $medium-dark-mono;
         @include thick-border($dark-mono);
 
         .selection-indicator {
@@ -62,7 +122,7 @@
         }
     }
 
-    p {
+    & > div {
         padding: $gutter;
     }
 }

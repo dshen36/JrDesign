@@ -21,7 +21,6 @@ angular.module('gg.app')
                     var completed = _.filter(response.data, function(data) {
                         return _.contains([1, 2, 4], data.id);
                     });
-                    debugger;
 
                     completed.forEach(
                         function(data) {

@@ -63,6 +63,10 @@ angular.module('gg.app')
             return sum;
         }
 
+        $scope.sectionsSelected = function() {
+            return _.keys($scope.selectedSections).length != 0;
+        }
+
         function flagConflicts() {
             var selected = _.values($scope.selectedSections);
             var conflictIds = _.keys($scope.conflicts);
