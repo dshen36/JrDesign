@@ -15,7 +15,21 @@ angular.module('gg.app')
         }
 
         User.prototype.getCompletedCourses = function() {
-            return {};
+            return $http.get('/assets/data/courses.json').then(
+                function(response) {
+                    var completedMap = {};
+                    var completed = _.filter(response.data, function(data) {
+                        return _.contains([1, 2, 4], data.id);
+                    });
+                    debugger;
+
+                    completed.forEach(
+                        function(data) {
+                            completedMap[data.id] = data;
+                        });
+
+                    return completedMap;
+                });
         }
 
         return User;

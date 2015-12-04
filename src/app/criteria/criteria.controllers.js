@@ -39,15 +39,12 @@ angular.module('gg.app')
         $scope.wizardCompleted = function() {
             var steps = _.keys($scope.wizardConfig.steps);
 
-            debugger;
             for (var i = 0; i < steps.length; i ++) {
                 if (!$scope.wizardConfig.steps[steps[i]].completed()) {
-            debugger;
                     return false;
                 }
             }
 
-            debugger;
             return true;
         }
         

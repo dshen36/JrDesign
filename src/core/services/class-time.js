@@ -8,6 +8,7 @@ angular.module('gg.services')
         }
 
         ClassTime.prototype.hasTimeConflict = function(classTime) {
+            debugger;
             return (classTime.begin >= this.begin && classTime.begin <= this.end) ||
                 (this.begin >= classTime.begin && this.begin <= classTime.end);
         }

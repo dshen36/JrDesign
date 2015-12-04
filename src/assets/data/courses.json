@@ -135,16 +135,16 @@
                 "classTimes": [
                     {
                         "id": 9,
-                        "day": 2,
-                        "hour": 3,
+                        "day": 1,
+                        "hour": 15,
                         "minute": 5,
                         "duration": 80
 
                     },
                     {
                         "id": 10,
-                        "day": 4,
-                        "hour": 3,
+                        "day": 3,
+                        "hour": 15,
                         "minute": 5,
                         "duration": 80
                     }
@@ -261,7 +261,6 @@
                         "hour": 12,
                         "minute": 5,
                         "duration": 80
-
                     },
                     {
                         "id": 18,
@@ -269,7 +268,6 @@
                         "hour": 12,
                         "minute": 5,
                         "duration": 80
-
                     }
                 ]
             },
@@ -467,7 +465,6 @@
                         "hour": 15,
                         "minute": 5,
                         "duration": 50
-
                     },
                     {
                         "id": 30,
@@ -475,7 +472,6 @@
                         "hour": 15,
                         "minute": 5,
                         "duration": 50
-
                     },
                     {
                         "id": 31,

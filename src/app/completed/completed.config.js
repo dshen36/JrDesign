@@ -7,7 +7,7 @@ angular.module('gg.app')
                 templateUrl: '/app/completed/completed.html',
                 resolve: {
                     'CompletedCourses': function(Me) {
-                        return Me.getCompletedCourses();
+                        return {};
                     }
                 }
             });
