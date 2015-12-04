@@ -20,6 +20,10 @@ angular.module('gg.app')
         }
 
         $scope.selectSection = function(section) {
+            if ($scope.conflicts[section.id]) {
+                return;
+            }
+
             if ($scope.selectedSections[section.id]) {
                 delete $scope.selectedSections[section.id];
             } else {

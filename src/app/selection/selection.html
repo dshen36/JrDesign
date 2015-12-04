@@ -5,7 +5,7 @@
         </div>
     <div class="row">
         <div class="col-8">
-            <h2>Available Sections</h2>
+            <h2>Available Courses</h2>
             <div class="row" ng-repeat="availableSection in availableSections">
                 <div class="card col-{{12 / availableColumns}}" ng-repeat="course in availableSection" ng-click="selectCourse(course)">
                     <header>{{course.subject}} {{course.courseNum}}</header>
@@ -17,8 +17,15 @@
             <h2>Selected Sections</h2>
             <div class="row" ng-repeat="section in selectedSections">
                 <div class="card col-12" ng-click="selectSection(section)">
-                    <header>{{section.professor.name}}</header>
-                    <p>{{section.professor.avgGpa}}</p>
+                    <header>CRN {{section.crn}}</header>
+                    <p>
+                        <span>Professor: {{section.professor.name}}</span><br />
+                        <span>Average GPA: {{section.professor.avgGpa}}</span><br />
+                        <span ng-repeat="classTime in section.classTimes">
+                            {{classTime.begin | weekday}}, {{classTime.begin | time}} - {{classTime.end | time}}
+                            </br>
+                        </span>
+                    </p>
                 </div>
             </div>
             <h2>Average GPA: {{getAverageGpa() | number:3}}</h2>

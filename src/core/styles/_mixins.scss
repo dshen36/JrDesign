@@ -4,7 +4,7 @@
 }
 
 @mixin thin-border-lr($border-color) {
-    >* {
+    & > * {
         border-right: $thin-border-width $border-color solid;
         border-top: $thin-border-width $border-color solid;
         border-bottom: $thin-border-width $border-color solid;
@@ -17,7 +17,7 @@
 }
 
 @mixin thin-border-tb($border-color) {
-    >* {
+    & > * {
         border-bottom: $thin-border-width $border-color solid;
         border-left: $thin-border-width $border-color solid;
         border-right: $thin-border-width $border-color solid;
@@ -35,7 +35,7 @@
 }
 
 @mixin thick-border-lr($border-color) {
-    >* {
+    & > * {
         border-right: $thick-border-width $border-color solid;
         border-top: $thick-border-width $border-color solid;
         border-bottom: $thick-border-width $border-color solid;
@@ -48,7 +48,7 @@
 }
 
 @mixin thick-border-tb($border-color) {
-    >* {
+    & > * {
         border-bottom: $thick-border-width $border-color solid;
         border-left: $thick-border-width $border-color solid;
         border-right: $thick-border-width $border-color solid;
