@@ -53,19 +53,14 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <h3>Average GPA: {{getAverageGpa()}}</h3>
+                                <h3>Number of Hours: {{getTotalCreditHours()}}</h3>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="row" ng-if="sectionsSelected()">
-                    <div class="col-12">
-                        <h3>Average GPA: {{getAverageGpa() | number:3}}</h3>
-                        <h3>Credit Hours: {{getTotalCreditHours()}}</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-                <div class="col-12">
-                <h2>Sections</h2>
             </div>
         </div>
         <div class="paper-body-bottom">
