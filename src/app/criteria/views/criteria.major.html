@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col-12">
+        <h1>Select a Major</h1>
+    </div>
+</div>
+<div class="row" ng-repeat="majorSection in majorSections">
+    <div class="col-{{12 / majorColumns}}" ng-repeat="major in majorSection">
+        <div class="card" ng-click="selectMajor(major)">
+            <header>
+                {{major.name}}
+                <div class="selection-indicator" ng-class="{accent: major.id == selectedMajor.id}"></div>
+            </header>
+            <div>{{major.description}}</div>
+        </div>
+    </div>
+</div>

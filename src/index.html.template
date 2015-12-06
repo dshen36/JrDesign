@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<head>
+    <title>Graduation Guide</title>
+    <base href="/">
+</head>
+<body>
+    <!-- build:css(src) /assets/css/build.css -->
+    <link rel="stylesheet" href="/core/styles/main.css" />
+    <!-- endbuild -->
+
+    <div ui-view></div>
+
+    <!-- build:js(src) /assets/js/build.js -->
+
+    <!-- vendor -->
+    <script src="/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="/vendor/angular/angular.js"></script>
+    <script src="/vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="/vendor/underscore/underscore.js"></script>
+
+    <!-- app -->
+    <script src="/app/app.js"></script>
+    <script src="/app/app.controllers.js"></script>
+    <script src="/app/app.config.js"></script>
+
+    <!-- error -->
+    <script src="/app/error/error.config.js"></script>
+    <script src="/app/error/error.controllers.js"></script>
+
+    <!-- criteria -->
+    <script src="/app/criteria/criteria.config.js"></script>
+    <script src="/app/criteria/criteria.controllers.js"></script>
+
+    <!-- completed -->
+    <script src="/app/completed/completed.config.js"></script>
+    <script src="/app/completed/completed.controllers.js"></script>
+
+    <!-- selection  -->
+    <script src="/app/selection/selection.config.js"></script>
+    <script src="/app/selection/selection.controllers.js"></script>
+
+    <!-- core services -->
+    <script src="/core/services/services.js"></script>
+    <script src="/core/services/user.js"></script>
+    <script src="/core/services/major.js"></script>
+    <script src="/core/services/minor.js"></script>
+    <script src="/core/services/track.js"></script>
+    <script src="/core/services/course.js"></script>
+    <script src="/core/services/prereq.js"></script>
+    <script src="/core/services/section.js"></script>
+    <script src="/core/services/class-time.js"></script>
+    <script src="/core/services/professor.js"></script>
+
+    <!-- core filters -->
+    <script src="/core/filters/filters.js"></script>
+
+    <!-- @if ENV == 'mock' -->
+    <script src="/vendor/angular-mocks/angular-mocks.js"></script>
+    <script src="/environment/env.mock.js"></script>
+    <script src="/app/mock.js"></script>
+    <!-- @endif -->
+
+    <!-- @if ENV == 'prod' -->
+    <script src="/environment/env.prod.js"></script>
+    <script src="/app/bootstrap.js"></script>
+    <!-- @endif -->
+
+    <!-- endbuild -->
+</body>

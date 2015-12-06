@@ -1,0 +1,685 @@
+[
+    {
+        "id": 1,
+        "name": "Intro to Computing",
+        "subject": "CS",
+        "courseNum": 1301,
+        "credits": 3,
+        "prereqs": null,
+        "sections": [
+            {
+                "id": 1,
+                "crn": 12345,
+                "professor": {
+                    "id": 1,
+                    "name": "Jay Summet",
+                    "avgGpa": 3.87
+                },
+                "classTimes": [
+                    {
+                        "id": 1,
+                        "day": 1,
+                        "hour": 8,
+                        "minute": 5,
+                        "duration": 50
+
+                    },
+                    {
+                        "id": 2,
+                        "day": 3,
+                        "hour": 8,
+                        "minute": 5,
+                        "duration": 50
+
+                    },
+                    {
+                        "id": 3,
+                        "day": 5,
+                        "hour": 8,
+                        "minute": 5,
+                        "duration": 50
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "crn": 12345,
+                "professor": {
+                    "id": 1,
+                    "name": "Jay Summet",
+                    "avgGpa": 3.87
+                },
+                "classTimes": [
+                    {
+                        "id": 4,
+                        "day": 2,
+                        "hour": 11,
+                        "minute": 5,
+                        "duration": 80
+                    },
+                    {
+                        "id": 5,
+                        "day": 4,
+                        "hour": 11,
+                        "minute": 5,
+                        "duration": 80
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Calculus I",
+        "subject": "MATH",
+        "courseNum": 1501,
+        "credits": 4,
+        "prereqs": null,
+        "sections": [
+            {
+                "id": 3,
+                "crn": 12345,
+                "professor": {
+                    "id": 2,
+                    "name": "William Trotter",
+                    "avgGpa": 3.54
+                },
+                "classTimes": [
+                    {
+                        "id": 6,
+                        "day": 1,
+                        "hour": 10,
+                        "minute": 5,
+                        "duration": 50
+                    },
+                    {
+                        "id": 7,
+                        "day": 3,
+                        "hour": 10,
+                        "minute": 5,
+                        "duration": 50
+                    },
+                    {
+                        "id": 8,
+                        "day": 5,
+                        "hour": 10,
+                        "minute": 5,
+                        "duration": 50
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Intro to Database Systems",
+        "subject": "CS",
+        "courseNum": 4400,
+        "credits": 3,
+        "prereqs": {
+            "id": 1,
+            "op": null,
+            "courseIdLeft": 1,
+            "courseIdRight": null,
+            "childPrereq": null
+        },
+        "sections": [
+            {
+                "id": 4,
+                "crn": 12345,
+                "professor": {
+                    "id": 3,
+                    "name": "Bill Leahy",
+                    "avgGpa": 3.78
+                },
+                "classTimes": [
+                    {
+                        "id": 9,
+                        "day": 1,
+                        "hour": 15,
+                        "minute": 5,
+                        "duration": 80
+
+                    },
+                    {
+                        "id": 10,
+                        "day": 3,
+                        "hour": 15,
+                        "minute": 5,
+                        "duration": 80
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "name": "Object-Oriented Programming",
+        "subject": "CS",
+        "courseNum": 1331,
+        "credits": 3,
+        "prereqs": {
+            "id": 2,
+            "op": null,
+            "courseIdLeft": 1,
+            "courseIdRight": null,
+            "childPrereq": null
+        },
+        "sections": [
+            {
+                "id": 5,
+                "crn": 12345,
+                "professor": {
+                    "id": 4,
+                    "name": "Monica Sweat",
+                    "avgGpa": 3.36
+                },
+                "classTimes": [
+                    {
+                        "id": 11,
+                        "day": 1,
+                        "hour": 10,
+                        "minute": 5,
+                        "duration": 50
+                    },
+                    {
+                        "id": 12,
+                        "day": 3,
+                        "hour": 10,
+                        "minute": 5,
+                        "duration": 50
+                    },
+                    {
+                        "id": 13,
+                        "day": 5,
+                        "hour": 10,
+                        "minute": 5,
+                        "duration": 50
+                    }
+                ]
+            },
+            {
+                "id": 6,
+                "crn": 12345,
+                "professor": {
+                    "id": 5,
+                    "name": "Bob Waters",
+                    "avgGpa": 3.09
+                },
+                "classTimes": [
+                    {
+                        "id": 14,
+                        "day": 1,
+                        "hour": 10,
+                        "minute": 5,
+                        "duration": 50
+                    },
+                    {
+                        "id": 15,
+                        "day": 3,
+                        "hour": 10,
+                        "minute": 5,
+                        "duration": 50
+                    },
+                    {
+                        "id": 16,
+                        "day": 5,
+                        "hour": 10,
+                        "minute": 5,
+                        "duration": 50
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "name": "Data Structures and Algorithms",
+        "subject": "CS",
+        "courseNum": 1332,
+        "credits": 3,
+        "prereqs": {
+            "id": 3,
+            "op": null,
+            "courseIdLeft": 4,
+            "courseIdRight": null,
+            "childPrereq": null
+        },
+        "sections": [
+            {
+                "id": 7,
+                "crn": 12345,
+                "professor": {
+                    "id": 4,
+                    "name": "Monica Sweat",
+                    "avgGpa": 3.29
+                },
+                "classTimes": [
+                    {
+                        "id": 17,
+                        "day": 2,
+                        "hour": 12,
+                        "minute": 5,
+                        "duration": 80
+                    },
+                    {
+                        "id": 18,
+                        "day": 4,
+                        "hour": 12,
+                        "minute": 5,
+                        "duration": 80
+                    }
+                ]
+            },
+            {
+                "id": 8,
+                "crn": 12345,
+                "professor": {
+                    "id": 5,
+                    "name": "Bob Waters",
+                    "avgGpa": 3.57
+                },
+                "classTimes": [
+                    {
+                        "id": 19,
+                        "day": 2,
+                        "hour": 9,
+                        "minute": 5,
+                        "duration": 80
+
+                    },
+                    {
+                        "id": 20,
+                        "day": 4,
+                        "hour": 9,
+                        "minute": 5,
+                        "duration": 80
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "name": "Computer Organization and Programming",
+        "subject": "CS",
+        "courseNum": 2110,
+        "credits": 3,
+        "prereqs": {
+            "id": 4,
+            "op": null,
+            "courseIdLeft": 4,
+            "courseIdRight": null,
+            "childPrereq": null
+        },
+        "sections": [
+            {
+                "id": 9,
+                "crn": 12345,
+                "professor": {
+                    "id": 3,
+                    "name": "Bill Leahy",
+                    "avgGpa": 3.11
+                },
+                "classTimes": [
+                    {
+                        "id": 21,
+                        "day": 1,
+                        "hour": 13,
+                        "minute": 5,
+                        "duration": 50
+
+                    },
+                    {
+                        "id": 22,
+                        "day": 3,
+                        "hour": 13,
+                        "minute": 5,
+                        "duration": 50
+
+                    },
+                    {
+                        "id": 23,
+                        "day": 5,
+                        "hour": 13,
+                        "minute": 5,
+                        "duration": 50
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "name": "Calculus II",
+        "subject": "MATH",
+        "courseNum": 1502,
+        "credits": 4,
+        "prereqs": {
+            "id": 5,
+            "op": null,
+            "courseIdLeft": 2,
+            "courseIdRight": null,
+            "childPrereq": null
+        },
+        "sections": [
+            {
+                "id": 9,
+                "crn": 12345,
+                "professor": {
+                    "id": 2,
+                    "name": "William Trotter",
+                    "avgGpa": 3.14
+                },
+                "classTimes": [
+                    {
+                        "id": 24,
+                        "day": 1,
+                        "hour": 14,
+                        "minute": 5,
+                        "duration": 50
+
+                    },
+                    {
+                        "id": 25,
+                        "day": 3,
+                        "hour": 14,
+                        "minute": 5,
+                        "duration": 50
+
+                    },
+                    {
+                        "id": 26,
+                        "day": 5,
+                        "hour": 14,
+                        "minute": 5,
+                        "duration": 50
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "name": "Combinatorics",
+        "subject": "MATH",
+        "courseNum": 3012,
+        "credits": 3,
+        "prereqs": {
+            "id": 6,
+            "op": null,
+            "courseIdLeft": 7,
+            "courseIdRight": null,
+            "childPrereq": null
+        },
+        "sections": [
+            {
+                "id": 10,
+                "crn": 12345,
+                "professor": {
+                    "id": 2,
+                    "name": "William Trotter",
+                    "avgGpa": 2.86
+                },
+                "classTimes": [
+                    {
+                        "id": 27,
+                        "day": 2,
+                        "hour": 8,
+                        "minute": 5,
+                        "duration": 50
+
+                    },
+                    {
+                        "id": 28,
+                        "day": 4,
+                        "hour": 8,
+                        "minute": 5,
+                        "duration": 50
+
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 9,
+        "name": "Intro Discrete Math",
+        "subject": "CS",
+        "courseNum": 2050,
+        "credits": 3,
+        "prereqs": null,
+        "sections": [
+            {
+                "id": 11,
+                "crn": 12345,
+                "professor": {
+                    "id": 4,
+                    "name": "Monica Sweat",
+                    "avgGpa": 3.55
+                },
+                "classTimes": [
+                    {
+                        "id": 29,
+                        "day": 1,
+                        "hour": 15,
+                        "minute": 5,
+                        "duration": 50
+                    },
+                    {
+                        "id": 30,
+                        "day": 3,
+                        "hour": 15,
+                        "minute": 5,
+                        "duration": 50
+                    },
+                    {
+                        "id": 31,
+                        "day": 5,
+                        "hour": 15,
+                        "minute": 5,
+                        "duration": 50
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 10,
+        "name": "Algorithms",
+        "subject": "CS",
+        "courseNum": 3510,
+        "credits": 3,
+        "prereqs": {
+            "id": 7,
+            "op": "and",
+            "courseIdLeft": 9,
+            "courseIdRight": null,
+            "childPrereq": {
+                "id": 8,
+                "op": "or",
+                "courseIdLeft": 5,
+                "courseIdRight": 8,
+                "childPrereq": null
+            }
+        },
+        "sections": [
+            {
+                "id": 12,
+                "crn": 12345,
+                "professor": {
+                    "id": 6,
+                    "name": "H. Venkateswaran",
+                    "avgGpa": 2.59
+                },
+                "classTimes": [
+                    {
+                        "id": 32,
+                        "day": 1,
+                        "hour": 9,
+                        "minute": 5,
+                        "duration": 50
+
+                    },
+                    {
+                        "id": 33,
+                        "day": 3,
+                        "hour": 9,
+                        "minute": 5,
+                        "duration": 50
+
+                    },
+                    {
+                        "id": 34,
+                        "day": 5,
+                        "hour": 9,
+                        "minute": 5,
+                        "duration": 50
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 11,
+        "name": "Computer Systems and Networks",
+        "subject": "CS",
+        "courseNum": 2200,
+        "credits": 3,
+        "prereqs": {
+            "id": 9,
+            "op": null,
+            "courseIdLeft": 6,
+            "courseIdRight": null,
+            "childPrereq": null
+        },
+        "sections": [
+            {
+                "id": 13,
+                "crn": 12345,
+                "professor": {
+                    "id": 7,
+                    "name": "Kishore Ramachandran",
+                    "avgGpa": 2.67
+                },
+                "classTimes": [
+                    {
+                        "id": 35,
+                        "day": 1,
+                        "hour": 12,
+                        "minute": 5,
+                        "duration": 50
+
+                    },
+                    {
+                        "id": 36,
+                        "day": 3,
+                        "hour": 12,
+                        "minute": 5,
+                        "duration": 50
+
+                    },
+                    {
+                        "id": 37,
+                        "day": 5,
+                        "hour": 12,
+                        "minute": 5,
+                        "duration": 50
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 12,
+        "name": "Networking I",
+        "subject": "CS",
+        "courseNum": 3251,
+        "credits": 3,
+        "prereqs": {
+            "id": 10,
+            "op": null,
+            "courseIdLeft": 11,
+            "courseIdRight": null,
+            "childPrereq": null
+        },
+        "sections": [
+            {
+                "id": 14,
+                "crn": 12345,
+                "professor": {
+                    "id": 8,
+                    "name": "Russ Clark",
+                    "avgGpa": 3.12
+                },
+                "classTimes": [
+                    {
+                        "id": 38,
+                        "day": 2,
+                        "hour": 13,
+                        "minute": 5,
+                        "duration": 80
+
+                    },
+                    {
+                        "id": 39,
+                        "day": 4,
+                        "hour": 13,
+                        "minute": 5,
+                        "duration": 80
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 13,
+        "name": "Processor Design",
+        "subject": "CS",
+        "courseNum": 3220,
+        "credits": 3,
+        "prereqs": {
+            "id": 11,
+            "op": null,
+            "courseIdLeft": 11,
+            "courseIdRight": null,
+            "childPrereq": null
+        },
+        "sections": [
+            {
+                "id": 15,
+                "crn": 12345,
+                "professor": {
+                    "id": 9,
+                    "name": "Milos Prvulovic",
+                    "avgGpa": 2.98
+                },
+                "classTimes": [
+                    {
+                        "id": 40,
+                        "day": 1,
+                        "hour": 14,
+                        "minute": 5,
+                        "duration": 50
+
+                    },
+                    {
+                        "id": 41,
+                        "day": 3,
+                        "hour": 14,
+                        "minute": 5,
+                        "duration": 50
+
+                    },
+                    {
+                        "id": 42,
+                        "day": 5,
+                        "hour": 14,
+                        "minute": 5,
+                        "duration": 50
+                    }
+                ]
+            }
+        ]
+    }
+]

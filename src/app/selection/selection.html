@@ -1,0 +1,99 @@
+<div class="paper-box">
+    <div class="row">
+        <div class="col-12 circle-button-sibling">
+            <h1>Select Classes For The Upcoming Semester</h1>
+        </div>
+    </div>
+    <div class="paper-body">
+        <div class="row">
+            <div class="col-8">
+                <h2>Available Courses</h2>
+            </div>
+            <div class="col-4">
+                <h2>Selected Courses</h2>
+                <div ng-if="sectionsSelected()">Average GPA: {{getAverageGpa() | number:3}}, Number of Hours: {{getTotalCreditHours()}}</div>
+            </div>
+        </div>
+        <div class="paper-body-left">
+            <div class="scroll-container">
+                <div class="scrollable">
+                    <div class="row" ng-repeat="availableSection in availableSections">
+                        <div class="col-{{12 / availableColumns}}" ng-repeat="course in availableSection"> 
+                            <div class="card" ng-click="selectCourse(course)">
+                                <header>
+                                    {{course.subject}} {{course.courseNum}}
+                                    <div class="selection-indicator" ng-class="{accent: selectedCourse.id == course.id}"></div>
+                                </header>
+                                <div>{{course.name}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-if="!!selectedCourse">
+                        <div class="row">
+                            <div class="col-12">
+                                <h2>Sections for {{selectedCourse.subject}} {{selectedCourse.courseNum}}</h2>
+                            </div>
+                        </div>
+                        <div class="row" ng-repeat="sectionSection in sectionSections">
+                            <div class="col-{{12 / sectionColumns}}" ng-repeat="section in sectionSection">
+                                <div class="card" ng-click="selectSection(section)">
+                                    <header>
+                                        CRN {{section.crn}}
+                                        <div class="selection-indicator" ng-class="{accent: !!selectedSections[section.id]}"></div>
+                                        <div class="selection-indicator has-tooltip" ng-class="{warning: conflicts[section.id].courseSelected}">
+                                            <div ng-if="conflicts[section.id].courseSelected" class="tooltip">You have already selected a section from this course</div>
+                                        </div>
+                                        <div class="selection-indicator has-tooltip" ng-class="{danger: conflicts[section.id].timeConflict}">
+                                            <div ng-if="conflicts[section.id].timeConflict" class="tooltip">There is a time conflict with a section that you have already selected</div>
+                                        </div>
+                                    </header>
+                                    <div>
+                                        <p>{{section.professor.name}} - {{section.professor.avgGpa}}</p>
+                                        </br>
+                                        <ul class="list">
+                                            <li ng-repeat="classTime in section.classTimes">
+                                                {{classTime.begin | weekday}}, {{classTime.begin | time}} - {{classTime.end | time}}
+                                                </br>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="paper-body-right">
+            <div class="row" ng-if="!sectionsSelected()">
+                <div class="col-12">
+                    <h3>No sections selected</h3>
+                </div>
+            </div>
+            <div class="scroll-container"> 
+                <div class="scrollable">
+                    <div class="row" ng-repeat="section in selectedSections">
+                        <div class="col-12">
+                            <div class="card"> 
+                                <header>
+                                    CRN {{section.crn}}
+                                    <div ng-click="deselectSection(section)">&#10005</div>
+                                </header>
+                                <div>
+                                    <p>{{section.professor.name}} - {{section.professor.avgGpa}}</p>
+                                    </br>
+                                    <ul class="list">
+                                        <li ng-repeat="classTime in section.classTimes">
+                                            {{classTime.begin | weekday}}, {{classTime.begin | time}} - {{classTime.end | time}}
+                                            </br>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

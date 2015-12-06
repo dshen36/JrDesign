@@ -1,0 +1,22 @@
+<div class="paper-box">
+    <div class="row">
+        <div class="col-11 circle-button-sibling">
+            <div class="row wizard-nav">
+                <button ng-repeat="step in wizardConfig.steps"
+                    ng-disabled="step.previous == null ? false : !wizardConfig.steps[step.previous].completed()"
+                    class="col-{{12 / wizardConfig.numSteps}}"
+                    ui-sref="{{step.state}}">
+                    {{step.name}}
+                </button>
+            </div>
+        </div>
+        <div class="col-1">
+            <button class="circle-button" ng-disabled="!wizardCompleted()" ui-sref="app.completed">></button>
+        </div>
+    </div>
+    <div class="paper-body">
+        <div class="scroll-container">
+            <div class="scrollable" ui-view></div>
+        </div>
+    </div>
+</div>

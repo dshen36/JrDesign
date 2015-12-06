@@ -1,0 +1,37 @@
+{
+  "name": "gg.app",
+  "version": "0.0.0",
+  "description": "Graduation Guide Front-End Application",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dshen36/JrDesign.git"
+  },
+  "author": "Team 85",
+  "license": "None",
+  "bugs": {
+    "url": "https://github.com/dshen36/JrDesign/issues"
+  },
+  "devDependencies": {
+    "express": "~4.13.3",
+    "grunt": "~0.4.5",
+    "grunt-angular-templates": "~0.5.9",
+    "grunt-contrib-clean": "~0.7.0",
+    "grunt-contrib-concat": "~0.5.1",
+    "grunt-contrib-copy": "~0.8.2",
+    "grunt-contrib-uglify": "~0.11.0",
+    "grunt-env": "~0.4.4",
+    "grunt-express": "~1.4.1",
+    "grunt-ng-annotate": "~1.0.1",
+    "grunt-preprocess": "~5.0.1",
+    "grunt-usemin": "~3.1.1",
+    "matchdep": "~1.0.0",
+    "grunt-contrib-cssmin": "~0.14.0",
+    "grunt-contrib-compass": "~1.0.4",
+    "grunt-concurrent": "~2.1.0"
+  }
+}

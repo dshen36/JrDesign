@@ -1,0 +1,175 @@
+.wizard-nav {
+    width: 100%;
+    @include thick-border-lr($dark-mono);
+
+    button {
+        font-size: $small-font-size;
+        font-weight: bold;
+        text-align: center;
+        position: relative;
+        color: $medium-dark-mono;
+        background: $medium-light-mono;
+        padding: $gutter;
+        box-sizing: border-box;
+        @include clickable($medium-mono, $dark-mono);
+
+        &:not(:last-of-type) {
+            &:after {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 100%;
+                content: '';
+                width: 0;
+                height: 0;
+                border-right: 0;
+                border-top-width: ($header-height / 2);
+                border-bottom-width: ($header-height / 2);
+                border-left-width: ($header-height / 2);
+                border-top-color: transparent;
+                border-bottom-color: transparent;
+                border-left-color: $medium-light-mono;
+                border-style: solid;
+                z-index: 2;
+            }
+        }
+
+        &:not(:first-of-type) {
+            &:before {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                content: '';
+                width: 0;
+                height: 0;
+                border-right: 0;
+                border-top-width: ($header-height / 2);
+                border-bottom-width: ($header-height / 2);
+                border-left-width: ($header-height / 2);
+                border-top-color: transparent;
+                border-bottom-color: transparent;
+                border-left-color: $dark-mono;
+                border-style: solid;
+                z-index: 1;
+            }
+        }
+    }
+}
+
+.circle-button {
+    font-size: $medium-font-size;
+    text-align: center;
+    background: $medium-light-mono;
+    color: $medium-dark-mono;
+    width: $header-height * 1.5;
+    height: $header-height * 1.5;
+    @include thick-border($dark-mono);
+    @include border-radius(50%);
+    @include clickable($medium-light-mono, $dark-mono);
+}
+
+.circle-button-sibling {
+    & > h1 {
+        padding-top: ($header-height * 0.75) - ($large-font-size / 2)
+    }
+
+    & > h2 {
+        padding-top: ($header-height * 0.75) - ($medium-font-size / 2)
+    }
+
+    & > .wizard-nav {
+        padding-top: ($header-height * 0.75) - ($header-height / 2)
+    }
+}
+
+.list {
+    @include thin-border-tb($dark-mono);
+
+    & > p {
+        padding-bottom: $gutter;
+    }
+
+    & > li {
+        box-sizing: border-box;
+        font-size: $small-font-size;
+        color: $dark-mono;
+        background: $light-mono;
+        padding: $gutter;
+
+        .selection-indicator {
+            width: $small-font-size;
+            height: $small-font-size;
+        }
+    }
+}
+
+.card {
+    @include thick-border-tb($dark-mono);
+    @include box-shadow($medium-mono 5px 5px 5px);
+
+    & > header {
+        font-size: $medium-font-size;
+        background: $medium-light-mono;
+        padding: $gutter;
+        color: $medium-dark-mono;
+        @include thick-border($dark-mono);
+
+        .selection-indicator {
+            width: $medium-font-size;
+            height: $medium-font-size;
+        }
+
+        & > div {
+            float: right;
+        }
+    }
+
+    & > div {
+        padding: $gutter;
+    }
+}
+
+.selection-indicator {
+    background: $light-mono;
+    margin-left: $gutter;
+    @include thick-border($dark-mono);
+    @include border-radius(50%);
+}
+
+.has-tooltip {
+    position: relative;
+
+    .tooltip {
+        visibility: hidden;
+        background: $dark-mono;
+        color: $light-mono;
+        font-size: $small-font-size;
+        width: 200px;
+        padding: $gutter;
+        margin-left: $gutter / 2;
+        position: absolute;
+        left: 100%;
+        top: -($gutter);
+        @include opacity(0.9);
+        @include border-radius(10px);
+    }
+
+    &:hover {
+        .tooltip {
+            visibility: visible;
+        }
+    }
+}
+
+.accent {
+    background: $accent;
+}
+
+.danger {
+    background: $danger;
+}
+
+.warning {
+    background: $warning;
+}

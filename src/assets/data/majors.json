@@ -1,0 +1,73 @@
+[
+    {
+        "id": 1,
+        "name": "Electrical Engineering",
+        "description": "description",
+        "tracks": []
+    },
+    {
+        "id": 2,
+        "name": "Computer Science",
+        "description": "description",
+        "tracks": [
+            {
+                "id": 1,
+                "name": "Devices",
+            "description": "description"
+            },
+            {
+                "id": 2,
+                "name": "Info Internetworks",
+                "description": "description"
+            },
+            {
+                "id": 3,
+                "name": "Intelligence",
+                "description": "description"
+            },
+            {
+                "id": 4,
+                "name": "Media",
+                "description": "description"
+            },
+            {
+                "id": 5,
+                "name": "Modeling and Simulation",
+                "description": "description"
+            },
+            {
+                "id": 6,
+                "name": "People",
+                "description": "description"
+            },
+            {
+                "id": 7,
+                "name": "Systems and Architecture",
+                "description": "description"
+            },
+            {
+                "id": 8,
+                "name": "Theory",
+                "description": "description"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Industrial Engineering",
+        "description": "description",
+        "tracks": []
+    },
+    {
+        "id": 4,
+        "name": "Business Administration",
+        "description": "description",
+        "tracks": []
+    },
+    {
+        "id": 5,
+        "name": "Literature, Media, and Communication",
+        "description": "description",
+        "tracks": []
+    }
+]
