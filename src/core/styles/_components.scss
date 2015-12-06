@@ -147,12 +147,31 @@
         font-size: $small-font-size;
         width: 200px;
         padding: $gutter;
-        margin-left: $gutter / 2;
+        margin-top: $gutter / 2;
         position: absolute;
-        left: 100%;
-        top: -($gutter);
+        top: 100%;
+        left: -200px;
+        z-index: 5;
         @include opacity(0.9);
         @include border-radius(10px);
+
+        &:before {
+            content: ' ';
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-left-width: $gutter / 2;
+            border-left-color: transparent;
+            border-right-width: $gutter / 2;
+            border-right-color: transparent;
+            border-top: 0;
+            border-bottom-width: $gutter / 2;
+            border-bottom-color: $dark-mono;
+            position: absolute;
+            right: $gutter;
+            top: -($gutter / 2) + 2px;
+            @include opacity(0.9);
+        }
     }
 
     &:hover {
