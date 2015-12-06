@@ -14,7 +14,8 @@
 
 /* custom containers */
 .header-bar {
-    background: $dark-mono;
+    background: $medium-dark-mono;
+    background-image: url(/assets/img/az-subtle.png);
     color: $light-mono;
     height: $header-height;
     position: absolute;

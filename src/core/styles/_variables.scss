@@ -5,6 +5,7 @@ $medium-mono: darken($light-mono, 30%);
 $medium-dark-mono: darken($light-mono, 70%);
 $dark-mono: darken($light-mono, 85%);
 $accent: #00CC00;
+$accent-pastel: lighten($accent, 40%);
 $danger: #B30000;
 $warning: #E5E600;
 

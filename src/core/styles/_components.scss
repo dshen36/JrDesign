@@ -25,7 +25,7 @@
                 border-right: 0;
                 border-top-width: ($header-height / 2);
                 border-bottom-width: ($header-height / 2);
-                border-left-width: ($header-height / 2);
+                border-left-width: ($header-height / 3);
                 border-top-color: transparent;
                 border-bottom-color: transparent;
                 border-left-color: $medium-light-mono;
@@ -46,7 +46,7 @@
                 border-right: 0;
                 border-top-width: ($header-height / 2);
                 border-bottom-width: ($header-height / 2);
-                border-left-width: ($header-height / 2);
+                border-left-width: ($header-height / 3);
                 border-top-color: transparent;
                 border-bottom-color: transparent;
                 border-left-color: $dark-mono;
@@ -164,6 +164,10 @@
 
 .accent {
     background: $accent;
+}
+
+.accent-pastel {
+    color: $accent-pastel;
 }
 
 .danger {
