@@ -51,48 +51,20 @@
     left: $gutter;
     right: $gutter;
 
-    .paper-body-top {
+    .paper-body-left, .paper-body-right {
         overflow: hidden;
         position: absolute;
+        bottom: 0;
         top: $gutter * 2 + $medium-font-size;
-        bottom: $paper-body-bottom-height;
-        left: 0;
-        right: 0;
-
-        .paper-body-left {
-            overflow: hidden;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: $full-width - $paper-body-left-width;
-        }
-
-        .paper-body-right {
-            overflow: hidden;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: $paper-body-left-width;
-            right: 0;
-        }
     }
 
-    .paper-body-bottom {
-        overflow: hidden;
-        position: absolute;
-        top: $full-height - $paper-body-bottom-height;
-        bottom: 0;
+    .paper-body-left {
         left: 0;
-        right: 0;
+        right: $paper-body-right-width;
+    }
 
-        .paper-body-bottom-full {
-            overflow: hidden;
-            position: absolute;
-            top: $gutter * 2 + $medium-font-size;
-            bottom: 0;
-            left: 0;
-            right: 0;
-        }
+    .paper-body-right {
+        left: $paper-body-left-width;
+        right: 0;
     }
 }

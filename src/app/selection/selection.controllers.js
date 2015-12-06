@@ -4,7 +4,7 @@ angular.module('gg.app')
         $scope.availableColumns = 2;
         $scope.availableSections = $scope.getSections(AvailableCourses, $scope.availableColumns);
         $scope.selectedCourse = null;
-        $scope.sectionColumns = 3;
+        $scope.sectionColumns = 2;
         $scope.sectionSections = [];
         $scope.selectedSections = {};
         $scope.conflicts = {};
@@ -24,12 +24,12 @@ angular.module('gg.app')
                 return;
             }
 
-            if ($scope.selectedSections[section.id]) {
-                delete $scope.selectedSections[section.id];
-            } else {
-                $scope.selectedSections[section.id] = section;
-            }
+            $scope.selectedSections[section.id] = section;
+            flagConflicts();
+        }
 
+        $scope.deselectSection = function(section) {
+            delete $scope.selectedSections[section.id];
             flagConflicts();
         }
 

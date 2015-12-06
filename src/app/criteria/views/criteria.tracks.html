@@ -3,6 +3,11 @@
         <h1>Select Your Tracks</h1>
     </div>
 </div>
+<div ng-if="selectedMajor.tracks.length == 0" class="row">
+    <div class="col-12">
+        <h3>No tracks available for major {{selectedMajor.name}}</h3>
+    </div>
+</div>
 <div class="row" ng-repeat="trackSection in trackSections">
     <div class="col-{{12 / trackColumns}}" ng-repeat="track in trackSection">
         <div class="card" ng-click="selectTrack(track)">

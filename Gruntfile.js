@@ -62,6 +62,7 @@ module.exports = function(grunt) {
                         dest: '<%= config.dist %>',
                         src: [
                             'index.html',
+                            'app/**/*.html',
                             'vendor/**/*.{html,otf,eot,svg,tff,woff,woff2}',
                             'assets/**/*'
                         ]
@@ -113,30 +114,6 @@ module.exports = function(grunt) {
                     }
                 ]
             }
-        },
-        ngtemplates: {
-            build: {
-                cwd: '<%= config.src %>',
-                src: [
-                    'app/**/*.html',
-                    'core/**/*.html'
-                ],
-                dest: '<%= config.src %>/app/app.templates.js',
-                options: {
-                    module: 'gg.app',
-                    prefix: '/',
-                    htmlmin: {
-                        collapseBooleanAttributes: true,
-                        collapseWhitespace: true,
-                        removeAttributeQuotes: true,
-                        removeComments: true,
-                        removeEmptyAttributes: true,
-                        removeRedundantAttributes: true,
-                        removeScriptTypeAttributes: true,
-                        removeStyleLinkTypeAttributes: true
-                    }
-                }
-            }
         }
     });
 
@@ -151,7 +128,6 @@ module.exports = function(grunt) {
         'preprocess',
         'clean:dist',
         'compass:all',
-        'ngtemplates:build',
         'useminPrepare',
         'concat:generated',
         'ngAnnotate',

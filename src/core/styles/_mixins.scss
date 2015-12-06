@@ -65,6 +65,10 @@
 }
 
 @mixin clickable($bg-color, $fg-color) {
+    &:not(:disabled) {
+        cursor: pointer;
+    }
+
     &:hover {
         &:not(:disabled) {
             color: darken($fg-color, 5%);

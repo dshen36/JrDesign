@@ -51,3 +51,4 @@ src/vendor
 src/index.html
 *.css
 .sass-cache
+*.swp

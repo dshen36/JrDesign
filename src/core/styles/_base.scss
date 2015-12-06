@@ -43,6 +43,10 @@ q:before, q:after {
     content: none;
 }
 
+html {
+    cursor: default;
+}
+
 table {
     border-collapse: collapse;
     border-spacing: 0;
