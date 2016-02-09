@@ -28,7 +28,7 @@ angular.module('gg.app')
 
         $scope.currentStep = $scope.wizardConfig.steps[0];
 
-        $scope.transitionTo = function(stepIndex) {
+        $scope.transitionToStep = function(stepIndex) {
             $scope.currentStep.transitionFrom().then(
                 function() {
                     $scope.currentStep = $scope.wizardConfig.steps[stepIndex];
@@ -36,10 +36,15 @@ angular.module('gg.app')
                 }
             );
         }
+
+        $scope.transitionToState = function(state) {
+            $scope.currentStep.transitionFrom().then(
+                function() { $state.go(state); }
+            );
+        }
     })
     .controller('CriteriaMajorsCtrl', function($scope, $state, CurrentUser, Majors) {
         $scope.majors = Majors;
-        debugger;
 
         $scope.selectMajor = function(major) {
             CurrentUser.addMajor(major);
