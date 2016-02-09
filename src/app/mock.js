@@ -1,56 +1,53 @@
 angular.module('gg.mock', ['gg.app', 'ngMockE2E'])
     .run(function($httpBackend) {
-        var currentUser = {};
-        var majors = {};
-        var tracks = {};
-        var minors = {};
-
-        function getObjectValues(obj) {
-            var keys = Object.keys(obj);
-            var values = [];
-
-            for (var i = 0; i < keys.length; i ++) {
-                values.push(obj[keys[i]]);
-            }
-
-            return values;
-        }
-
         function generateCurrentUser() {
             currentUser.id = 1;
-            currentUser.majors = getObjectValues(majors).slice(0, 2);
-            currentUser.minors = getObjectValues(minors).slice(0, 2);
-            currentUser.tracks = getObjectValues(tracks).slice(0, 2);
+            currentUser.majors = [];
+            currentUser.minors = [];
+            currentUser.tracks = [];
         }
 
-        function generateMajors(numMajors) {
+        function generateMajors(numMajors, numTracks) {
+            var majors = [];
+
             for (var i = 0; i < numMajors; i ++) {
-                majors[i] = {
+                majors.push({
                     id: i,
                     name: 'Major ' + i,
-                    description: 'This is major ' + i
-                }
+                    description: 'This is major ' + i,
+                    tracks: generateTracks(numTracks)
+                });
             }
+
+            return majors;
         }
 
         function generateTracks(numTracks) {
+            var tracks = [];
+
             for (var i = 0; i < numTracks; i ++) {
-                tracks[i] = {
+                tracks.push({
                     id: i,
                     name: 'Track ' + i,
                     description: 'This is track ' + i
-                }
+                });
             }
+
+            return tracks;
         }
 
         function generateMinors(numMinors) {
+            var minors = [];
+
             for (var i = 0; i < numMinors; i ++) {
-                minors[i] = {
+                minors.push({
                     id: i,
                     name: 'Minor ' + i,
                     description: 'This is minor ' + i
-                }
+                });
             }
+
+            return minors;
         }
 
         $httpBackend.whenGET(/^views\//).passThrough();
@@ -60,34 +57,24 @@ angular.module('gg.mock', ['gg.app', 'ngMockE2E'])
 
         $httpBackend.whenGET(/^users\/me$/).respond(
             function(method, url, data, headers) {
+                var currentUser = generateCurrentUser();
+                return [200, currentUser, {}];
             }
         );
 
         $httpBackend.whenGET(/^majors$/).respond(
             function(method, url, data, headers, params) {
-                var majors = getObjectValues(majors);
+                var majors = generateMajors(5);
                 return [200, majors, {}];
-            }
-        );
-
-        $httpBackend.whenGET(/^majors/[0-9]+/tracks$/).respond(
-            function(method, url, data, headers, params) {
-                var tracks = getObjectValues(tracks);
-                return [200, tracks, {}];
             }
         );
 
         $httpBackend.whenGET(/^minors$/).respond(
             function(method, url, data, headers, params) {
-                var minors = getObjectValues(minors);
+                var minors = generateMinors(6);
                 return [200, minors, {}];
             }
         );
-
-        generateMajors(5);
-        generateTracks(8);
-        generateMinors(6);
-        generateCurrentUser();
     });
 
 angular.bootstrap(document, ['gg.mock']);
