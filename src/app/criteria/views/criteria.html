@@ -3,15 +3,14 @@
         <div class="col-11 circle-button-sibling">
             <div class="row wizard-nav">
                 <button ng-repeat="step in wizardConfig.steps"
-                    ng-disabled="step.previous == null ? false : !wizardConfig.steps[step.previous].completed()"
-                    class="col-{{12 / wizardConfig.numSteps}}"
+                    class="col-{{12 / wizardConfig.steps.length }}"
                     ui-sref="{{step.state}}">
                     {{step.name}}
                 </button>
             </div>
         </div>
         <div class="col-1">
-            <button class="circle-button" ng-disabled="!wizardCompleted()" ui-sref="app.completed">></button>
+            <button class="circle-button" ui-sref="app.completed">></button>
         </div>
     </div>
     <div class="paper-body">

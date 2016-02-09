@@ -7,10 +7,10 @@ angular.module('gg.app')
                 templateUrl: '/app/criteria/views/criteria.html',
                 abstract: true
             })
-            .state('app.criteria.major', {
+            .state('app.criteria.majors', {
                 url: '',
-                controller: 'CriteriaMajorCtrl',
-                templateUrl: '/app/criteria/views/criteria.major.html',
+                controller: 'CriteriaMajorsCtrl',
+                templateUrl: '/app/criteria/views/criteria.majors.html',
                 resolve: {
                     'Majors': function(Major) {
                         return Major.getAll();
@@ -22,10 +22,10 @@ angular.module('gg.app')
                 controller: 'CriteriaTracksCtrl',
                 templateUrl: '/app/criteria/views/criteria.tracks.html'
             })
-            .state('app.criteria.minor', {
+            .state('app.criteria.minors', {
                 url: '/minor',
-                controller: 'CriteriaMinorCtrl',
-                templateUrl: '/app/criteria/views/criteria.minor.html',
+                controller: 'CriteriaMinorsCtrl',
+                templateUrl: '/app/criteria/views/criteria.minors.html',
                 resolve: {
                     'Minors': function(Minor) {
                         return Minor.getAll();
