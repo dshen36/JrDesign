@@ -7,6 +7,9 @@ angular.module('gg.app')
                     state: 'app.criteria.majors',
                     transitionFrom: function() {
                         return CurrentUser.saveMajors();
+                    },
+                    isComplete: function() {
+                        return CurrentUser.majors.length > 0;
                     }
                 },
                 {
@@ -14,6 +17,9 @@ angular.module('gg.app')
                     state: 'app.criteria.tracks',
                     transitionFrom: function() {
                         return CurrentUser.saveTracks();
+                    },
+                    isComplete: function() {
+                        return CurrentUser.tracks.length > 0;
                     }
                 },
                 {
@@ -21,6 +27,9 @@ angular.module('gg.app')
                     state: 'app.criteria.minors',
                     transitionFrom: function() {
                         return CurrentUser.saveMinors();
+                    },
+                    isComplete: function() {
+                        return CurrentUser.minors.length > 0;
                     }
                 }
             ]
@@ -41,6 +50,20 @@ angular.module('gg.app')
             $scope.currentStep.transitionFrom().then(
                 function() { $state.go(state); }
             );
+        }
+
+        $scope.isStepAvailable = function(stepIndex) {
+            for (var i = 0; i < stepIndex; i ++) {
+                if (!$scope.wizardConfig.steps[i].isComplete()) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        $scope.isWizardComplete = function() {
+            return $scope.isStepAvailable($scope.wizardConfig.steps.length);
         }
     })
     .controller('CriteriaMajorsCtrl', function($scope, $state, CurrentUser, Majors) {

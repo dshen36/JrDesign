@@ -1,8 +1,14 @@
 angular.module('gg.mock', ['gg.app', 'ngMockE2E'])
     .run(function($httpBackend) {
+        var currentId = 0;
+
+        function generateId() {
+            return currentId++
+        }
+
         function generateCurrentUser() {
             return {
-                id: 1,
+                id: generateId,
                 majors: [],
                 minors: [],
                 tracks: [],
@@ -14,7 +20,7 @@ angular.module('gg.mock', ['gg.app', 'ngMockE2E'])
 
             for (var i = 0; i < numMajors; i ++) {
                 majors.push({
-                    id: i,
+                    id: generateId(),
                     name: 'Major ' + i,
                     description: 'This is major ' + i,
                     tracks: generateTracks(numTracks)
@@ -29,7 +35,7 @@ angular.module('gg.mock', ['gg.app', 'ngMockE2E'])
 
             for (var i = 0; i < numTracks; i ++) {
                 tracks.push({
-                    id: i,
+                    id: generateId(),
                     name: 'Track ' + i,
                     description: 'This is track ' + i
                 });
@@ -43,7 +49,7 @@ angular.module('gg.mock', ['gg.app', 'ngMockE2E'])
 
             for (var i = 0; i < numMinors; i ++) {
                 minors.push({
-                    id: i,
+                    id: generateId(),
                     name: 'Minor ' + i,
                     description: 'This is minor ' + i
                 });
@@ -57,7 +63,7 @@ angular.module('gg.mock', ['gg.app', 'ngMockE2E'])
 
             for (var i = 0; i < numCourses; i ++) {
                 courses.push({
-                    id: i,
+                    id: generateId(),
                     name: 'Course ' + i,
                     isCompleted: false
                 });

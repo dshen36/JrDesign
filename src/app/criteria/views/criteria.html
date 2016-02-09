@@ -4,13 +4,19 @@
             <div class="row wizard-nav">
                 <button ng-repeat="step in wizardConfig.steps"
                     class="col-{{12 / wizardConfig.steps.length }}"
+                    ng-disabled="!isStepAvailable($index)"
                     ng-click="transitionToStep($index)">
                     {{step.name}}
                 </button>
             </div>
         </div>
         <div class="col-1">
-            <button class="circle-button" ng-click="transitionToState('app.completed')">></button>
+            <button
+                class="circle-button"
+                ng-disabled="!isWizardComplete()"
+                ng-click="transitionToState('app.completed')">
+                >
+            </button>
         </div>
     </div>
     <div class="paper-body">
