@@ -1,5 +1,5 @@
-angular.module('gg.app')
-    .factory('User', function($http) {
+angular.module('gg.services')
+    .factory('User', function($http, Major, Minor, Track) {
         function User(data) {
             this.id = data.id;
             this.majors = [];
@@ -19,7 +19,7 @@ angular.module('gg.app')
             }
         }
 
-        User.getMe = function() {
+        User.getCurrent = function() {
             return $http.get('/users/me').then(
                 function(response) {
                     return new User(response.data);

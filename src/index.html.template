@@ -46,13 +46,6 @@
     <script src="/core/services/minor.js"></script>
     <script src="/core/services/track.js"></script>
     <script src="/core/services/course.js"></script>
-    <script src="/core/services/prereq.js"></script>
-    <script src="/core/services/section.js"></script>
-    <script src="/core/services/class-time.js"></script>
-    <script src="/core/services/professor.js"></script>
-
-    <!-- core filters -->
-    <script src="/core/filters/filters.js"></script>
 
     <!-- @if ENV == 'mock' -->
     <script src="/vendor/angular-mocks/angular-mocks.js"></script>

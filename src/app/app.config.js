@@ -19,8 +19,8 @@ angular.module('gg.app')
                 templateUrl: '/app/app.html',
                 abstract: true,
                 resolve: {
-                    'Me': function(User) {
-                        return User.getMe();
+                    'CurrentUser': function(User) {
+                        return User.getCurrent();
                     }
                 }
             });
