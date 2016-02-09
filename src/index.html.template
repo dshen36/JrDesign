@@ -27,6 +27,9 @@
     <script src="/app/error/error.config.js"></script>
     <script src="/app/error/error.controllers.js"></script>
 
+    <!-- login -->
+    <script src="/app/login/login.controllers.js"></script>
+
     <!-- criteria -->
     <script src="/app/criteria/criteria.config.js"></script>
     <script src="/app/criteria/criteria.controllers.js"></script>
@@ -38,6 +41,7 @@
     <!-- core services -->
     <script src="/core/services/services.js"></script>
     <script src="/core/services/user.js"></script>
+    <script src="/core/services/auth.js"></script>
     <script src="/core/services/major.js"></script>
     <script src="/core/services/minor.js"></script>
     <script src="/core/services/track.js"></script>

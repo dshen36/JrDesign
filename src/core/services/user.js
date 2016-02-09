@@ -2,6 +2,7 @@ angular.module('gg.services')
     .factory('User', function($http, Major, Minor, Track) {
         function User(data) {
             this.id = data.id;
+            this.email = data.email;
             this.majors = [];
             this.minors = [];
             this.tracks = [];

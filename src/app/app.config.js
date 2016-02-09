@@ -1,5 +1,5 @@
 angular.module('gg.app')
-    .config(function($locationProvider, $stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider) {
+    .config(function($locationProvider, $httpProvider, $stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider) {
         $locationProvider.html5Mode({
             enabled: true,
             requireBase: false
@@ -23,11 +23,40 @@ angular.module('gg.app')
                         return User.getCurrent();
                     }
                 }
+            })
+            .state('login', {
+                url: '/login',
+                templateUrl: '/app/login/views/login.html',
+                controller: 'LoginCtrl'
             });
+
+        $httpProvider.defaults.useXDomain = true;
+        $httpProvider.defaults.withCredentials = true;
+
+        $httpProvider.interceptors.unshift(['$q', '$rootScope', function($q, $rootScope) {
+            return {
+                request: function(response) {
+                    return response;
+                },
+                responseError: function(response) {
+                    switch(response.status) {
+                        case 401:
+                            $rootScope.$broadcast('auth.loginRequired');
+                            break;
+                    }
+
+                    return $q.reject(response);
+                }
+            };
+        }]);
     })
     .run(function($rootScope, $log, $state) {
         $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
             $log.warn('There has been an error changing states', error);
             $state.go('app.error', { error: error.stack });
         });
+
+        $rootScope.$on('auth.loginRequired', function() {
+            $state.go('login');
+        })
     });
