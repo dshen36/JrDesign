@@ -45,10 +45,11 @@ angular.module('gg.app')
     })
     .controller('CriteriaMajorsCtrl', function($scope, $state, CurrentUser, Majors) {
         $scope.majors = Majors;
-        debugger;
 
         $scope.selectMajor = function(major) {
-            if (!CurrentUser.findMajorById(major.id)) {
+            if (CurrentUser.findMajorById(major.id)) {
+                CurrentUser.removeMajorById(major.id);
+            } else {
                 CurrentUser.addMajor(major);
             }
         }
@@ -61,12 +62,14 @@ angular.module('gg.app')
         $scope.majors = CurrentUser.majors;
 
         $scope.selectTrack = function(track) {
-            if (!CurrentUser.findTrackById(track.id)) {
+            if (CurrentUser.findTrackById(track.id)) {
+                CurrentUser.removeTrackById(track.id);
+            } else {
                 CurrentUser.addTrack(track);
             }
         }
 
-        $scope.isSelected = function(major, track) {
+        $scope.isSelected = function(track) {
             return !!CurrentUser.findTrackById(track.id);
         }
     })
@@ -74,7 +77,9 @@ angular.module('gg.app')
         $scope.minors = Minors;
 
         $scope.selectMinor = function(minor) {
-            if (!CurrentUser.findMinorById(minor.id)) { 
+            if (CurrentUser.findMinorById(minor.id)) { 
+                CurrentUser.removeMinorById(minor.id);
+            } else {
                 CurrentUser.addMinor(minor);
             }
         }

@@ -35,6 +35,12 @@ angular.module('gg.services')
             return _.findWhere(this.majors, { id: id })
         }
 
+        User.prototype.removeMajorById = function(id) {
+            this.majors = _.filter(this.majors, function(major) {
+                return major.id != id;
+            })
+        }
+
         User.prototype.addTrack = function(track) {
             this.tracks.push(track);
         }
@@ -43,12 +49,24 @@ angular.module('gg.services')
             return _.findWhere(this.tracks, { id: id })
         }
 
+        User.prototype.removeTrackById = function(id) {
+            this.tracks = _.filter(this.tracks, function(track) {
+                return track.id != id;
+            });
+        }
+
         User.prototype.addMinor = function(minor) {
             this.minors.push(minor);
         }
 
         User.prototype.findMinorById = function(id) {
             return _.findWhere(this.minors, { id: id })
+        }
+
+        User.prototype.removeMinorById = function(id) {
+            this.minors = _.filter(this.minors, function(minor) {
+                return minor.id != id;
+            });
         }
 
         User.prototype.saveMajors = function() {

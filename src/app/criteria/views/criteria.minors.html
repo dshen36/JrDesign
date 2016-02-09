@@ -4,5 +4,6 @@
     </div>
 </div>
 <div ng-repeat="minor in minors" ng-click="selectMinor(minor)" class="row">
-    {{minor.name}}
+    <span>{{minor.name}}</span>
+    <span ng-if="isSelected(minor)">(selected)</span>
 </div>

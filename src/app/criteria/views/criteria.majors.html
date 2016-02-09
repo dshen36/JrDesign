@@ -4,5 +4,6 @@
     </div>
 </div>
 <div ng-repeat="major in majors" ng-click="selectMajor(major)" class="row">
-    {{ major.name }}
+    <span>{{ major.name }}</span>
+    <span ng-if="isSelected(major)">(selected)</span>
 </div>
