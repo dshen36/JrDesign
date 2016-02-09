@@ -45,22 +45,41 @@ angular.module('gg.app')
     })
     .controller('CriteriaMajorsCtrl', function($scope, $state, CurrentUser, Majors) {
         $scope.majors = Majors;
+        debugger;
 
         $scope.selectMajor = function(major) {
-            CurrentUser.addMajor(major);
+            if (!CurrentUser.findMajorById(major.id)) {
+                CurrentUser.addMajor(major);
+            }
+        }
+
+        $scope.isSelected = function(major) {
+            return !!CurrentUser.findMajorById(major.id);
         }
     })
     .controller('CriteriaTracksCtrl', function($scope, $state, CurrentUser) {
         $scope.majors = CurrentUser.majors;
 
         $scope.selectTrack = function(track) {
-            CurrentUser.addTrack(track);
+            if (!CurrentUser.findTrackById(track.id)) {
+                CurrentUser.addTrack(track);
+            }
+        }
+
+        $scope.isSelected = function(major, track) {
+            return !!CurrentUser.findTrackById(track.id);
         }
     })
     .controller('CriteriaMinorsCtrl', function($scope, $state, CurrentUser, Minors) {
         $scope.minors = Minors;
 
         $scope.selectMinor = function(minor) {
-            CurrentUser.addMinor(minor);
+            if (!CurrentUser.findMinorById(minor.id)) { 
+                CurrentUser.addMinor(minor);
+            }
+        }
+
+        $scope.isSelected = function(minor) {
+            return !!CurrentUser.findMinorById(minor.id);
         }
     });

@@ -31,12 +31,24 @@ angular.module('gg.services')
             this.majors.push(major);
         }
 
+        User.prototype.findMajorById = function(id) {
+            return _.findWhere(this.majors, { id: id })
+        }
+
         User.prototype.addTrack = function(track) {
             this.tracks.push(track);
         }
 
+        User.prototype.findTrackById = function(id) {
+            return _.findWhere(this.tracks, { id: id })
+        }
+
         User.prototype.addMinor = function(minor) {
             this.minors.push(minor);
+        }
+
+        User.prototype.findMinorById = function(id) {
+            return _.findWhere(this.minors, { id: id })
         }
 
         User.prototype.saveMajors = function() {
