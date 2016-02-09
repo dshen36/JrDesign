@@ -6,8 +6,8 @@ angular.module('gg.app')
                 controller: 'CompletedCtrl',
                 templateUrl: '/app/completed/completed.html',
                 resolve: {
-                    'CompletedCourses': function(Me) {
-                        return {};
+                    'Courses': function(Course) {
+                        return Course.getAll();
                     }
                 }
             });

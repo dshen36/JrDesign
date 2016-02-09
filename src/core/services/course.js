@@ -1,5 +1,5 @@
 angular.module('gg.services')
-    .factory('Course', function($http, Section, Prereq) {
+    .factory('Course', function($http) {
         function Course(data) {
             this.id = data.id;
             this.name = data.name;
@@ -14,6 +14,8 @@ angular.module('gg.services')
                     for (var i = 0; i < response.data.length; i ++) {
                         courses.push(new Course(response.data[i]));
                     }
+
+                    return courses;
                 });
         }
 

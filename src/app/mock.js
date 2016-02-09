@@ -52,6 +52,20 @@ angular.module('gg.mock', ['gg.app', 'ngMockE2E'])
             return minors;
         }
 
+        function generateCourses(numCourses) {
+            var courses = [];
+
+            for (var i = 0; i < numCourses; i ++) {
+                courses.push({
+                    id: i,
+                    name: 'Course ' + i,
+                    isCompleted: false
+                });
+            }
+
+            return courses;
+        }
+
         $httpBackend.whenGET(/^\/views\//).passThrough();
         $httpBackend.whenGET(/^\/assets\//).passThrough();
         $httpBackend.whenGET(/^\/templates\//).passThrough();
@@ -75,6 +89,13 @@ angular.module('gg.mock', ['gg.app', 'ngMockE2E'])
             function(method, url, data, headers, params) {
                 var minors = generateMinors(6);
                 return [200, minors, {}];
+            }
+        );
+
+        $httpBackend.whenGET(/^\/courses$/).respond(
+            function(method, url, data, headers, params) {
+                var courses = generateCourses(10);
+                return [200, courses, {}];
             }
         );
 
