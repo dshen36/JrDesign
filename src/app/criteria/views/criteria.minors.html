@@ -3,3 +3,6 @@
         <h1>Select Your Minors</h1>
     </div>
 </div>
+<div ng-repeat="minor in minors" ng-click="selectMinor(minor)" class="row">
+    {{minor.name}}
+</div>

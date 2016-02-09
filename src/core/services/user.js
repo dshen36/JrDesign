@@ -23,7 +23,32 @@ angular.module('gg.services')
             return $http.get('/users/me').then(
                 function(response) {
                     return new User(response.data);
-                });
+                }
+            );
+        }
+
+        User.prototype.addMajor = function(major) {
+            this.majors.push(major);
+        }
+
+        User.prototype.addTrack = function(track) {
+            this.tracks.push(track);
+        }
+
+        User.prototype.addMinor = function(minor) {
+            this.minors.push(minor);
+        }
+
+        User.prototype.saveMajors = function() {
+            return $http.post('/users/me/majors', this.majors);
+        }
+
+        User.prototype.saveTracks = function() {
+            return $http.post('/users/me/tracks', this.tracks);
+        }
+
+        User.prototype.saveMinors = function() {
+            return $http.post('/users/me/majors', this.minors);
         }
 
         return User;

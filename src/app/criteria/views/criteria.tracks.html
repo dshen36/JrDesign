@@ -3,3 +3,9 @@
         <h1>Select Your Tracks</h1>
     </div>
 </div>
+<div ng-repeat="major in majors">
+    {{major.name}}
+    <div ng-repeat="track in major.tracks" ng-click="selectTrack(track)" class="row">
+        {{track.name}}
+    </div>
+</div>

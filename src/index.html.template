@@ -35,10 +35,6 @@
     <script src="/app/completed/completed.config.js"></script>
     <script src="/app/completed/completed.controllers.js"></script>
 
-    <!-- selection  -->
-    <script src="/app/selection/selection.config.js"></script>
-    <script src="/app/selection/selection.controllers.js"></script>
-
     <!-- core services -->
     <script src="/core/services/services.js"></script>
     <script src="/core/services/user.js"></script>

@@ -3,3 +3,6 @@
         <h1>Select Your Majors</h1>
     </div>
 </div>
+<div ng-repeat="major in majors" ng-click="selectMajor(major)" class="row">
+    {{ major.name }}
+</div>

@@ -1,10 +1,12 @@
 angular.module('gg.mock', ['gg.app', 'ngMockE2E'])
     .run(function($httpBackend) {
         function generateCurrentUser() {
-            currentUser.id = 1;
-            currentUser.majors = [];
-            currentUser.minors = [];
-            currentUser.tracks = [];
+            return {
+                id: 1,
+                majors: [],
+                minors: [],
+                tracks: [],
+            };
         }
 
         function generateMajors(numMajors, numTracks) {
@@ -50,29 +52,47 @@ angular.module('gg.mock', ['gg.app', 'ngMockE2E'])
             return minors;
         }
 
-        $httpBackend.whenGET(/^views\//).passThrough();
-        $httpBackend.whenGET(/^assets\//).passThrough();
-        $httpBackend.whenGET(/^templates\//).passThrough();
+        $httpBackend.whenGET(/^\/views\//).passThrough();
+        $httpBackend.whenGET(/^\/assets\//).passThrough();
+        $httpBackend.whenGET(/^\/templates\//).passThrough();
         $httpBackend.whenGET(/\.html/).passThrough();
 
-        $httpBackend.whenGET(/^users\/me$/).respond(
+        $httpBackend.whenGET(/^\/users\/me$/).respond(
             function(method, url, data, headers) {
                 var currentUser = generateCurrentUser();
                 return [200, currentUser, {}];
             }
         );
 
-        $httpBackend.whenGET(/^majors$/).respond(
+        $httpBackend.whenGET(/^\/majors$/).respond(
             function(method, url, data, headers, params) {
-                var majors = generateMajors(5);
+                var majors = generateMajors(5, 2);
                 return [200, majors, {}];
             }
         );
 
-        $httpBackend.whenGET(/^minors$/).respond(
+        $httpBackend.whenGET(/^\/minors$/).respond(
             function(method, url, data, headers, params) {
                 var minors = generateMinors(6);
                 return [200, minors, {}];
+            }
+        );
+
+        $httpBackend.whenPOST(/^\/users\/me\/majors$/).respond(
+            function(method, url, data, headers, params) {
+                return [200, {}, {}];
+            }
+        );
+
+        $httpBackend.whenPOST(/^\/users\/me\/tracks$/).respond(
+            function(method, url, data, headers, params) {
+                return [200, {}, {}];
+            }
+        );
+
+        $httpBackend.whenPOST(/^\/users\/me\/minors$/).respond(
+            function(method, url, data, headers, params) {
+                return [200, {}, {}];
             }
         );
     });

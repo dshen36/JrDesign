@@ -4,7 +4,7 @@
             <div class="row wizard-nav">
                 <button ng-repeat="step in wizardConfig.steps"
                     class="col-{{12 / wizardConfig.steps.length }}"
-                    ui-sref="{{step.state}}">
+                    ng-click="transitionTo($index)">
                     {{step.name}}
                 </button>
             </div>
