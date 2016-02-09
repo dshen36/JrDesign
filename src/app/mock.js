@@ -1,6 +1,10 @@
 angular.module('gg.mock', ['gg.app', 'ngMockE2E'])
     .run(function($httpBackend) {
         var currentId = 0;
+        var currentUser = {};
+        var majors = [];
+        var minors = [];
+        var courses = [];
 
         function generateId() {
             return currentId++
@@ -79,28 +83,24 @@ angular.module('gg.mock', ['gg.app', 'ngMockE2E'])
 
         $httpBackend.whenGET(/^\/users\/me$/).respond(
             function(method, url, data, headers) {
-                var currentUser = generateCurrentUser();
                 return [200, currentUser, {}];
             }
         );
 
         $httpBackend.whenGET(/^\/majors$/).respond(
             function(method, url, data, headers, params) {
-                var majors = generateMajors(5, 2);
                 return [200, majors, {}];
             }
         );
 
         $httpBackend.whenGET(/^\/minors$/).respond(
             function(method, url, data, headers, params) {
-                var minors = generateMinors(6);
                 return [200, minors, {}];
             }
         );
 
         $httpBackend.whenGET(/^\/courses$/).respond(
             function(method, url, data, headers, params) {
-                var courses = generateCourses(10);
                 return [200, courses, {}];
             }
         );
@@ -122,6 +122,11 @@ angular.module('gg.mock', ['gg.app', 'ngMockE2E'])
                 return [200, {}, {}];
             }
         );
+
+        majors = generateMajors(5, 2);
+        minors = generateMinors(6);
+        courses = generateCourses(10);
+        currentUser = generateCurrentUser();
     });
 
 angular.bootstrap(document, ['gg.mock']);
