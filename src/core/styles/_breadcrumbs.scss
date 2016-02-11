@@ -1,0 +1,113 @@
+@mixin breadcrumbs-size($height, $border-size, $font-size) {
+    .breadcrumbs__breadcrumb {
+        font-weight: bold;
+        font-size: $font-size;
+        height: $height;
+        border-top-width: $border-size;
+        border-bottom-width: $border-size;
+
+        &:before {
+            border-top-width: $height / 2;
+            border-bottom-width: $height / 2;
+            border-left-width: $height / 4;
+        }
+
+        &:after {
+            border-top-width: $height / 2;
+            border-bottom-width: $height / 2;
+            border-left-width: $height / 4;
+        }
+
+        &:first-of-type {
+            border-left: $border-size solid;
+        }
+
+        &:last-of-type {
+            border-right: $border-size solid;
+        }
+
+        &:not(:last-of-type) {
+            border-right-width: $border-size;
+        }
+    }
+}
+
+@mixin breadcrumbs-color($border-color, $bg-color, $fg-color) {
+    .breadcrumbs__breadcrumb {
+        border-style: solid;
+        border-color: $border-color;
+        background: $bg-color;
+        color: $fg-color;
+
+        &:before {
+            border-left-color: $border-color;
+        }
+
+        &:after {
+            border-left-color: $bg-color;
+        }
+
+        &:hover:not(.breadcrumbs__breadcrumb--active) {
+            color: darken($fg-color, 15%);
+        }
+
+        &:active:not(.breadcrumbs__breadcrumb--active) {
+            background: darken($bg-color, 5%);
+
+            &:after {
+                border-left-color: darken($bg-color, 5%);
+            }
+        }
+    }
+}
+
+.breadcrumbs {
+    position: relative;
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    border-spacing: 0;
+
+    .breadcrumbs__breadcrumb {
+        @include header-text;
+
+        position: relative;
+        width: 100%;
+        text-align: center;
+        display: table-cell;
+        vertical-align: middle;
+
+        &:after, &:before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            top: 0;
+            border-top-color: transparent;
+            border-bottom-color: transparent;
+            border-style: solid;
+            border-right: 0;
+            display: none;
+        }
+
+        &:not(:first-of-type)::before {
+            display: block;
+            left: 0;
+            z-index: 1;
+        }
+
+        &:not(:last-of-type)::after {
+            display: block; 
+            left: 100%;
+            z-index: 2;
+        }
+    }
+}
+
+.breadcrumbs--size-medium {
+    @include breadcrumbs-size($medium-header-height, $thin-border-width, $small-font-size);
+}
+
+.breadcrumbs--color-light {
+    @include breadcrumbs-color($medium-dark-mono, $medium-light-mono, $medium-dark-mono);
+}

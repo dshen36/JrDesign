@@ -1,0 +1,13 @@
+.row {
+    @include clearfix;
+}
+
+@for $i from 1 through 12 {
+    .col-#{$i} {
+        width: ($full / 12) * $i;
+        float: left;
+        padding: $gutter;
+        box-sizing: border-box;
+    }
+}
+
