@@ -1,17 +1,4 @@
 @mixin card-color($header-bg-color, $header-fg-color, $body-bg-color, $body-fg-color) {
-    .card__header, .card__body {
-        border-color: $medium-dark-mono;
-    }
-
-    .card__header {
-        background: $header-bg-color;
-        color: $header-fg-color;
-    }
-
-    .card__body {
-        background: $body-bg-color;
-        color: $body-fg-color;
-    }
 }
 
 .card {
@@ -34,7 +21,19 @@
 }
 
 .card--light {
-    @include card-color($medium-light-mono, $medium-dark-mono, $light-mono, $dark-mono);
+    .card__header, .card__body {
+        border-color: $medium-dark-mono;
+    }
+
+    .card__header {
+        background: $medium-light-mono;
+        color: $medium-dark-mono;
+    }
+
+    .card__body {
+        background: $light-mono;
+        color: $dark-mono;
+    }
 }
 
 .card--selectable {
@@ -42,6 +41,22 @@
         &.card__header--selected {
             background: $accent;
             color: $light-mono;
+        }
+    }
+
+    &:hover {
+        .card__header {
+            &:not(.card__header--selected) {
+                color: darken($medium-dark-mono, 15%);
+            }
+        }
+    }
+
+    &:active {
+        .card__header {
+            &:not(.card__header--selected) {
+                background: darken($medium-light-mono, 5%);
+            }
         }
     }
 }
