@@ -3,8 +3,9 @@
         <div class="breadcrumbs breadcrumbs--size-medium breadcrumbs--color-light">
             <div class="breadcrumbs__breadcrumb"
                 ng-repeat="step in wizardConfig.steps"
-                ng-disabled="!isStepAvailable($index)"
-                ng-click="transitionToStep($index)">
+                ng-disabled="!stepIsAvailable(step)"
+                ng-click="goToStep(step)"
+                ng-class="{'breadcrumbs__breadcrumb--active': step == currentStep }">
                 {{step.name}}
             </div>
         </div>

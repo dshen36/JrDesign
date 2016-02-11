@@ -3,6 +3,7 @@ angular.module('gg.app')
         $scope.wizardConfig = {
             steps: [
                 {
+                    order: 0,
                     name: 'Majors',
                     state: 'app.criteria.majors',
                     transitionFrom: function() {
@@ -10,9 +11,11 @@ angular.module('gg.app')
                     },
                     isComplete: function() {
                         return CurrentUser.majors.length > 0;
-                    }
+                    },
+                    incompleteMessage: 'You must select at least one major'
                 },
                 {
+                    order: 1,
                     name: 'Tracks',
                     state: 'app.criteria.tracks',
                     transitionFrom: function() {
@@ -20,9 +23,11 @@ angular.module('gg.app')
                     },
                     isComplete: function() {
                         return CurrentUser.tracks.length > 0;
-                    }
+                    },
+                    incompleteMessage: 'You must select at least one track'
                 },
                 {
+                    order: 2,
                     name: 'Minors',
                     state: 'app.criteria.minors',
                     transitionFrom: function() {
@@ -30,30 +35,16 @@ angular.module('gg.app')
                     },
                     isComplete: function() {
                         return CurrentUser.minors.length > 0;
-                    }
+                    },
+                    incompleteMessage: 'You must select at least one minor'
                 }
             ]
         };
 
         $scope.currentStep = $scope.wizardConfig.steps[0];
 
-        $scope.transitionToStep = function(stepIndex) {
-            $scope.currentStep.transitionFrom().then(
-                function() {
-                    $scope.currentStep = $scope.wizardConfig.steps[stepIndex];
-                    $state.go($scope.wizardConfig.steps[stepIndex].state);
-                }
-            );
-        }
-
-        $scope.transitionToState = function(state) {
-            $scope.currentStep.transitionFrom().then(
-                function() { $state.go(state); }
-            );
-        }
-
-        $scope.isStepAvailable = function(stepIndex) {
-            for (var i = 0; i < stepIndex; i ++) {
+        $scope.stepIsAvailable = function(step) {
+            for (var i = 0; i < step.order; i ++) {
                 if (!$scope.wizardConfig.steps[i].isComplete()) {
                     return false;
                 }
@@ -62,8 +53,44 @@ angular.module('gg.app')
             return true;
         }
 
-        $scope.isWizardComplete = function() {
-            return $scope.isStepAvailable($scope.wizardConfig.steps.length);
+        $scope.goToStep = function(step) {
+            if (!$scope.stepIsAvailable(step)) {
+                broadcastIncomplete();
+                return;
+            }
+
+            $scope.currentStep.transitionFrom().then(
+                function() {
+                    $scope.currentStep = step;
+                    $state.go(step.state);
+                }
+            );
+        }
+
+        $scope.nextStep = function() {
+            var next = $scope.wizardConfig.steps[$scope.currentStep.order + 1];
+
+            if (!$scope.stepIsAvailable(next)) {
+                broadcastIncomplete();
+                return;
+            }
+
+            $scope.currentStep.transitionFrom().then(
+                function() {
+                    $scope.currentStep = next;
+                    $state.go(next.state);
+                }
+            );
+        }
+
+        function broadcastIncomplete() {
+            for (var i = 0; i < $scope.wizardConfig.steps.length; i ++) {
+                var step = $scope.wizardConfig.steps[i];
+
+                if (!step.isComplete() && $scope.stepIsAvailable(step)) {
+                    $scope.$broadcast('notification.error', step.incompleteMessage);
+                }
+            }
         }
     })
     .controller('CriteriaMajorsCtrl', function($scope, $state, CurrentUser, Majors) {

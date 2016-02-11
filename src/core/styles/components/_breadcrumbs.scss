@@ -58,6 +58,23 @@
                 border-left-color: darken($bg-color, 5%);
             }
         }
+
+        &.breadcrumbs__breadcrumb--active {
+            background: lighten($bg-color, 15%);
+
+            &:after {
+                border-left-color: lighten($bg-color, 15%);
+            }
+        }
+
+        &[disabled="disabled"] {
+            color: lighten($fg-color, 15%) !important;
+            background: $bg-color !important;
+
+            &:after {
+                border-left-color: $bg-color !important;
+            }
+        }
     }
 }
 
