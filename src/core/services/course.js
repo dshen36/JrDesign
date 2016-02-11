@@ -3,6 +3,7 @@ angular.module('gg.services')
         function Course(data) {
             this.id = data.id;
             this.name = data.name;
+            this.description = data.description;
             this.isCompleted = data.isCompleted;
         }
 

@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-12">
+        <h1>Choose the Courses You Have Already Completed</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card card--light" ng-repeat="course in courses">
+            <div class="card__header">{{ course.name }}</div>
+            <div class="card__body">{{ course.description }}</div>
+        </div>
+    </div>
+</div>

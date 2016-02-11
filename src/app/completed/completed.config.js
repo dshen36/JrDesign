@@ -4,7 +4,7 @@ angular.module('gg.app')
             .state('app.completed', {
                 url: '/completed',
                 controller: 'CompletedCtrl',
-                templateUrl: '/app/completed/completed.html',
+                templateUrl: '/app/completed/views/completed.html',
                 resolve: {
                     'Courses': function(Course) {
                         return Course.getAll();

@@ -69,6 +69,7 @@ angular.module('gg.mock', ['gg.app', 'ngMockE2E'])
                 courses.push({
                     id: generateId(),
                     name: 'Course ' + i,
+                    description: 'This is course ' + i,
                     isCompleted: false
                 });
             }
@@ -89,7 +90,7 @@ angular.module('gg.mock', ['gg.app', 'ngMockE2E'])
 
         $httpBackend.whenGET(/^\/users\/me$/).respond(
             function(method, url, data, headers, params) {
-                return [200, currentUser, {}];
+                return [401, currentUser, {}];
             }
         );
 
