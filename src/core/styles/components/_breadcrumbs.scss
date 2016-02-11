@@ -1,9 +1,9 @@
-@mixin breadcrumbs-size($height, $border-size, $font-size) {
+@mixin breadcrumbs-size($height, $border-width, $font-size) {
     .breadcrumbs__breadcrumb {
         font-size: $font-size;
         height: $height;
-        border-top-width: $border-size;
-        border-bottom-width: $border-size;
+        border-top-width: $border-width;
+        border-bottom-width: $border-width;
 
         &:before {
             border-top-width: $height / 2;
@@ -18,15 +18,15 @@
         }
 
         &:first-of-type {
-            border-left: $border-size solid;
+            border-left: $border-width solid;
         }
 
         &:last-of-type {
-            border-right: $border-size solid;
+            border-right: $border-width solid;
         }
 
         &:not(:last-of-type) {
-            border-right-width: $border-size;
+            border-right-width: $border-width;
         }
     }
 }
@@ -92,6 +92,7 @@
         text-align: center;
         display: table-cell;
         vertical-align: middle;
+        cursor: pointer;
 
         &:after, &:before {
             content: '';
@@ -116,6 +117,10 @@
             display: block; 
             left: 100%;
             z-index: 2;
+        }
+
+        &[disabled="disabled"] {
+            cursor: default;
         }
     }
 }

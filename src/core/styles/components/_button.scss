@@ -1,0 +1,48 @@
+@mixin button-color($bg-color, $fg-color) {
+    color: $fg-color;
+    background: $bg-color;
+    border-style: solid;
+    border-color: darken($bg-color, 10%);
+
+    &:hover {
+        background: lighten($bg-color, 10%);
+    }
+
+    &:active {
+        background: darken($bg-color, 5%);
+    }
+
+    &[disabled="disabled"] {
+        background: lighten($bg-color, 30%) !important;
+        border-color: $bg-color;
+        cursor: default;
+    }
+}
+
+@mixin button-size($height, $border-width, $font-size) {
+    font-size: $font-size;
+    height: $height;
+    border-width: $border-width;
+    line-height: $height;
+    cursor: pointer;
+}
+
+.button {
+    @include header-text;
+
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+
+.button--accent {
+    @include button-color($accent, $light-mono);
+}
+
+.button--rounded {
+    @include border-radius(10px);
+}
+
+.button--medium {
+    @include button-size($medium-header-height, $thin-border-width, $small-font-size);
+}

@@ -83,6 +83,29 @@ angular.module('gg.app')
             );
         }
 
+        $scope.allStepsComplete = function() {
+            for (var i = 0; i < $scope.wizardConfig.steps.length; i ++) {
+                if (!$scope.wizardConfig.steps[i].isComplete()) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        $scope.finish = function() {
+            if (!$scope.allStepsComplete()) {
+                broadcastIncomplete();
+                return;
+            }
+
+            $scope.currentStep.transitionFrom().then(
+                function() {
+                    $state.go('app.completed');
+                }
+            );
+        }
+
         function broadcastIncomplete() {
             for (var i = 0; i < $scope.wizardConfig.steps.length; i ++) {
                 var step = $scope.wizardConfig.steps[i];
@@ -92,6 +115,8 @@ angular.module('gg.app')
                 }
             }
         }
+
+        $state.go($scope.currentStep.state);
     })
     .controller('CriteriaMajorsCtrl', function($scope, $state, CurrentUser, Majors) {
         $scope.majors = Majors;

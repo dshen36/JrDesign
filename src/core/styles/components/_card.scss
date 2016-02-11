@@ -17,6 +17,7 @@
     .card__header {
         @include header-text;
         border-bottom: 0;
+        cursor: default;
     }
 }
 

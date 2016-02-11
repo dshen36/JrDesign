@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-12">
+    <div class="col-11">
         <div class="breadcrumbs breadcrumbs--size-medium breadcrumbs--color-light">
             <div class="breadcrumbs__breadcrumb"
                 ng-repeat="step in wizardConfig.steps"
@@ -8,6 +8,13 @@
                 ng-class="{'breadcrumbs__breadcrumb--active': step == currentStep }">
                 {{step.name}}
             </div>
+        </div>
+    </div>
+    <div class="col-1">
+        <div class="button button--rounded button--medium button--accent"
+            ng-click="finish()"
+            ng-disabled="!allStepsComplete()">
+            &#10003
         </div>
     </div>
 </div>
