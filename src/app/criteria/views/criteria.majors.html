@@ -3,7 +3,14 @@
         <h1>Select Your Majors</h1>
     </div>
 </div>
-<div ng-repeat="major in majors" ng-click="selectMajor(major)" class="row">
-    <span>{{ major.name }}</span>
-    <span ng-if="isSelected(major)">(selected)</span>
-</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card card--light card--selectable" ng-repeat="major in majors" ng-click="selectMajor(major)">
+            <div class="card__header"
+                ng-class="{'card__header--selected': isSelected(major)}">
+                {{ major.name }}
+            </div>
+            <div class="card__body">{{major.description}}</div>
+        </div>
+    </div>
+</div

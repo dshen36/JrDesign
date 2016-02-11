@@ -1,6 +1,5 @@
 @mixin breadcrumbs-size($height, $border-size, $font-size) {
     .breadcrumbs__breadcrumb {
-        font-weight: bold;
         font-size: $font-size;
         height: $height;
         border-top-width: $border-size;

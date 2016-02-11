@@ -1,0 +1,47 @@
+@mixin card-color($header-bg-color, $header-fg-color, $body-bg-color, $body-fg-color) {
+    .card__header, .card__body {
+        border-color: $medium-dark-mono;
+    }
+
+    .card__header {
+        background: $header-bg-color;
+        color: $header-fg-color;
+    }
+
+    .card__body {
+        background: $body-bg-color;
+        color: $body-fg-color;
+    }
+}
+
+.card {
+    width: 300px;
+    float: left;
+    padding-right: $gutter;
+    padding-bottom: $gutter;
+
+    .card__header, .card__body {
+        padding: $gutter;
+        border-style: solid;
+        border-width: $thin-border-width;
+        font-size: $small-font-size;
+    }
+
+    .card__header {
+        @include header-text;
+        border-bottom: 0;
+    }
+}
+
+.card--light {
+    @include card-color($medium-light-mono, $medium-dark-mono, $light-mono, $dark-mono);
+}
+
+.card--selectable {
+    .card__header {
+        &.card__header--selected {
+            background: $accent;
+            color: $light-mono;
+        }
+    }
+}
