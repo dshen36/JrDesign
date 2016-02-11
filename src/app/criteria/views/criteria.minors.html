@@ -3,7 +3,14 @@
         <h1>Select Your Minors</h1>
     </div>
 </div>
-<div ng-repeat="minor in minors" ng-click="selectMinor(minor)" class="row">
-    <span>{{minor.name}}</span>
-    <span ng-if="isSelected(minor)">(selected)</span>
+<div class="row">
+    <div class="col-12">
+        <div class="card card--light card--selectable" ng-repeat="minor in minors" ng-click="selectMinor(minor)" class="row">
+            <div class="card__header"
+                ng-class="{'card__header--selected': isSelected(minor)}">
+                {{minor.name}}
+            </div>
+            <div class="card__body">{{minor.description}}</div>
+        </div>
+    </div>
 </div>
