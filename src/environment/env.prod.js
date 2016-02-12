@@ -4,6 +4,6 @@ angular.module('gg.config', [])
     .factory('Environment', function() {
         return {
             name: 'prod',
-            path: ''
+            path: '/api'
         }
     });
