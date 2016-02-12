@@ -1,5 +1,5 @@
 angular.module('gg.services')
-    .factory('Course', function($http) {
+    .factory('Course', function($http, Environment) {
         function Course(data) {
             this.id = data.id;
             this.name = data.name;
@@ -8,7 +8,7 @@ angular.module('gg.services')
         }
 
         Course.getAll = function(user) {
-            return $http.get('/courses').then(
+            return $http.get(Environment.path + '/courses').then(
                 function(response) {
                     var courses = [];
 

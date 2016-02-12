@@ -1,5 +1,5 @@
 angular.module('gg.services')
-    .factory('User', function($http, Major, Minor, Track) {
+    .factory('User', function($http, Environment, Major, Minor, Track) {
         function User(data) {
             this.id = data.id;
             this.email = data.email;
@@ -21,7 +21,7 @@ angular.module('gg.services')
         }
 
         User.getCurrent = function() {
-            return $http.get('/users/me').then(
+            return $http.get(Environment.path + '/users/me').then(
                 function(response) {
                     return new User(response.data);
                 }
@@ -71,15 +71,15 @@ angular.module('gg.services')
         }
 
         User.prototype.saveMajors = function() {
-            return $http.post('/users/me/majors', this.majors);
+            return $http.post(Environment.path + '/users/me/majors', this.majors);
         }
 
         User.prototype.saveTracks = function() {
-            return $http.post('/users/me/tracks', this.tracks);
+            return $http.post(Environment.path + '/users/me/tracks', this.tracks);
         }
 
         User.prototype.saveMinors = function() {
-            return $http.post('/users/me/majors', this.minors);
+            return $http.post(Environment.path + '/users/me/majors', this.minors);
         }
 
         return User;

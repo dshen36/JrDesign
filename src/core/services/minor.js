@@ -1,5 +1,5 @@
 angular.module('gg.services')
-    .factory('Minor', function($http) {
+    .factory('Minor', function($http, Environment) {
         function Minor(data) {
             this.id = data.id;
             this.name = data.name;
@@ -7,7 +7,7 @@ angular.module('gg.services')
         }
 
         Minor.getAll = function() {
-            return $http.get('/minors').then(
+            return $http.get(Environment.path + '/minors').then(
                 function(response) {
                     var minors = [];
 

@@ -1,5 +1,5 @@
 angular.module('gg.services')
-    .factory('Major', function($http, Track) {
+    .factory('Major', function($http, Environment, Track) {
         function Major(data) {
             this.id = data.id;
             this.name = data.name;
@@ -12,7 +12,7 @@ angular.module('gg.services')
         }
 
         Major.getAll = function() {
-            return $http.get('/majors').then(
+            return $http.get(Environment.path + '/majors').then(
                 function(response) {
                     var majors = [];
 

@@ -1,5 +1,5 @@
 angular.module('gg.services')
-    .factory('Register', function($http) {
+    .factory('Register', function($http, Environment) {
         function Register(data) {
             this.email = data.email;
             this.firstName = data.firstName;
@@ -8,7 +8,7 @@ angular.module('gg.services')
         }
 
         Register.prototype.register = function() {
-            return $http.post('/users', this);
+            return $http.post(Environment.path + '/users', this);
         }
 
         return Register;
