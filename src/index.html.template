@@ -45,6 +45,7 @@
     <script src="/core/services/services.js"></script>
     <script src="/core/services/user.js"></script>
     <script src="/core/services/auth.js"></script>
+    <script src="/core/services/register.js"></script>
     <script src="/core/services/major.js"></script>
     <script src="/core/services/minor.js"></script>
     <script src="/core/services/track.js"></script>

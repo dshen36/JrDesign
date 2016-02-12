@@ -88,6 +88,12 @@ angular.module('gg.mock', ['gg.app', 'ngMockE2E'])
             }
         );
 
+        $httpBackend.whenPOST(/^\/users$/).respond(
+            function(method, url, data, headers, params) {
+                return [200, {}, {}];
+            }
+        );
+
         $httpBackend.whenGET(/^\/users\/me$/).respond(
             function(method, url, data, headers, params) {
                 return [401, currentUser, {}];
