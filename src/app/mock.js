@@ -84,19 +84,19 @@ angular.module('gg.mock', ['gg.app', 'ngMockE2E'])
 
         $httpBackend.whenPOST(/^\/auth\/login$/).respond(
             function(method, url, data, headers, params) {
-                return [401, {}, {}];
+                return [200, {}, {}];
             }
         );
 
         $httpBackend.whenPOST(/^\/users$/).respond(
             function(method, url, data, headers, params) {
-                return [500, {}, {}];
+                return [200, {}, {}];
             }
         );
 
         $httpBackend.whenGET(/^\/users\/me$/).respond(
             function(method, url, data, headers, params) {
-                return [401, currentUser, {}];
+                return [200, currentUser, {}];
             }
         );
 

@@ -59,26 +59,11 @@ angular.module('gg.app')
                 return;
             }
 
-            $scope.currentStep.transitionFrom().then(
+            $scope.withErrorNotification(
+                $scope.currentStep.transitionFrom(),
                 function() {
                     $scope.currentStep = step;
                     $state.go(step.state);
-                }
-            );
-        }
-
-        $scope.nextStep = function() {
-            var next = $scope.wizardConfig.steps[$scope.currentStep.order + 1];
-
-            if (!$scope.stepIsAvailable(next)) {
-                notifyIncomplete();
-                return;
-            }
-
-            $scope.currentStep.transitionFrom().then(
-                function() {
-                    $scope.currentStep = next;
-                    $state.go(next.state);
                 }
             );
         }
@@ -99,7 +84,8 @@ angular.module('gg.app')
                 return;
             }
 
-            $scope.currentStep.transitionFrom().then(
+            $scope.withErrorNotification(
+                $scope.currentStep.transitionFrom()
                 function() {
                     $state.go('app.completed');
                 }

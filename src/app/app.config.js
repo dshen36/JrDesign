@@ -73,10 +73,15 @@ angular.module('gg.app')
         });
         
         $rootScope.$on('notification.error', function(event, message) {
-            if (!message) {
-                $rootScope.errorNotifications.notify('There has been an error. Please refresh your page and try again', 2000);
-            } else {
-                $rootScope.errorNotifications.notify(message, 2000);
-            }
+            message = message || 'There has been an error. Please refresh your page and try again';
+            $rootScope.errorNotifications.notify(message, 2000);
         });
+
+        $rootScope.withErrorNotification = function(promise, callback, message) {
+            promise.success(callback).error(
+                function() {
+                    $rootScope.$emit('notification.error', message);
+                }
+            );
+        }
     });

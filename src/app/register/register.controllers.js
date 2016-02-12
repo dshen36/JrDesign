@@ -3,16 +3,12 @@ angular.module('gg.app')
         $scope.register = new Register({});
 
         $scope.signUp = function() {
-            $scope.register.register()
-                .success(
-                    function() {
-                        $state.go('login');
-                    }
-                )
-                .error(
-                    function() {
-                        $scope.$emit('notification.error');
-                    }
-                )
+            $scope.withErrorNotification(
+                $scope.register.register(),
+                function() {
+                    $scope.$emit('notification.success', 'Registration success!');
+                    $state.go('login');
+                }
+            );
         }
     });
