@@ -90,7 +90,7 @@ angular.module('gg.mock', ['gg.app', 'ngMockE2E'])
 
         $httpBackend.whenPOST(/^\/users$/).respond(
             function(method, url, data, headers, params) {
-                return [500, {}, {}];
+                return [200, {}, {}];
             }
         );
 

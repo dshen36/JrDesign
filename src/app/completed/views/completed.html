@@ -5,7 +5,7 @@
 </div>
 <div class="row">
     <div class="col-12">
-        <div class="card card--selectable card--light" ng-repeat="course in courses" ng-click="selectCourse(course)">
+        <div class="card card--fixed card--selectable card--light" ng-repeat="course in courses" ng-click="selectCourse(course)">
             <div class="card__header"
                 ng-class="{ 'card__header--selected': isSelected(course) }">
                 {{ course.name }}

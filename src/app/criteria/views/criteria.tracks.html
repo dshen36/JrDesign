@@ -13,7 +13,7 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <div class="card card--light card--selectable" ng-repeat="track in major.tracks" ng-click="selectTrack(track)">
+                    <div class="card card--fixed card--light card--selectable" ng-repeat="track in major.tracks" ng-click="selectTrack(track)">
                         <div class="card__header"
                             ng-class="{'card__header--selected': isSelected(track)}">
                             {{track.name}} 
