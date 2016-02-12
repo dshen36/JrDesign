@@ -17,7 +17,12 @@
     .card__header {
         @include header-text;
         border-bottom: 0;
-        cursor: default;
+    }
+
+    &:not(.card--selectable) {
+        .card_header {
+            cursor: default;
+        }
     }
 }
 
@@ -38,6 +43,8 @@
 }
 
 .card--selectable {
+    cursor: pointer;
+
     .card__header {
         &.card__header--selected {
             background: $accent;

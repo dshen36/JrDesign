@@ -34,7 +34,7 @@ angular.module('gg.app')
                         return CurrentUser.saveMinors();
                     },
                     isComplete: function() {
-                        return CurrentUser.minors.length > 0;
+                        return true;
                     },
                     incompleteMessage: 'You must select at least one minor'
                 }
