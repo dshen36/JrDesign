@@ -30,6 +30,9 @@
     <!-- login -->
     <script src="/app/login/login.controllers.js"></script>
 
+    <!-- register -->
+    <script src="/app/register/register.controllers.js"></script>
+
     <!-- criteria -->
     <script src="/app/criteria/criteria.config.js"></script>
     <script src="/app/criteria/criteria.controllers.js"></script>

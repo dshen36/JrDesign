@@ -28,6 +28,11 @@ angular.module('gg.app')
                 url: '/login',
                 templateUrl: '/app/login/views/login.html',
                 controller: 'LoginCtrl'
+            })
+            .state('register', {
+                url: '/register',
+                templateUrl: '/app/register/views/register.html',
+                controller: 'RegisterCtrl'
             });
 
         $httpProvider.defaults.useXDomain = true;
