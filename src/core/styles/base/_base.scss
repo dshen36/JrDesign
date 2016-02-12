@@ -14,3 +14,27 @@ h2 {
 h3 {
     font-size: $medium-font-size;
 }
+
+input {
+    position: relative;
+    width: 100%;
+    height: $medium-header-height;
+    padding-left: $gutter;
+    padding-right: $gutter;
+    border: $thin-border-width solid $medium-mono;
+    box-sizing: border-box;
+}
+
+label {
+    @include header-text;
+    font-size: $small-font-size;
+}
+
+a {
+    cursor: pointer;
+    color: $info;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}

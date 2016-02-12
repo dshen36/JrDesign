@@ -1,3 +1,30 @@
-<input ng-model="login.email" />
-<input ng-model="login.password" />
-<button ng-click="login()">Log In</button>
+<div class="row" style="margin-top: 250px;">
+    <div class="col-4"></div>
+    <div class="col-4">
+        <label>email</label>
+        <input ng-model="login.email" />
+    </div>
+    <div class="col-4"></div>
+</div>
+<div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+        <label>password</label>
+        <input ng-model="login.password" />
+    </div>
+    <div class="col-4"></div>
+</div>
+<div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+        <div class="button button--accent button--rounded button--large" ng-click="login()">Log In</div>
+    </div>
+    <div class="col-4"></div>
+</div>
+<div class="row">
+    <div class="col-4"></div>
+    <div class="col-4" style="text-align: center;">
+        <h3>Don't have an account? <a ui-sref="register">Sign up</a> here.</h3>
+    </div>
+    <div class="col-4"></div>
+</div>

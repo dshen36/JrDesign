@@ -33,6 +33,7 @@
     position: relative;
     width: 100%;
     text-align: center;
+    box-sizing: border-box;
 }
 
 .button--accent {
@@ -45,4 +46,8 @@
 
 .button--medium {
     @include button-size($medium-header-height, $thin-border-width, $small-font-size);
+}
+
+.button--large {
+    @include button-size($large-header-height, $thin-border-width, $small-font-size);
 }
