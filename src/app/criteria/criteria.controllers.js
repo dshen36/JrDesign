@@ -85,7 +85,7 @@ angular.module('gg.app')
             }
 
             $scope.withErrorNotification(
-                $scope.currentStep.transitionFrom()
+                $scope.currentStep.transitionFrom(),
                 function() {
                     $state.go('app.completed');
                 }
