@@ -20,21 +20,17 @@
         position: relative;
         width: inherit;
         padding: $gutter;
+        margin-bottom: $gutter;
         box-sizing: border-box;
         border-width: $thin-border-width;
         z-index: 10;
-    }
 
-    &.notifications--danger {
-        .notifications__notification {
+        &.notifications__notification--danger {
             @include notification-color($danger);
         }
-    }
 
-    &.notifications--accent {
-        .notifications__notification {
+        &.notifications__notification--accent {
             @include notification-color($accent);
         }
     }
 }
-

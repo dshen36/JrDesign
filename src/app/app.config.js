@@ -65,16 +65,15 @@ angular.module('gg.app')
             $state.go('login');
         })
 
-        $rootScope.successNotifications = new Notifications();
-        $rootScope.errorNotifications = new Notifications();
+        $rootScope.notifications = Notifications;
 
         $rootScope.$on('notification.success', function(event, message) {
-            $rootScope.successNotifications.notify(message, 2000);
+            Notifications.notifySuccess(message, 3000);
         });
         
         $rootScope.$on('notification.error', function(event, message) {
             message = message || 'There has been an error. Please refresh your page and try again';
-            $rootScope.errorNotifications.notify(message, 2000);
+            Notifications.notifyError(message, 3000);
         });
 
         $rootScope.withErrorNotification = function(promise, callback, message) {

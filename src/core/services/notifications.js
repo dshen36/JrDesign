@@ -1,27 +1,30 @@
 angular.module('gg.services')
-    .factory('Notifications', function($timeout) {
+    .service('Notifications', function($timeout) {
         var dedup = {};
+        var self = this;
 
-        function Notifications() {
-            this.notifications = [];
-        }
+        self.notifications = [];
 
-        Notifications.prototype.notify = function(message, duration) {
-            var self = this;
-
-            if (!dedup[message]) {
-                dedup[message] = true;
-                self.notifications.push(message);
+        function notify(notification, duration) {
+            if (!dedup[notification.message]) {
+                dedup[notification.message] = true;
+                self.notifications.push(notification);
             }
 
             $timeout(
                 function() {
-                    delete dedup[message];
+                    delete dedup[notification.message];
                     self.notifications.shift();
                 },
                 duration
             );
         }
 
-        return Notifications;
+        self.notifySuccess = function(message, duration) {
+            notify({ message: message, type: 'success' }, duration);
+        }
+
+        self.notifyError = function(message, duration) {
+            notify({ message: message, type: 'error' }, duration);
+        }
     });
