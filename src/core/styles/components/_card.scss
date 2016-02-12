@@ -1,13 +1,8 @@
-@mixin card-color($header-bg-color, $header-fg-color, $body-bg-color, $body-fg-color) {
-}
-
 .card {
-    width: 300px;
-    float: left;
     padding-right: $gutter;
     padding-bottom: $gutter;
 
-    .card__header, .card__body {
+    .card__header, .card__body, .card__footer {
         padding: $gutter;
         border-style: solid;
         border-width: $thin-border-width;
@@ -19,11 +14,24 @@
         border-bottom: 0;
     }
 
+    .card__footer {
+        border-top: 0;
+    }
+
     &:not(.card--selectable) {
         .card_header {
             cursor: default;
         }
     }
+}
+
+.card--full {
+    width: 100%;
+}
+
+.card--fixed {
+    width: 300px;
+    float: left;
 }
 
 .card--light {
@@ -39,6 +47,11 @@
     .card__body {
         background: $light-mono;
         color: $dark-mono;
+    }
+
+    .card__footer {
+        background: $medium-light-mono;
+        color: $medium-dark-mono;
     }
 }
 
@@ -65,6 +78,20 @@
             &:not(.card__header--selected) {
                 background: darken($medium-light-mono, 5%);
             }
+        }
+    }
+}
+
+.card--rounded {
+    .card__header, .card__body, .card__footer {
+        &:first-child {
+            @include border-top-left-radius(10px);
+            @include border-top-right-radius(10px);
+        }
+
+        &:last-child {
+            @include border-bottom-left-radius(10px);
+            @include border-bottom-right-radius(10px);
         }
     }
 }

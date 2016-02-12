@@ -1,0 +1,71 @@
+@mixin text-field-size($height, $label-width) {
+    height: $height;
+
+    .text-field__input {
+        padding-left: $gutter + $label-width;
+    }
+
+    .text-field__label {
+        width: $label-width;
+        line-height: $height;
+    }
+}
+
+@mixin text-field-color($label-bg-color, $label-fg-color, $input-bg-color, $input-fg-color) {
+    border-color: $medium-light-mono;
+    border-style: solid;
+    border-width: $thin-border-width;
+
+    .text-field__input {
+        background: $input-bg-color;
+        color: $input-fg-color;
+    }
+
+    .text-field__label {
+        background: $label-bg-color;
+        color: $label-fg-color;
+    }
+}
+
+.text-field {
+    position: relative;
+    width: 100%;
+
+    .text-field__input, .text-field__label {
+        box-sizing: border-box;
+    }
+
+    .text-field__input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding-right: $gutter;
+        z-index: 1;
+    }
+
+    .text-field__label {
+        @include header-text;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        overflow: hidden;
+        text-align: center;
+        z-index: 2;
+    }
+
+    &:not(:last-of-type) {
+        margin-bottom: $gutter;
+    }
+}
+
+.text-field--light {
+    @include text-field-color($medium-light-mono, $medium-dark-mono, $light-mono, $dark-mono);
+}
+
+.text-field--medium {
+    @include text-field-size($medium-header-height, 115px);
+}

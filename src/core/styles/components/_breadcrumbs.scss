@@ -125,10 +125,10 @@
     }
 }
 
-.breadcrumbs--size-medium {
+.breadcrumbs--medium {
     @include breadcrumbs-size($medium-header-height, $thin-border-width, $small-font-size);
 }
 
-.breadcrumbs--color-light {
+.breadcrumbs--light {
     @include breadcrumbs-color($medium-dark-mono, $medium-light-mono, $medium-dark-mono);
 }

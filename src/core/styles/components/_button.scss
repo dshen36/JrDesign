@@ -40,8 +40,16 @@
     @include button-color($accent, $light-mono);
 }
 
+.button--danger {
+    @include button-color($danger, $light-mono);
+}
+
 .button--rounded {
     @include border-radius(10px);
+}
+
+.button--circle {
+    @include border-radius(50%);
 }
 
 .button--medium {
