@@ -1,0 +1,40 @@
+@mixin notification-color($base-color) {
+    @include opacity(0.7);
+
+    background: $base-color;
+    color: $light-mono;
+    border-style: solid;
+    border-color: darken($base-color, 15%);
+}
+
+.notifications {
+    position: absolute;
+    top: $gutter;
+    bottom: 0;
+    right: $gutter;
+    width: 300px;
+
+    .notifications__notification {
+        @include border-radius(10px);
+
+        position: relative;
+        width: inherit;
+        padding: $gutter;
+        box-sizing: border-box;
+        border-width: $thin-border-width;
+        z-index: 10;
+    }
+
+    &.notifications--danger {
+        .notifications__notification {
+            @include notification-color($danger);
+        }
+    }
+
+    &.notifications--accent {
+        .notifications__notification {
+            @include notification-color($accent);
+        }
+    }
+}
+

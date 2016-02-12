@@ -55,7 +55,7 @@ angular.module('gg.app')
             };
         }]);
     })
-    .run(function($rootScope, $log, $state) {
+    .run(function($rootScope, $log, $state, Notifications) {
         $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
             $log.warn('There has been an error changing states', error);
             $state.go('app.error', { error: error.stack });
@@ -64,4 +64,19 @@ angular.module('gg.app')
         $rootScope.$on('auth.loginRequired', function() {
             $state.go('login');
         })
+
+        $rootScope.successNotifications = new Notifications();
+        $rootScope.errorNotifications = new Notifications();
+
+        $rootScope.$on('notification.success', function(event, message) {
+            $rootScope.successNotifications.notify(message, 2000);
+        });
+        
+        $rootScope.$on('notification.error', function(event, message) {
+            if (!message) {
+                $rootScope.errorNotifications.notify('There has been an error. Please refresh your page and try again', 2000);
+            } else {
+                $rootScope.errorNotifications.notify(message, 2000);
+            }
+        });
     });

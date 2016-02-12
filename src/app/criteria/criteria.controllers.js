@@ -55,7 +55,7 @@ angular.module('gg.app')
 
         $scope.goToStep = function(step) {
             if (!$scope.stepIsAvailable(step)) {
-                broadcastIncomplete();
+                notifyIncomplete();
                 return;
             }
 
@@ -71,7 +71,7 @@ angular.module('gg.app')
             var next = $scope.wizardConfig.steps[$scope.currentStep.order + 1];
 
             if (!$scope.stepIsAvailable(next)) {
-                broadcastIncomplete();
+                notifyIncomplete();
                 return;
             }
 
@@ -95,7 +95,7 @@ angular.module('gg.app')
 
         $scope.finish = function() {
             if (!$scope.allStepsComplete()) {
-                broadcastIncomplete();
+                notifyIncomplete();
                 return;
             }
 
@@ -106,12 +106,12 @@ angular.module('gg.app')
             );
         }
 
-        function broadcastIncomplete() {
+        function notifyIncomplete() {
             for (var i = 0; i < $scope.wizardConfig.steps.length; i ++) {
                 var step = $scope.wizardConfig.steps[i];
 
                 if (!step.isComplete() && $scope.stepIsAvailable(step)) {
-                    $scope.$broadcast('notification.error', step.incompleteMessage);
+                    $scope.$emit('notification.error', step.incompleteMessage);
                 }
             }
         }

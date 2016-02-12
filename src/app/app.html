@@ -1,3 +1,15 @@
+<div class="notifications notifications--danger">
+    <div class="notifications__notification"
+        ng-repeat="message in errorNotifications.notifications">
+        {{message}}
+    </div>
+</div>
+<div class="notifications notifications--accent">
+    <div class="notifications__notification"
+        ng-repeat="message in successNotifications.notifications">
+        {{message}}
+    </div>
+</div>
 <div class="layout-header skin-header">
 </div>
 <div class="layout-main skin-background">

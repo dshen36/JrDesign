@@ -3,8 +3,17 @@ angular.module('gg.app')
         $scope.auth = new Auth({});
 
         $scope.login = function() {
-            $scope.auth.login().then(
-                function() { $state.go('app.criteria.majors'); }
-            );
+            $scope.auth.login()
+                .success(
+                    function() {
+                        $scope.$emit('notification.success', 'Login success');
+                        $state.go('app.criteria.majors');
+                    }
+                )
+                .error(
+                    function() {
+                        $scope.$emit('notification.error', 'The email and password do not match');
+                    }
+                );
         }
     });
