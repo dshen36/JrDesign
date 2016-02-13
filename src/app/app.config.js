@@ -46,7 +46,7 @@ angular.module('gg.app')
                 responseError: function(response) {
                     switch(response.status) {
                         case 401:
-                            $rootScope.$emit('notification.error', 'Your login session has expired.');
+                            $rootScope.$emit('auth.loginRequired');
                             break;
                     }
 
@@ -56,6 +56,8 @@ angular.module('gg.app')
         }]);
     })
     .run(function($rootScope, $log, $state, Notifications) {
+        $rootScope.notifications = Notifications;
+
         $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
             $log.warn('There has been an error changing states', error);
             $state.go('app.error', { error: error.stack });
@@ -64,8 +66,6 @@ angular.module('gg.app')
         $rootScope.$on('auth.loginRequired', function() {
             $state.go('login');
         })
-
-        $rootScope.notifications = Notifications;
 
         $rootScope.$on('notification.success', function(event, message) {
             Notifications.notifySuccess(message, 3000);
