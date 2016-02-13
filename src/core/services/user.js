@@ -83,7 +83,7 @@ angular.module('gg.services')
         }
 
         User.prototype.saveMinors = function() {
-            return $http.post(Environment.path + '/users/me/majors', this.minors);
+            return $http.post(Environment.path + '/users/me/minors', this.minors);
         }
 
         return User;
