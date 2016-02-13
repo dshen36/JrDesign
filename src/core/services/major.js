@@ -1,6 +1,8 @@
 angular.module('gg.services')
     .factory('Major', function($http, Environment, Track) {
         function Major(data) {
+            data.tracks = data.tracks || [];
+
             this.id = data.id;
             this.name = data.name;
             this.description = data.description;

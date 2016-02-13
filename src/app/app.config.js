@@ -46,7 +46,7 @@ angular.module('gg.app')
                 responseError: function(response) {
                     switch(response.status) {
                         case 401:
-                            $rootScope.$broadcast('auth.loginRequired');
+                            $rootScope.$emit('notification.error', 'Your login session has expired.');
                             break;
                     }
 
