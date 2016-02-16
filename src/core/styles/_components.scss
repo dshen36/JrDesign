@@ -25,7 +25,7 @@
                 border-right: 0;
                 border-top-width: ($header-height / 2);
                 border-bottom-width: ($header-height / 2);
-                border-left-width: ($header-height / 2);
+                border-left-width: ($header-height / 3);
                 border-top-color: transparent;
                 border-bottom-color: transparent;
                 border-left-color: $medium-light-mono;
@@ -46,7 +46,7 @@
                 border-right: 0;
                 border-top-width: ($header-height / 2);
                 border-bottom-width: ($header-height / 2);
-                border-left-width: ($header-height / 2);
+                border-left-width: ($header-height / 3);
                 border-top-color: transparent;
                 border-bottom-color: transparent;
                 border-left-color: $dark-mono;
@@ -96,7 +96,6 @@
         color: $dark-mono;
         background: $light-mono;
         padding: $gutter;
-        @include clickable($light-mono, $dark-mono);
 
         .selection-indicator {
             width: $small-font-size;
@@ -120,6 +119,10 @@
             width: $medium-font-size;
             height: $medium-font-size;
         }
+
+        & > div {
+            float: right;
+        }
     }
 
     & > div {
@@ -129,20 +132,67 @@
 
 .selection-indicator {
     background: $light-mono;
-    float: right;
     margin-left: $gutter;
-    @include thin-border($dark-mono);
+    @include thick-border($dark-mono);
     @include border-radius(50%);
+}
+
+.has-tooltip {
+    position: relative;
+
+    .tooltip {
+        visibility: hidden;
+        background: $dark-mono;
+        color: $light-mono;
+        font-size: $small-font-size;
+        width: 200px;
+        padding: $gutter;
+        margin-top: $gutter / 2;
+        position: absolute;
+        top: 100%;
+        left: -200px;
+        z-index: 5;
+        @include opacity(0.9);
+        @include border-radius(10px);
+
+        &:before {
+            content: ' ';
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-left-width: $gutter / 2;
+            border-left-color: transparent;
+            border-right-width: $gutter / 2;
+            border-right-color: transparent;
+            border-top: 0;
+            border-bottom-width: $gutter / 2;
+            border-bottom-color: $dark-mono;
+            position: absolute;
+            right: $gutter;
+            top: -($gutter / 2) + 2px;
+            @include opacity(0.9);
+        }
+    }
+
+    &:hover {
+        .tooltip {
+            visibility: visible;
+        }
+    }
 }
 
 .accent {
     background: $accent;
 }
 
+.accent-pastel {
+    color: $accent-pastel;
+}
+
 .danger {
     background: $danger;
 }
 
-.dark {
-    background: $dark-mono;
+.warning {
+    background: $warning;
 }

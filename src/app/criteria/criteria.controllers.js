@@ -1,105 +1,151 @@
 angular.module('gg.app')
-    .controller('CriteriaCtrl', function($scope, Majors, SelectedMajor, SelectedTracks, Minors, SelectedMinor) {
-        $scope.majors = Majors;
-        $scope.minors = Minors;
-        $scope.selectedMajor = SelectedMajor;
-        $scope.selectedMinor = SelectedMinor;
-
+    .controller('CriteriaCtrl', function($scope, $state, CurrentUser) {
         $scope.wizardConfig = {
-            steps: {
-                major: {
-                    previous: null,
-                    name: 'Major',
-                    state: 'app.criteria.major',
-                    completed: function() {
-                        return !!$scope.selectedMajor;
-                    }
+            steps: [
+                {
+                    order: 0,
+                    name: 'Majors',
+                    state: 'app.criteria.majors',
+                    transitionFrom: function() {
+                        return CurrentUser.saveMajors();
+                    },
+                    isComplete: function() {
+                        return CurrentUser.majors.length > 0;
+                    },
+                    incompleteMessage: 'You must select at least one major'
                 },
-                tracks: {
-                    previous: 'major',
+                {
+                    order: 1,
                     name: 'Tracks',
                     state: 'app.criteria.tracks',
-                    completed: function() {
-                        return _.keys(SelectedTracks).length != 0;
-                    }
+                    transitionFrom: function() {
+                        return CurrentUser.saveTracks();
+                    },
+                    isComplete: function() {
+                        return CurrentUser.tracks.length > 0;
+                    },
+                    incompleteMessage: 'You must select at least one track'
                 },
-                minor: {
-                    previous: 'tracks',
-                    name: 'Minor',
-                    state: 'app.criteria.minor',
-                    completed: function() {
+                {
+                    order: 2,
+                    name: 'Minors',
+                    state: 'app.criteria.minors',
+                    transitionFrom: function() {
+                        return CurrentUser.saveMinors();
+                    },
+                    isComplete: function() {
                         return true;
-                    }
+                    },
+                    incompleteMessage: 'You must select at least one minor'
                 }
-            }
+            ]
         };
 
-        $scope.wizardConfig.numSteps = _.keys($scope.wizardConfig.steps).length;
+        $scope.currentStep = $scope.wizardConfig.steps[0];
 
-        $scope.wizardCompleted = function() {
-            var steps = _.keys($scope.wizardConfig.steps);
-
-            for (var i = 0; i < steps.length; i ++) {
-                if (!$scope.wizardConfig.steps[steps[i]].completed()) {
+        $scope.stepIsAvailable = function(step) {
+            for (var i = 0; i < step.order; i ++) {
+                if (!$scope.wizardConfig.steps[i].isComplete()) {
                     return false;
                 }
             }
 
             return true;
         }
-        
-        $scope.setSelectedMajor = function(major) {
-            $scope.selectedMajor = major;
+
+        $scope.goToStep = function(step) {
+            if (!$scope.stepIsAvailable(step)) {
+                notifyIncomplete();
+                return;
+            }
+
+            $scope.withErrorNotification(
+                $scope.currentStep.transitionFrom(),
+                function() {
+                    $scope.currentStep = step;
+                    $state.go(step.state);
+                }
+            );
         }
 
-        $scope.setSelectedMinor = function(minor) {
-            $scope.selectedMinor = minor;
+        $scope.allStepsComplete = function() {
+            for (var i = 0; i < $scope.wizardConfig.steps.length; i ++) {
+                if (!$scope.wizardConfig.steps[i].isComplete()) {
+                    return false;
+                }
+            }
+
+            return true;
         }
+
+        $scope.finish = function() {
+            if (!$scope.allStepsComplete()) {
+                notifyIncomplete();
+                return;
+            }
+
+            $scope.withErrorNotification(
+                $scope.currentStep.transitionFrom(),
+                function() {
+                    $state.go('app.completed');
+                }
+            );
+        }
+
+        function notifyIncomplete() {
+            for (var i = 0; i < $scope.wizardConfig.steps.length; i ++) {
+                var step = $scope.wizardConfig.steps[i];
+
+                if (!step.isComplete() && $scope.stepIsAvailable(step)) {
+                    $scope.$emit('notification.error', step.incompleteMessage);
+                }
+            }
+        }
+
+        $state.go($scope.currentStep.state);
     })
-    .controller('CriteriaMajorCtrl', function($scope, $state, Majors) {
-        $scope.majorColumns = 3;
-        $scope.majorSections = $scope.getSections($scope.majors, $scope.majorColumns);
+    .controller('CriteriaMajorsCtrl', function($scope, $state, CurrentUser, Majors) {
+        $scope.majors = Majors;
 
         $scope.selectMajor = function(major) {
-            if ($scope.selectedMajor && $scope.selectedMajor.id == major.id) {
-                $scope.setSelectedMajor(null);
+            if (CurrentUser.findMajorById(major.id)) {
+                CurrentUser.removeMajorById(major.id);
             } else {
-                $scope.setSelectedMajor(major);
+                CurrentUser.addMajor(major);
             }
         }
-    })
-    .controller('CriteriaTracksCtrl', function($scope, $state, SelectedTracks) {
-        if (!$scope.wizardConfig.steps.major.completed()) {
-            $state.go('app.criteria.major');
-            return;
-        }
 
-        $scope.trackColumns = 3;
-        $scope.trackSections = $scope.getSections($scope.selectedMajor.tracks, $scope.trackColumns);
-        $scope.selectedTracks = SelectedTracks;
+        $scope.isSelected = function(major) {
+            return !!CurrentUser.findMajorById(major.id);
+        }
+    })
+    .controller('CriteriaTracksCtrl', function($scope, $state, CurrentUser) {
+        $scope.majors = CurrentUser.majors;
 
         $scope.selectTrack = function(track) {
-            if (SelectedTracks[track.id]) {
-                delete SelectedTracks[track.id];
+            if (CurrentUser.findTrackById(track.id)) {
+                CurrentUser.removeTrackById(track.id);
             } else {
-                SelectedTracks[track.id] = track;
+                CurrentUser.addTrack(track);
             }
+        }
+
+        $scope.isSelected = function(track) {
+            return !!CurrentUser.findTrackById(track.id);
         }
     })
-    .controller('CriteriaMinorCtrl', function($scope, $state, Minors) {
-        if (!$scope.wizardConfig.steps.tracks.completed()) {
-            $state.go('app.criteria.tracks');
-            return;
-        }
-
-        $scope.minorColumns = 3;
-        $scope.minorSections = $scope.getSections($scope.minors, $scope.minorColumns);
+    .controller('CriteriaMinorsCtrl', function($scope, $state, CurrentUser, Minors) {
+        $scope.minors = Minors;
 
         $scope.selectMinor = function(minor) {
-            if ($scope.selectedMinor && $scope.selectedMinor.id == minor.id) {
-                $scope.setSelectedMinor(null);
+            if (CurrentUser.findMinorById(minor.id)) { 
+                CurrentUser.removeMinorById(minor.id);
             } else {
-                $scope.setSelectedMinor(minor);
+                CurrentUser.addMinor(minor);
             }
+        }
+
+        $scope.isSelected = function(minor) {
+            return !!CurrentUser.findMinorById(minor.id);
         }
     });

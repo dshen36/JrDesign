@@ -27,6 +27,12 @@
     <script src="/app/error/error.config.js"></script>
     <script src="/app/error/error.controllers.js"></script>
 
+    <!-- login -->
+    <script src="/app/login/login.controllers.js"></script>
+
+    <!-- register -->
+    <script src="/app/register/register.controllers.js"></script>
+
     <!-- criteria -->
     <script src="/app/criteria/criteria.config.js"></script>
     <script src="/app/criteria/criteria.controllers.js"></script>
@@ -35,24 +41,16 @@
     <script src="/app/completed/completed.config.js"></script>
     <script src="/app/completed/completed.controllers.js"></script>
 
-    <!-- selection  -->
-    <script src="/app/selection/selection.config.js"></script>
-    <script src="/app/selection/selection.controllers.js"></script>
-
     <!-- core services -->
     <script src="/core/services/services.js"></script>
+    <script src="/core/services/notifications.js"></script>
     <script src="/core/services/user.js"></script>
+    <script src="/core/services/auth.js"></script>
+    <script src="/core/services/register.js"></script>
     <script src="/core/services/major.js"></script>
     <script src="/core/services/minor.js"></script>
     <script src="/core/services/track.js"></script>
     <script src="/core/services/course.js"></script>
-    <script src="/core/services/prereq.js"></script>
-    <script src="/core/services/section.js"></script>
-    <script src="/core/services/class-time.js"></script>
-    <script src="/core/services/professor.js"></script>
-
-    <!-- core filters -->
-    <script src="/core/filters/filters.js"></script>
 
     <!-- @if ENV == 'mock' -->
     <script src="/vendor/angular-mocks/angular-mocks.js"></script>

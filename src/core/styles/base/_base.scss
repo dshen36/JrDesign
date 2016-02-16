@@ -1,0 +1,39 @@
+html {
+    font-family: Helvetica;
+    color: $dark-mono;
+}
+
+h1 {
+    font-size: $large-font-size;
+}
+
+h2 {
+    font-size: $medium-large-font-size;
+}
+
+h3 {
+    font-size: $medium-font-size;
+}
+
+label {
+    @include header-text;
+    font-size: $small-font-size;
+}
+
+input {
+    border: 0;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+a {
+    cursor: pointer;
+    color: $info;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}

@@ -1,0 +1,30 @@
+.layout-header {
+    @include skin-header;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: $large-header-height;
+    padding: $gutter
+}
+
+.layout-main {
+    @include skin-background;
+
+    position: absolute;
+    top: $large-header-height;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.layout-main__content-box {
+    @include skin-content;
+
+    position: absolute;
+    top: $gutter;
+    bottom: $gutter;
+    left: $gutter;
+    right: $gutter;
+}

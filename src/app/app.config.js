@@ -1,5 +1,5 @@
 angular.module('gg.app')
-    .config(function($locationProvider, $stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider) {
+    .config(function($locationProvider, $httpProvider, $stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider) {
         $locationProvider.html5Mode({
             enabled: true,
             requireBase: false
@@ -19,38 +19,68 @@ angular.module('gg.app')
                 templateUrl: '/app/app.html',
                 abstract: true,
                 resolve: {
-                    'Me': function(User) {
-                        return User.getMe();
-                    },
-                    'Courses': function(Me, Course) {
-                        return Course.getAll(Me);
+                    'CurrentUser': function(User) {
+                        return User.getCurrent();
                     }
                 }
+            })
+            .state('login', {
+                url: '/login',
+                templateUrl: '/app/login/views/login.html',
+                controller: 'LoginCtrl'
+            })
+            .state('register', {
+                url: '/register',
+                templateUrl: '/app/register/views/register.html',
+                controller: 'RegisterCtrl'
             });
+
+        $httpProvider.defaults.useXDomain = true;
+        $httpProvider.defaults.withCredentials = true;
+
+        $httpProvider.interceptors.unshift(['$q', '$rootScope', function($q, $rootScope) {
+            return {
+                request: function(response) {
+                    return response;
+                },
+                responseError: function(response) {
+                    switch(response.status) {
+                        case 401:
+                            $rootScope.$emit('auth.loginRequired');
+                            break;
+                    }
+
+                    return $q.reject(response);
+                }
+            };
+        }]);
     })
-    .run(function($rootScope, $log, $state) {
+    .run(function($rootScope, $log, $state, Notifications) {
+        $rootScope.notifications = Notifications;
+
         $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
             $log.warn('There has been an error changing states', error);
             $state.go('app.error', { error: error.stack });
         });
 
-        $rootScope.getSections = function(items, size) {
-            var sections = [];
-            var section;
+        $rootScope.$on('auth.loginRequired', function() {
+            $state.go('login');
+        })
 
-            for (var i = 0; i < items.length; i ++) {
-                if (i % size == 0) {
-                    section = [];
-                    sections.push(section);
+        $rootScope.$on('notification.success', function(event, message) {
+            Notifications.notifySuccess(message, 3000);
+        });
+        
+        $rootScope.$on('notification.error', function(event, message) {
+            message = message || 'There has been an error. Please refresh your page and try again';
+            Notifications.notifyError(message, 3000);
+        });
+
+        $rootScope.withErrorNotification = function(promise, callback, message) {
+            promise.success(callback).error(
+                function() {
+                    $rootScope.$emit('notification.error', message);
                 }
-
-                section.push(items[i]);
-            }
-
-            return sections;
-        }
-
-        $rootScope.goToState = function(state) {
-            $state.go(state);
+            );
         }
     });

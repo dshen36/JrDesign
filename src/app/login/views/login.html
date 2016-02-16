@@ -1,0 +1,34 @@
+<div class="notifications notifications--accent">
+    <div class="notifications__notification"
+        ng-repeat="notification in notifications.notifications"
+        ng-class="{ 'notifications__notification--accent': notification.type == 'success',
+                    'notifications__notification--danger': notification.type == 'error' }">
+        {{notification.message}}
+    </div>
+</div>
+<div class="row" style="margin-top: 250px;">
+    <div class="col-4"></div>
+    <div class="col-4">
+        <div class="card card--full card--light card--rounded">
+            <div class="card__header">Log In</div>
+            <div class="card__body">
+                <div class="text-field text-field--light text-field--medium">
+                    <div class="text-field__label">Email</div>
+                    <input class="text-field__input" ng-model="auth.email" />
+                </div>
+                <div class="text-field text-field--light text-field--medium">
+                    <div class="text-field__label">Password</div>
+                    <input type="password" class="text-field__input" ng-model="auth.password" />
+                </div>
+                <div class="button button--accent button--large button--rounded"
+                    ng-click="login()">
+                    Log In
+                </div>
+            </div>
+            <div class="card__footer">
+                Don't have an account? <a ui-sref="register">Sign up</a> here.
+            </div>
+        </div>
+    </div>
+    <div class="col-4"></div>
+</div>

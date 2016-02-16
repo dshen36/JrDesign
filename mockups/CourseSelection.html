@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Enroute</title>
+	<link type="text/css" rel="stylesheet" href="style.css" media="screen">
+    <link type="text/css" rel="stylesheet" href="searchbar.css" media="screen">
+    <link type="text/css" rel="stylesheet" href="css/example.css" media="screen">
+    <script src="js/jQuery.js"></script> 
+    <link rel="stylesheet"  href="css/bootstrap.min.css">
+    <!-- http://www.cc.gatech.edu/sites/default/files/images/prereqinfointernetworks2015.pdf -->
+	<!-- <link rel="stylesheet"  href="css/bootstrap.min.css"> -->
+    <!-- http://codepen.io/soberdash/pen/EaxGeL -->
+</head>
+<body>
+    <div class="container" id="search" >
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Course Search</h1>
+                <div id="custom-search-input" >
+                    <div class="input-group" id="the-basics">
+                        <!-- <input type="text" class="form-control input-lg" placeholder="Search a class" /> -->
+                        <input class="typeahead form-control input-lg" id="typing" type="text" placeholder="Enter a class!">
+                        <span class="input-group-btn">
+                            <button class="btn btn-info btn-lg" type="button" onclick="addRow()">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="container"> -->
+    <div class="sandbox">  
+
+        <div class="row vdivide">
+            <div id="graph" class="col-md-8">
+                <img class="center resize" id="networkPath" src="networkPathTaken.png"/>
+            </div> 
+            <div id="results" class="col-md-4">
+                <h2 id="classList">Desired Classes</h2>
+            </div> 
+        </div>
+    </div>
+
+    <script src="js/bootstrapJS/bootstrap.min.js"></script>
+    <script src="js/typeahead.bundle.js"></script>	
+    <script src="js/autofill.js"></script>
+</body>
+</html>

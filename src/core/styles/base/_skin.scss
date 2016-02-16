@@ -1,0 +1,12 @@
+@mixin skin-header {
+    background: $dark-mono;
+    color: $medium-light-mono;
+}
+
+@mixin skin-background {
+    background: $medium-dark-mono;
+}
+
+@mixin skin-content {
+    background: $light-mono;
+}

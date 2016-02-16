@@ -1,22 +1,21 @@
-<div class="paper-box">
-    <div class="row">
-        <div class="col-11 circle-button-sibling">
-            <div class="row wizard-nav">
-                <button ng-repeat="step in wizardConfig.steps"
-                    ng-disabled="step.previous == null ? false : !wizardConfig.steps[step.previous].completed()"
-                    class="col-{{12 / wizardConfig.numSteps}}"
-                    ui-sref="{{step.state}}">
-                    {{step.name}}
-                </button>
+<div class="row">
+    <div class="col-11">
+        <div class="breadcrumbs breadcrumbs--medium breadcrumbs--light">
+            <div class="breadcrumbs__breadcrumb"
+                ng-repeat="step in wizardConfig.steps"
+                ng-disabled="!stepIsAvailable(step)"
+                ng-click="goToStep(step)"
+                ng-class="{'breadcrumbs__breadcrumb--active': step == currentStep }">
+                {{step.name}}
             </div>
         </div>
-        <div class="col-1">
-            <button class="circle-button" ng-disabled="!wizardCompleted()" ui-sref="app.completed">></button>
-        </div>
     </div>
-    <div class="paper-body">
-        <div class="scroll-container">
-            <div class="scrollable" ui-view></div>
+    <div class="col-1">
+        <div class="button button--rounded button--medium button--accent"
+            ng-click="finish()"
+            ng-disabled="!allStepsComplete()">
+            &#10003
         </div>
     </div>
 </div>
+<div ui-view></div>

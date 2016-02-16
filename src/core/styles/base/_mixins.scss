@@ -1,0 +1,15 @@
+@mixin clearfix {
+    &:before, &:after {
+        content: " ";
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+    }
+}
+
+@mixin header-text {
+    text-transform: uppercase;
+    font-weight: bold;
+}
