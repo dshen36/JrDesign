@@ -35,17 +35,19 @@
 }
 
 .card--light {
-    .card__header, .card__body {
-        border-color: $medium-dark-mono;
+    .card__header, .card__body, .card__footer{
+        border-color: $dark-mono;
     }
 
     .card__header {
+        font-weight: bold;
+        font-size: 3vh;
         background: $medium-light-mono;
-        color: $medium-dark-mono;
+        color: $dark-mono;
     }
 
     .card__body {
-        background: $light-mono;
+        background: $medium-light-trans;
         color: $dark-mono;
     }
 

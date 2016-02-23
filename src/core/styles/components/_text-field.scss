@@ -17,7 +17,7 @@
     border-width: $thin-border-width;
 
     .text-field__input {
-        background: $input-bg-color;
+        background: $medium-light-trans;
         color: $input-fg-color;
     }
 
@@ -47,7 +47,6 @@
 
     .text-field__label {
         @include header-text;
-
         position: absolute;
         top: 0;
         left: 0;
@@ -63,7 +62,7 @@
 }
 
 .text-field--light {
-    @include text-field-color($medium-light-mono, $medium-dark-mono, $light-mono, $dark-mono);
+    @include text-field-color($medium-light-mono, $dark-mono, $light-mono, $dark-mono);
 }
 
 .text-field--medium {
