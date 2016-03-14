@@ -1,5 +1,5 @@
 angular.module('gg.app')
-    .controller('CompletedCtrl', function($scope, Courses) {
+    .controller('CompletedCtrl', function($scope,$state, Courses) {
         $scope.courses = Courses;
         $scope.selectedCourses = [];
 
@@ -18,5 +18,19 @@ angular.module('gg.app')
 
         $scope.isSelected = function(course) {
             return !!_.findWhere($scope.selectedCourses, { id: course.id });
+        }
+        $scope.finish = function() {
+             // if (!$scope.allStepsComplete()) {
+             //     notifyIncomplete();
+             //     return;
+             // }
+             $state.go('app.viewclassoptions');
+
+            // $scope.withErrorNotification(
+            //     // $scope.currentStep.transitionFrom(),
+            //     function() {
+            //         $state.go('app.viewclassoptions');
+            //     }
+            // );
         }
     });
