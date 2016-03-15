@@ -41,6 +41,9 @@
     <script src="/app/completed/completed.config.js"></script>
     <script src="/app/completed/completed.controllers.js"></script>
 
+    <script src="/app/viewclassoptions/viewclassoptions.config.js"></script>
+    <script src="/app/viewclassoptions/viewclassoptions.controllers.js"></script>
+
     <!-- core services -->
     <script src="/core/services/services.js"></script>
     <script src="/core/services/notifications.js"></script>

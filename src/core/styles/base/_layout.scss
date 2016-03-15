@@ -13,7 +13,7 @@
     @include skin-background;
     position: absolute;
     top: $large-header-height;
-    bottom: 0;
+    height:100%;
     left: 0;
     right: 0;
 }
@@ -22,7 +22,7 @@
     @include skin-content;
     position: absolute;
     top: $gutter;
-    bottom: $gutter;
+    height: 100%;
     left: $gutter;
     right: $gutter;
 }
