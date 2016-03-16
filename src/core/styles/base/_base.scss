@@ -1,12 +1,12 @@
 html {
-    background: url('/core/styles/imgs/greybg.jpg');
+    background: url('/assets/img/greybg.jpg');
     font-family: Helvetica;
     color: $dark-mono;
 }
-$body-bg:transparent;
 
 h1 {
     font-size: $large-font-size;
+    line-height: $medium-header-height;
 }
 
 h2 {

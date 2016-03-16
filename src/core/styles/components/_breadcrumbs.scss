@@ -5,15 +5,9 @@
         border-top-width: $border-width;
         border-bottom-width: $border-width;
 
-        &:before {
-            border-top-width: $height / 2;
-            border-bottom-width: $height / 2;
-            border-left-width: $height / 4;
-        }
-
-        &:after {
-            border-top-width: $height / 2;
-            border-bottom-width: $height / 2;
+        &:before, &:after {
+            border-top-width: ($height / 2) - $border-width;
+            border-bottom-width: ($height / 2) - $border-width;
             border-left-width: $height / 4;
         }
 
@@ -93,6 +87,7 @@
         display: table-cell;
         vertical-align: middle;
         cursor: pointer;
+        box-sizing: border-box;
 
         &:after, &:before {
             content: '';

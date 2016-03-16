@@ -6,8 +6,25 @@
     .col-#{$i} {
         width: ($full / 12) * $i;
         float: left;
-        padding: $gutter;
+        padding-top: $gutter;
+        padding-bottom: $gutter;
         box-sizing: border-box;
+
+        &:not(:first-child) {
+            padding-left: $gutter / 2;
+        }
+
+        &:not(:last-child) {
+            padding-right: $gutter / 2;
+        }
+
+        &:first-child {
+            padding-left: $gutter;
+        }
+
+        &:last-child {
+            padding-right: $gutter;
+        }
     }
 }
 

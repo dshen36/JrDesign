@@ -6,14 +6,19 @@
     left: 0;
     right: 0;
     height: $large-header-height;
-    padding: $gutter
+
+    .logo {
+        position: absolute;
+        top: $gutter * 3 / 4;
+        left: $gutter;
+    }
 }
 
 .layout-main {
     @include skin-background;
     position: absolute;
     top: $large-header-height;
-    height:100%;
+    bottom: 0;
     left: 0;
     right: 0;
 }
@@ -22,7 +27,7 @@
     @include skin-content;
     position: absolute;
     top: $gutter;
-    height: 100%;
+    bottom: $gutter;
     left: $gutter;
     right: $gutter;
 }

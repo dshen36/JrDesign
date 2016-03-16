@@ -19,6 +19,7 @@ angular.module('gg.app')
         $scope.isSelected = function(course) {
             return !!_.findWhere($scope.selectedCourses, { id: course.id });
         }
+
         $scope.finish = function() {
              // if (!$scope.allStepsComplete()) {
              //     notifyIncomplete();
