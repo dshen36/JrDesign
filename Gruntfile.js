@@ -63,7 +63,7 @@ module.exports = function(grunt) {
                         src: [
                             'index.html',
                             'app/**/*.html',
-                            'vendor/**/*.{html,otf,eot,svg,tff,woff,woff2}',
+                            'vendor/**/*.{css,html,otf,eot,svg,tff,woff,woff2}',
                             'assets/**/*'
                         ]
                     },
