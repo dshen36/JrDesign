@@ -5,6 +5,7 @@ angular.module('gg.services')
             this.name = data.name;
             this.description = data.description;
             this.isCompleted = data.isCompleted;
+            this.sections = [];
         }
 
         Course.getAll = function(user) {
@@ -18,6 +19,10 @@ angular.module('gg.services')
 
                     return courses;
                 });
+        }
+
+        Course.prototype.addSection = function(section) {
+            this.sections.push(section);
         }
 
         return Course;

@@ -56,6 +56,7 @@
     <script src="/core/services/minor.js"></script>
     <script src="/core/services/track.js"></script>
     <script src="/core/services/course.js"></script>
+    <script src="/core/services/section.js"></script>
 
     <!-- @if ENV == 'mock' -->
     <script src="/vendor/angular-mocks/angular-mocks.js"></script>

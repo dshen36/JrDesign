@@ -1,80 +1,149 @@
 angular.module('gg.mock', ['gg.app', 'ngMockE2E'])
     .run(function($httpBackend) {
-        var currentId = 0;
-        var currentUser = {};
-        var majors = [];
-        var minors = [];
-        var courses = [];
+        var userMajors = localStorage.getItem('user.majors');
+        var userTracks = localStorage.getItem('user.tracks');
+        var userMinors = localStorage.getItem('user.minors');
 
-        function generateId() {
-            return currentId++
-        }
+        var user = {
+            id: 100,
+            majors: userMajors ? angular.fromJson(userMajors) : [],
+            tracks: userTracks ? angular.fromJson(userTracks) : [],
+            minors: userMinors ? angular.fromJson(userMinors) : []
+        };
 
-        function generateCurrentUser() {
-            return {
-                id: generateId,
-                majors: [],
-                minors: [],
-                tracks: [],
-            };
-        }
-
-        function generateMajors(numMajors, numTracks) {
-            var majors = [];
-
-            for (var i = 0; i < numMajors; i ++) {
-                majors.push({
-                    id: generateId(),
-                    name: 'Major ' + i,
-                    description: 'This is major ' + i,
-                    tracks: generateTracks(numTracks)
-                });
+        var majors = [
+            {
+                'id': 100,
+                'name': 'Computer Science',
+                'description': 'Computational theory, software design, and analysis of algorithms.',
+                'tracks': []
+            },
+            {
+                'id': 101,
+                'name': 'Electrical Engineering',
+                'description': 'Analog electronics, digital signal processing, and telecommunications.',
+                'tracks': []
             }
+        ];
 
-            return majors;
-        }
-
-        function generateTracks(numTracks) {
-            var tracks = [];
-
-            for (var i = 0; i < numTracks; i ++) {
-                tracks.push({
-                    id: generateId(),
-                    name: 'Track ' + i,
-                    description: 'This is track ' + i
-                });
+        var tracks = [
+            {
+                'id': 100,
+                'majorId': 100,
+                'name': 'Information Internetworks',
+                'description': 'Computer networking, internet technologies, data storage, and security.'
+            },
+            {
+                'id': 101,
+                'majorId': 100,
+                'name': 'Systems & Architecture',
+                'description': 'Operating systems, instruction set architectures, and processors.'
             }
+        ];
 
-            return tracks;
-        }
-
-        function generateMinors(numMinors) {
-            var minors = [];
-
-            for (var i = 0; i < numMinors; i ++) {
-                minors.push({
-                    id: generateId(),
-                    name: 'Minor ' + i,
-                    description: 'This is minor ' + i
-                });
+        var minors = [
+            {
+                'id': 100,
+                'name': 'Biology',
+                'description': 'Evolution, anatomy, ecosystems, and organic chemistry.'
+            },
+            {
+                'id': 101,
+                'name': 'Music',
+                'description': 'Music theory, instruments, and digital production.'
             }
+        ];
 
-            return minors;
-        }
-
-        function generateCourses(numCourses) {
-            var courses = [];
-
-            for (var i = 0; i < numCourses; i ++) {
-                courses.push({
-                    id: generateId(),
-                    name: 'Course ' + i,
-                    description: 'This is course ' + i,
-                    isCompleted: false
-                });
+        var courses = [
+            {
+                'id': 100,
+                'name': 'CS 1331',
+                'description': 'Object oriented programming'
+            },
+            {
+                'id': 101,
+                'name': 'CS 1332',
+                'description': 'Data structures and algorithms'
+            },
+            {
+                'id': 102,
+                'name': 'CS 3251',
+                'description': 'Networking I'
+            },
+            {
+                'id': 103,
+                'name': 'MATH 3012',
+                'description': 'Combinatorics'
+            },
+            {
+                'id': 104,
+                'name': 'CS 3510',
+                'description': 'Design and analysis of algorithms'
+            },
+            {
+                'id': 105,
+                'name': 'CS 4240',
+                'description': 'Compilers and interpreters'
+            },
+            {
+                'id': 106,
+                'name': 'CS 4210',
+                'description': 'Advanced operating systems'
             }
+        ];
 
-            return courses;
+        var sections = [
+            {
+                'id': 100,
+                'courseId': 102,
+                'crn': 10897,
+                'professor': 'Bill Leahy',
+                'times': 'MWF 1:05 - 1:55'
+            },
+            {
+                'id': 101,
+                'courseId': 102,
+                'crn': 21947,
+                'professor': 'Russ Clark',
+                'times': 'TR 9:35 - 10:55'
+            },
+            {
+                'id': 102,
+                'courseId': 103,
+                'crn': 37291,
+                'professor': 'William Trotter',
+                'times': 'MWF 12:05 - 12:55'
+            },
+            {
+                'id': 103,
+                'courseId': 104,
+                'crn': 10233,
+                'professor': 'H. Venkateswaran',
+                'times': 'MWF 3:05 - 3:55'
+            },
+            {
+                'id': 104,
+                'courseId': 104,
+                'crn': 92821,
+                'professor': 'H. Venkateswaran',
+                'times': 'TR 12:05 - 1:25'
+            },
+            {
+                'id': 105,
+                'courseId': 104,
+                'crn': 37291,
+                'professor': 'Merrick Furst',
+                'times': 'MWF 8:05 - 8:55'
+            }
+        ];
+
+        for (var i = 0; i < tracks.length; i ++) {
+            var track = tracks[i];
+            var major = _.find(majors, function(major) {
+                return tracks[i].majorId == major.id;
+            });
+
+            major.tracks.push(track);
         }
 
         $httpBackend.whenGET(/^\/views\//).passThrough();
@@ -84,7 +153,9 @@ angular.module('gg.mock', ['gg.app', 'ngMockE2E'])
 
         $httpBackend.whenPOST(/^\/auth\/login$/).respond(
             function(method, url, data, headers, params) {
-                return [200, {}, {}];
+                var json = angular.fromJson(data);
+                var statusCode = (json.email == 'craigrmccown@gmail.com' && json.password == 'password123') ? 200 : 401;
+                return [statusCode, {}, {}];
             }
         );
 
@@ -96,7 +167,7 @@ angular.module('gg.mock', ['gg.app', 'ngMockE2E'])
 
         $httpBackend.whenGET(/^\/users\/me$/).respond(
             function(method, url, data, headers, params) {
-                return [200, currentUser, {}];
+                return [200, user, {}];
             }
         );
 
@@ -120,26 +191,63 @@ angular.module('gg.mock', ['gg.app', 'ngMockE2E'])
 
         $httpBackend.whenPOST(/^\/users\/me\/majors$/).respond(
             function(method, url, data, headers, params) {
+                var json = angular.fromJson(data);
+                user.majors = [];
+
+                for (var i = 0; i < json.length; i ++) {
+                    user.majors.push(
+                        _.find(majors, function(major) {
+                            return major.id == json[i].id;
+                        })
+                    );
+                }
+
+                window.localStorage.setItem('user.majors', angular.toJson(user.majors));
                 return [200, {}, {}];
             }
         );
 
         $httpBackend.whenPOST(/^\/users\/me\/tracks$/).respond(
             function(method, url, data, headers, params) {
+                var json = angular.fromJson(data);
+                user.tracks = [];
+
+                for (var i = 0; i < json.length; i ++) {
+                    user.tracks.push(
+                        _.find(tracks, function(track) {
+                            return track.id == json[i].id;
+                        })
+                    );
+                }
+
+                window.localStorage.setItem('user.tracks', angular.toJson(user.tracks));
                 return [200, {}, {}];
             }
         );
 
         $httpBackend.whenPOST(/^\/users\/me\/minors$/).respond(
             function(method, url, data, headers, params) {
+                var json = angular.fromJson(data);
+                user.minors = [];
+
+                for (var i = 0; i < json.length; i ++) {
+                    user.minors.push(
+                        _.find(minors, function(minor) {
+                            return minor.id == json[i].id;
+                        })
+                    );
+                }
+
+                window.localStorage.setItem('user.minors', angular.toJson(user.minors));
                 return [200, {}, {}];
             }
         );
 
-        majors = generateMajors(5, 2);
-        minors = generateMinors(6);
-        courses = generateCourses(10);
-        currentUser = generateCurrentUser();
+        $httpBackend.whenGET(/^\/sections$/).respond(
+            function(method, url, data, headers, params) {
+                return [200, sections, {}];
+            }
+        );
     });
 
 angular.bootstrap(document, ['gg.mock']);

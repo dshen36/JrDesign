@@ -1,22 +1,25 @@
 <div class="row">
     <div class="col-12">
-        <h1>Here are your options...</h1>
+        <h1>Available Sections</h1>
     </div>
-<!--     <div class="col-2">
-        <div class="button button--rounded button--medium button--accent"
-            ng-click="finish()">
-            &#10003
-        </div>
-    </div> -->
 </div>
-<div class="row">
-    <div class="col-12">
-        <div class="card card--fixed card--selectable card--light" ng-repeat="course in courses" ng-click="selectCourse(course)">
-            <div class="card__header"
-                ng-class="{ 'card__header--selected': isSelected(course) }">
-                {{ course.name }}
+<div ng-repeat="course in courses">
+    <div class="row">
+        <div class="col-12">
+            <h3>{{course.name}}</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card card--fixed card--selectable card--light" ng-repeat="section in course.sections">
+                <div class="card__header">
+                    CRN {{ section.crn }}
+                </div>
+                <div class="card__body">
+                    Professor: {{ section.professor }} <br /> <!-- need to make a table component, br for now -->
+                    Times: {{ section.times }}
+                </div>
             </div>
-            <div class="card__body">{{ course.description }}</div>
         </div>
     </div>
 </div>
