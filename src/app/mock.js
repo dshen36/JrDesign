@@ -146,6 +146,23 @@ angular.module('gg.mock', ['gg.app', 'ngMockE2E'])
             major.tracks.push(track);
         }
 
+        function authenticate() {
+            var loggedIn = window.localStorage.getItem('user.loggedIn');
+
+            if (!loggedIn) {
+                return false;
+            }
+
+            var parsed = Date.parse(loggedIn);
+
+            if (new Date() - parsed > 10800000) {
+                window.localStorage.removeItem('user.loggedIn');
+                return false;
+            }
+
+            return true;
+        }
+
         $httpBackend.whenGET(/^\/views\//).passThrough();
         $httpBackend.whenGET(/^\/assets\//).passThrough();
         $httpBackend.whenGET(/^\/templates\//).passThrough();
@@ -154,43 +171,55 @@ angular.module('gg.mock', ['gg.app', 'ngMockE2E'])
         $httpBackend.whenPOST(/^\/auth\/login$/).respond(
             function(method, url, data, headers, params) {
                 var json = angular.fromJson(data);
-                var statusCode = (json.email == 'craigrmccown@gmail.com' && json.password == 'password123') ? 200 : 401;
-                return [statusCode, {}, {}];
+
+                if (json.email != 'craigrmccown@gmail.com' || json.password != 'password123') {
+                    return [401, {}, {}];
+                }
+
+                window.localStorage.setItem('user.loggedIn', new Date().toISOString());
+                return [200, {}, {}];
             }
         );
 
         $httpBackend.whenPOST(/^\/users$/).respond(
             function(method, url, data, headers, params) {
+                if (!authenticate()) { return [401, {}, {}]; }
                 return [200, {}, {}];
             }
         );
 
         $httpBackend.whenGET(/^\/users\/me$/).respond(
             function(method, url, data, headers, params) {
+                if (!authenticate()) { return [401, {}, {}]; }
                 return [200, user, {}];
             }
         );
 
         $httpBackend.whenGET(/^\/majors$/).respond(
             function(method, url, data, headers, params) {
+                if (!authenticate()) { return [401, {}, {}]; }
                 return [200, majors, {}];
             }
         );
 
         $httpBackend.whenGET(/^\/minors$/).respond(
             function(method, url, data, headers, params) {
+                if (!authenticate()) { return [401, {}, {}]; }
                 return [200, minors, {}];
             }
         );
 
         $httpBackend.whenGET(/^\/courses$/).respond(
             function(method, url, data, headers, params) {
+                if (!authenticate()) { return [401, {}, {}]; }
                 return [200, courses, {}];
             }
         );
 
         $httpBackend.whenPOST(/^\/users\/me\/majors$/).respond(
             function(method, url, data, headers, params) {
+                if (!authenticate()) { return [401, {}, {}]; }
+
                 var json = angular.fromJson(data);
                 user.majors = [];
 
@@ -209,6 +238,8 @@ angular.module('gg.mock', ['gg.app', 'ngMockE2E'])
 
         $httpBackend.whenPOST(/^\/users\/me\/tracks$/).respond(
             function(method, url, data, headers, params) {
+                if (!authenticate()) { return [401, {}, {}]; }
+
                 var json = angular.fromJson(data);
                 user.tracks = [];
 
@@ -227,6 +258,8 @@ angular.module('gg.mock', ['gg.app', 'ngMockE2E'])
 
         $httpBackend.whenPOST(/^\/users\/me\/minors$/).respond(
             function(method, url, data, headers, params) {
+                if (!authenticate()) { return [401, {}, {}]; }
+
                 var json = angular.fromJson(data);
                 user.minors = [];
 
@@ -245,6 +278,7 @@ angular.module('gg.mock', ['gg.app', 'ngMockE2E'])
 
         $httpBackend.whenGET(/^\/sections$/).respond(
             function(method, url, data, headers, params) {
+                if (!authenticate()) { return [401, {}, {}]; }
                 return [200, sections, {}];
             }
         );
