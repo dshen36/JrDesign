@@ -1,8 +1,9 @@
-@mixin text-field-size($height, $label-width) {
+@mixin text-field-size($height, $label-width, $font-size) {
     height: $height;
 
     .text-field__input {
         padding-left: $gutter + $label-width;
+        font-size: $font-size;
     }
 
     .text-field__label {
@@ -12,18 +13,23 @@
 }
 
 @mixin text-field-color($label-bg-color, $label-fg-color, $input-bg-color, $input-fg-color) {
-    border-color: $medium-light-mono;
+    border-color: $dark-mono;
     border-style: solid;
     border-width: $thin-border-width;
 
     .text-field__input {
-        background: $medium-light-trans;
+        @include input-placeholder {
+            color: lighten($input-fg-color, 15%);
+        }
+
+        background: $input-bg-color;
         color: $input-fg-color;
     }
 
     .text-field__label {
         background: $label-bg-color;
         color: $label-fg-color;
+        border-right: $dark-mono $thin-border-width solid;
     }
 }
 
@@ -53,6 +59,7 @@
         height: 100%;
         overflow: hidden;
         text-align: center;
+        font-size: $medium-small-font-size;
         z-index: 2;
     }
 
@@ -62,9 +69,9 @@
 }
 
 .text-field--light {
-    @include text-field-color($medium-light-mono, $dark-mono, $light-mono, $dark-mono);
+    @include text-field-color($medium-dark-mono, $medium-light-mono, $light-mono, $dark-mono);
 }
 
 .text-field--medium {
-    @include text-field-size($medium-header-height, 115px);
+    @include text-field-size($medium-header-height, 70px, $medium-small-font-size);
 }

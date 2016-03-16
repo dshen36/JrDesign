@@ -2,7 +2,7 @@
     color: $fg-color;
     background: $bg-color;
     border-style: solid;
-    border-color: darken($bg-color, 10%);
+    border-color: darken($bg-color, 15%);
 
     &:hover {
         background: lighten($bg-color, 10%);
@@ -28,8 +28,6 @@
 }
 
 .button {
-    @include header-text;
-
     position: relative;
     width: 100%;
     text-align: center;
@@ -53,9 +51,9 @@
 }
 
 .button--medium {
-    @include button-size($medium-header-height, $thin-border-width, $small-font-size);
+    @include button-size($medium-header-height, $thin-border-width, $medium-small-font-size);
 }
 
 .button--large {
-    @include button-size($large-header-height, $thin-border-width, $small-font-size);
+    @include button-size($large-header-height, $thin-border-width, $medium-font-size);
 }

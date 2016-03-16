@@ -1,5 +1,6 @@
 @mixin skin-header {
-    background: $dark-mono;
+    background-color: $dark-mono;
+    background-image: url("/assets/img/az-subtle.png");
     color: $medium-light-mono;
 }
 
@@ -9,4 +10,5 @@
 
 @mixin skin-content {
     background: $light-mono;
+    background-image: url("/assets/img/handmade-paper.png");
 }

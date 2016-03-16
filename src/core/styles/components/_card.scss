@@ -6,16 +6,20 @@
         padding: $gutter;
         border-style: solid;
         border-width: $thin-border-width;
+    }
+
+    .card__body {
         font-size: $small-font-size;
     }
 
     .card__header {
-        @include header-text;
         border-bottom: 0;
+        font-size: $medium-small-font-size;
     }
 
     .card__footer {
         border-top: 0;
+        font-size: $medium-small-font-size;
     }
 
     &:not(.card--selectable) {
@@ -40,15 +44,13 @@
     }
 
     .card__header {
-        font-weight: bold;
-        font-size: 3vh;
         background: $medium-light-mono;
-        color: $dark-mono;
+        color: $medium-dark-mono;
     }
 
     .card__body {
-        background: $medium-light-trans;
-        color: $dark-mono;
+        background: $light-mono;
+        color: $medium-dark-mono;
     }
 
     .card__footer {
@@ -70,7 +72,7 @@
     &:hover {
         .card__header {
             &:not(.card__header--selected) {
-                color: darken($medium-dark-mono, 15%);
+                color: darken($medium-dark-mono, 25%);
             }
         }
     }

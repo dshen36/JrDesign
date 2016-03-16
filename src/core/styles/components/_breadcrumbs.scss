@@ -1,9 +1,9 @@
 @mixin breadcrumbs-size($height, $border-width, $font-size) {
+    border-width: $border-width;
+    height: $height;
+
     .breadcrumbs__breadcrumb {
         font-size: $font-size;
-        height: $height;
-        border-top-width: $border-width;
-        border-bottom-width: $border-width;
 
         &:before, &:after {
             border-top-width: ($height / 2) - $border-width;
@@ -11,32 +11,29 @@
             border-left-width: $height / 4;
         }
 
-        &:first-of-type {
-            border-left: $border-width solid;
-        }
-
-        &:last-of-type {
-            border-right: $border-width solid;
-        }
-
         &:not(:last-of-type) {
+            border-right-style: solid;
             border-right-width: $border-width;
         }
     }
 }
 
 @mixin breadcrumbs-color($border-color, $bg-color, $fg-color) {
+    border-style: solid;
+    border-color: $border-color;
+
     .breadcrumbs__breadcrumb {
-        border-style: solid;
-        border-color: $border-color;
         background: $bg-color;
         color: $fg-color;
+        border-right-color: $border-color;
 
         &:before {
+            border-style: solid;
             border-left-color: $border-color;
         }
 
         &:after {
+            border-style: solid;
             border-left-color: $bg-color;
         }
 
@@ -53,6 +50,7 @@
         }
 
         &.breadcrumbs__breadcrumb--active {
+            color: $border-color;
             background: lighten($bg-color, 15%);
 
             &:after {
@@ -61,7 +59,7 @@
         }
 
         &[disabled="disabled"] {
-            color: lighten($fg-color, 15%) !important;
+            color: lighten($fg-color, 20%) !important;
             background: $bg-color !important;
 
             &:after {
@@ -77,12 +75,14 @@
     width: 100%;
     table-layout: fixed;
     border-spacing: 0;
+    box-sizing: border-box;
 
     .breadcrumbs__breadcrumb {
         @include header-text;
 
         position: relative;
         width: 100%;
+        height: 100%;
         text-align: center;
         display: table-cell;
         vertical-align: middle;
@@ -125,5 +125,5 @@
 }
 
 .breadcrumbs--light {
-    @include breadcrumbs-color($medium-dark-mono, $medium-light-mono, $medium-dark-mono);
+    @include breadcrumbs-color($dark-mono, $medium-light-mono, $medium-dark-mono);
 }

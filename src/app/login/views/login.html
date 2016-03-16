@@ -7,26 +7,27 @@
     </div>
 </div>
 
-<div class="row" style="margin-top: 100px;">
-    <div class="col-4"></div>
-    <div class="col-4">
+<div style="margin-top: 100px;">
+    <div style="margin-left: auto; margin-right: auto; width: 500px;">
         <img src="/assets/img/graduationguide-1.png" alt="Graduation Guide" style="width: 100%;"/>
     </div>
-    <div class="col-4"></div>
 </div>
-<div class="row">
-    <div class="col-4"></div>
-    <div class="col-4">
+<div>
+    <div style="margin-left: auto; margin-right: auto; margin-top: 30px; width: 500px;">
         <div class="card card--full card--light card--rounded">
             <div class="card__header">Log In</div>
             <div class="card__body">
                 <div class="text-field text-field--light text-field--medium">
-                    <div class="text-field__label">Email</div>
-                    <input class="text-field__input" ng-model="auth.email" />
+                    <div class="text-field__label">
+                        <i class="fa fa-envelope"></i>
+                    </div>
+                    <input class="text-field__input" ng-model="auth.email" placeholder="Email Address" />
                 </div>
                 <div class="text-field text-field--light text-field--medium">
-                    <div class="text-field__label">Password</div>
-                    <input type="password" class="text-field__input" ng-model="auth.password" />
+                    <div class="text-field__label">
+                        <i class="fa fa-lock"></i>
+                    </div>
+                    <input type="password" class="text-field__input" ng-model="auth.password" placeholder="Password" />
                 </div>
                 <div class="button button--accent button--large button--rounded"
                     ng-click="login()">
@@ -38,5 +39,4 @@
             </div>
         </div>
     </div>
-    <div class="col-4"></div>
 </div>

@@ -41,7 +41,6 @@ angular.module('gg.app')
             ]
         };
 
-        $scope.currentStep = $scope.wizardConfig.steps[0];
 
         $scope.stepIsAvailable = function(step) {
             for (var i = 0; i < step.order; i ++) {
@@ -102,6 +101,17 @@ angular.module('gg.app')
             }
         }
 
+        function getCurrentStep() {
+            for (var i = 0; i < $scope.wizardConfig.steps.length; i ++) {
+                if (!$scope.wizardConfig.steps[i].isComplete()) {
+                    return i == 0 ? $scope.wizardConfig.steps[0] : $scope.wizardConfig.steps[i - 1];
+                }
+            }
+
+            return $scope.wizardConfig.steps[$scope.wizardConfig.steps.length - 1];
+        }
+
+        $scope.currentStep = getCurrentStep()
         $state.go($scope.currentStep.state);
     })
     .controller('CriteriaMajorsCtrl', function($scope, $state, CurrentUser, Majors) {

@@ -1,13 +1,13 @@
 .row {
     @include clearfix;
+
+    padding-top: $gutter;
 }
 
 @for $i from 1 through 12 {
     .col-#{$i} {
         width: ($full / 12) * $i;
         float: left;
-        padding-top: $gutter;
-        padding-bottom: $gutter;
         box-sizing: border-box;
 
         &:not(:first-child) {
@@ -24,6 +24,11 @@
 
         &:last-child {
             padding-right: $gutter;
+        }
+
+        .spacer {
+            content: 'spacer';
+            color: transparent;
         }
     }
 }

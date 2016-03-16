@@ -5,7 +5,9 @@ html {
 }
 
 h1 {
-    font-size: $large-font-size;
+    font-size: $medium-font-size;
+    font-weight: bold;
+    text-align: center;
     line-height: $medium-header-height;
 }
 
@@ -18,7 +20,6 @@ h3 {
 }
 
 label {
-    @include header-text;
     font-size: $small-font-size;
 }
 

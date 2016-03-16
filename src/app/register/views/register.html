@@ -6,38 +6,43 @@
         {{notification.message}}
     </div>
 </div>
-<div class="row" style="margin-top: 100px;">
-    <div class="col-4"></div>
-    <div class="col-4">
+<div style="margin-top: 100px;">
+    <div style="margin-left: auto; margin-right: auto; width: 500px;">
         <img src="/assets/img/graduationguide-1.png" alt="Graduation Guide" style="width: 100%;"/>
     </div>
-    <div class="col-4"></div>
 </div>
-<div class="row">
-    <div class="col-4"></div>
-    <div class="col-4">
+<div style="margin-top: 30px;">
+    <div style="margin-left: auto; margin-right: auto; width: 500px;">
         <div class="card card--full card--light card--rounded">
             <div class="card__header">Create Your Account</div>
             <div class="card__body">
                 <div class="text-field text-field--medium text-field--light">
-                    <div class="text-field__label">Email</div>
-                    <input class="text-field__input" ng-model="register.email" />
+                    <div class="text-field__label">
+                        <i class="fa fa-envelope"></i>
+                    </div>
+                    <input class="text-field__input" ng-model="register.email" placeholder="Email Address" />
                 </div>
                 <div class="text-field text-field--medium text-field--light">
-                    <div class="text-field__label">First Name</div>
-                    <input class="text-field__input" ng-model="register.firstName" />
+                    <div class="text-field__label">
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <input class="text-field__input" ng-model="register.firstName" placeholder="First Name" />
                 </div>
                 <div class="text-field text-field--medium text-field--light">
-                    <div class="text-field__label">Last Name</div>
-                    <input class="text-field__input" ng-model="register.lastName" />
+                    <div class="text-field__label">
+                        <i class="fa fa-users"></i>
+                    </div>
+                    <input class="text-field__input" ng-model="register.lastName" placeholder="Last Name" />
                 </div>
                 <div class="text-field text-field--medium text-field--light">
-                    <div class="text-field__label">Password</div>
-                    <input class="text-field__input" type="password" ng-model="register.password" />
+                    <div class="text-field__label">
+                        <i class="fa fa-lock"></i>
+                    </div>
+                    <input class="text-field__input" type="password" ng-model="register.password" placeholder="Password" />
                 </div>
                 <div class="button button--large button--accent button--rounded"
                     ng-click="signUp()">
-                    Sign up!
+                    Sign Up
                 </div>
             </div>
             <div class="card__footer">
