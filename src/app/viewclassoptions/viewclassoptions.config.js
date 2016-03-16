@@ -7,7 +7,11 @@ angular.module('gg.app')
                 templateUrl: '/app/viewclassoptions/views/viewclassoptions.html',
                 resolve: {
                     'Courses': function(Course) {
-                        return Course.getAll();
+                        return Course.getAll().then(function(courses) {
+                            return _.filter(courses, function(course) {
+                                return [102, 103, 104].indexOf(course.id) > -1; // hardcoded for demo
+                            }); 
+                        });
                     },
                     'Sections': function(Courses, Section) {
                         return Section.getAll().then(

@@ -1,15 +1,17 @@
 angular.module('gg.services')
-    .factory('User', function($http, Environment, Major, Minor, Track) {
+    .factory('User', function($http, Environment, Major, Minor, Track, Course) {
         function User(data) {
             data.majors = data.majors || [];
             data.minors = data.minors || [];
             data.tracks = data.tracks || [];
+            data.completedCourses = data.completedCourses || [];
 
             this.id = data.id;
             this.email = data.email;
             this.majors = [];
             this.minors = [];
             this.tracks = [];
+            this.completedCourses = [];
 
             for (var i = 0; i < data.majors.length; i ++) {
                 this.majors.push(new Major(data.majors[i]));
@@ -21,6 +23,10 @@ angular.module('gg.services')
 
             for (var i = 0; i < data.tracks.length; i ++) {
                 this.tracks.push(new Track(data.tracks[i]));
+            }
+
+            for (var i = 0; i < data.completedCourses.length; i ++) {
+                this.completedCourses.push(new Track(data.completedCourses[i]));
             }
         }
 
